@@ -1,0 +1,8 @@
+.btn-4:hover {
+  width: 170px;
+  height: 55px;
+  transition: width 0.3s ease, height 0.3s ease, box-shadow 0.3s ease;
+  transform: translateX(5px); /* Adjust horizontal shift as needed */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow on hover */
+  background-color: #f0f0f0; /* Change background color on hover */
+}
