@@ -5,7 +5,7 @@ import bg from "../../../assets/icons/outsourcing-sales/img1.gif";
 const WCItem1 = () => {
   return (
     <div
-      className="bg-[#111] relative w-full bg-[length:180px_180px] md:bg-[length:280px_280px]"
+      className="bg-bp relative w-full bg-[length:180px_180px] md:bg-[length:280px_280px]"
       style={{
         backgroundImage: `url(${bg}), url(${bg})`,
         backgroundPosition: "top right, bottom left",

@@ -18,7 +18,7 @@
 body {
   padding: 0px !important;
   margin: 0px !important;
-  background-color: white;
+  background-color: #0b0b0b !important;
   box-sizing: border-box;
   font-family: "Lato", "Obviously Wide", "Bakbak One", "Khorla", "Roboto",
     sans-serif !important;
@@ -99,4 +99,12 @@ body {
 
 .all_break {
   word-break: break-word !important;
+}
+
+@layer components {
+  .text-cmn {
+    @apply text-center font-normal font-obviously-wide leading-normal; /* Example of applied Tailwind classes */
+    leading-trim: both;
+    text-edge: cap;
+  }
 }

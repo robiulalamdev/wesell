@@ -12,7 +12,7 @@ const WhyChooseWeSellSection = () => {
   const preRef = useRef();
 
   return (
-    <div className="bg-[#111] relative pb-[59px]">
+    <div className="bg-bp relative pb-[59px]">
       <Carousel
         prevArrow={({ handlePrev }) => {
           return <button ref={nextRef} onClick={handlePrev}></button>;
