@@ -18,9 +18,7 @@ module.exports = withMT({
         theme: "1440px",
       },
       colors: {
-        dash: {
-          bg: "#1B1B1B",
-        },
+        bp: "#0B0B0B",
         primary: "#FCCF3D",
         wp: "#F9F9F9",
       },
@@ -30,6 +28,10 @@ module.exports = withMT({
       },
       spacing: {
         theme: "12px",
+      },
+      backgroundPosition: {
+        "top-left-bottom-right": "top left, bottom right",
+        "top-right-bottom-left": "top right, bottom left",
       },
     },
   },
