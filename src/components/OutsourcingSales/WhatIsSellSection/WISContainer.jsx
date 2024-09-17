@@ -6,6 +6,9 @@ import WISItem1 from "./WISItem1";
 import { useEffect, useRef, useState } from "react";
 import { Carousel } from "@material-tailwind/react";
 import WISItem2 from "./WISItem2";
+import WISItem3 from "./WISItem3";
+import WISItem4 from "./WISItem4";
+import WISItem5 from "./WISItem5";
 
 const WISContainer = () => {
   const nextRef = useRef();
@@ -44,6 +47,9 @@ const WISContainer = () => {
         >
           <WISItem1 />
           {isShow && <WISItem2 />}
+          <WISItem3 />
+          <WISItem4 />
+          <WISItem5 />
         </Carousel>
         <div className="container flex justify-end gap-x-[13px]">
           <button onClick={() => nextRef.current.click()} className="">

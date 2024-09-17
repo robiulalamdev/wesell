@@ -9,35 +9,35 @@ import WISItem3SingleCard from "./WISItem3SingleCard";
 const items = [
   {
     id: 1,
-    title: "Customization and Control",
+    title: "Cost Efficiency",
     description:
-      "If your business requires a high level of customization in its sales strategies and you want to maintain tight control over the sales process to ensure it aligns closely with your brand’s values and messaging, co-sourcing is a suitable choice.",
+      "If your business’s primary focus is on cost-saving and reducing operational expenses, outsourcing may be a more cost-effective option. You pay for specific services without having to maintain an in-house sales team.",
     icon: no1,
   },
   {
     id: 2,
-    title: "Unique or Complex Sales Requirements",
+    title: "Scalability and Flexibility",
     description:
-      "If your sales process is intricate or requires a deep understanding of your industry and products, co-sourcing can provide the expertise and adaptability needed to address these unique challenges.",
+      "Outsourcing provides flexibility, making it easier to scale your sales team up or down in response to changes in demand or market conditions. This adaptability can be valuable in rapidly changing markets.",
     icon: no2,
   },
   {
     id: 3,
-    title: "Long-Term Strategic Partnerships",
+    title: "Access to Specialized Expertise",
     description:
-      "If you’re looking for a long-term, collaborative partnership with a sales organization that can become an extension of your internal team, co-sourcing sales is a suitable choice. This can foster a deep understanding of your business and its goals.",
+      "When your business lacks in-house sales expertise or requires access to specialized skills and industry knowledge, outsourcing can provide your business with access to a dedicated and experienced sales workforce.",
     icon: no3,
   },
   {
     id: 4,
-    title: "Knowledge Transfer and Skill Development",
+    title: "Focus on Core Competencies",
     description:
-      "Co-sourcing partners can facilitate knowledge transfer and skill development within your internal team, helping your employees acquire valuable sales skills and experience.",
+      "When your internal team needs to concentrate on core business functions like product development, customer support, or strategic planning, outsourcing allows you to delegate sales responsibilities to external experts.",
     icon: no4,
   },
 ];
 
-const WISItem3 = () => {
+const WISItem4 = () => {
   var settings = {
     dots: false,
     infinite: false,
@@ -58,7 +58,7 @@ const WISItem3 = () => {
           textEdge: "cap",
         }}
       >
-        Co-Sourcing
+        Outsourcing Sales
       </h1>
       <div className="pt-[79px] md:pt-[86px] max-w-[1010px] mx-auto">
         <div className="xl:hidden">
@@ -80,4 +80,4 @@ const WISItem3 = () => {
   );
 };
 
-export default WISItem3;
+export default WISItem4;
