@@ -10,7 +10,9 @@ const WIISellContainer = () => {
   const [step, setStep] = useState(1);
 
   const handleNext = () => {
-    setStep(step + 1);
+    if (step < 3) {
+      setStep(step + 1);
+    }
   };
   const handlePrev = () => {
     if (step !== 1) {
