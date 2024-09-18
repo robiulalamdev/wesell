@@ -34,7 +34,7 @@ const ContactInfo = () => {
             <h1 className="text-cmn text-left text-[#000000] text-[20px] md:text-[24px] font-semibold mb-[28px] md:mb-[33px]">
               CONTACT INFO
             </h1>
-            <div className="flex gap-[4px] md:gap-[20px]">
+            <div className="flex flex-col md:flex-row gap-x-[4px] md:gap-x-[20px]">
               <h1 className="w-[100px] text-black text-[16px] md:text-[20px] font-bold leading-[36.64px] font-obviously-wide all_break">
                 Phone
               </h1>
@@ -42,7 +42,7 @@ const ContactInfo = () => {
                 +49 (0) 69 8088 3729
               </p>
             </div>
-            <div className="flex gap-[4px] md:gap-[20px]">
+            <div className="flex flex-col md:flex-row gap-x-[4px] md:gap-x-[20px]">
               <h1 className="w-[100px] text-black text-[16px] md:text-[20px] font-bold leading-[36.64px] font-obviously-wide all_break">
                 Email
               </h1>
@@ -50,7 +50,7 @@ const ContactInfo = () => {
                 info@care4cargo.com
               </p>
             </div>
-            <div className="flex gap-[4px] md:gap-[20px]">
+            <div className="flex flex-col md:flex-row gap-x-[4px] md:gap-x-[20px]">
               <h1 className="w-[100px] text-black text-[16px] md:text-[20px] font-bold leading-[36.64px] font-obviously-wide all_break">
                 Website
               </h1>
@@ -58,7 +58,7 @@ const ContactInfo = () => {
                 www.websie wesell.com
               </p>
             </div>
-            <div className="flex gap-[4px] md:gap-[20px]">
+            <div className="flex flex-col md:flex-row gap-x-[4px] md:gap-x-[20px]">
               <h1 className="w-[100px] text-black text-[16px] md:text-[20px] font-bold leading-[36.64px] font-obviously-wide all_break">
                 Open
               </h1>
