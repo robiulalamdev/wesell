@@ -46,6 +46,7 @@ const WCItem3 = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     initialSlide: 0,
+    arrows: false,
     nextArrow: null, // Removes the next arrow
     prevArrow: null, // Removes the previous arrow
   };
