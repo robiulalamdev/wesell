@@ -14,7 +14,7 @@ const items = [
 const HCareerOpportunities = () => {
   return (
     <div
-      className="w-full min-h-[800px] relative bottom-[80px] pb-[100px]"
+      className="w-full min-h-[800px] relative bottom-[80px] pb-[200px]"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundRepeat: "no-repeat",
