@@ -34,7 +34,7 @@ const HSpecialPrograms = () => {
     initialSlide: 0,
   };
   return (
-    <div className="bg-[#1D1D1D] pt-[76px] pb-[100px] md:hidden">
+    <div className="bg-[#1D1D1D] pt-[76px] pb-[150px] md:hidden">
       <div className="container pt-[63px] pb-[70px]">
         <h1 className="text-cmn text-[#F9F9F9] text-[24px] font-bold uppercase leading-normal">
           Special Programs

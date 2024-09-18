@@ -3,7 +3,7 @@ import img1 from "../../assets/images/home/empowering/img1.png";
 
 const HEmpowering = () => {
   return (
-    <div className="bg-[#1D1D1D] pt-[76px] pb-[100px] hidden md:block">
+    <div className="bg-[#1D1D1D] pt-[76px] pb-[150px] hidden md:block">
       <div className="container">
         <div className="max-w-[1018px] mx-auto">
           <h1 className="text-cmn text-[#F9F9F9] text-[36px] font-bold leading-normal uppercase">
