@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="bg-bp">
       <KeepInTouch />
       <div className="container">
-        <div className="pt-[600px] flex flex-col items-center">
+        <div className="pt-[150px] md:pt-[300px] lg:pt-[400px] xl:pt-[600px] flex flex-col items-center">
           <div className="max-w-[55px] md:max-w-[127px]">{ILOGO}</div>
           <h1
             className="text-wp text-[20.695px] md:text-[35.385px] xl:text-[47.385px] font-medium font-obviously-wide leading-normal uppercase mt-[10px] md:mt-[23.8px]"
