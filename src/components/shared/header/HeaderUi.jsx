@@ -22,7 +22,7 @@ const HeaderUi = ({ open, setOpen }) => {
           {HEADER_ROUTES.map((item, index) => (
             <Link
               key={index}
-              to={`/${item.path}`}
+              to={`${item.path}`}
               className={`capitalize text-[16px] font-semibold font-obviously-wide leading-normal ${
                 pathname.includes(item.path)
                   ? "text-primary"
@@ -81,7 +81,7 @@ const HeaderUi = ({ open, setOpen }) => {
                 className="flex justify-between items-center h-[55px] border-b-[1px] border-[#FFFFFF] px-[28px]"
               >
                 <Link
-                  to={`/${item.path}`}
+                  to={`${item.path}`}
                   className={`capitalize text-[14px] font-semibold font-obviously-wide leading-normal ${
                     pathname.includes(item.path)
                       ? "text-primary"
