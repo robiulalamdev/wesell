@@ -30,7 +30,7 @@ const WISContainer = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   return (
-    <div className="bg-bp py-[52px] relative mt-[100px]">
+    <div className="relative top-[70px]">
       <img src={top} alt="" className="w-full relative top-[10px]" />
       <div className="bg-[#971A53] py-[50px]">
         <Carousel

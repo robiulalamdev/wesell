@@ -21,7 +21,7 @@ const WIISellContainer = () => {
   };
   return (
     <div
-      className="min-h-[800px] w-full h-full pb-[60px]"
+      className="min-h-[800px] w-full h-full pb-[60px] pt-[40px]"
       style={{
         background: `linear-gradient(180deg, rgba(17, 39, 98, 0.00) 52.38%, rgba(17, 39, 98, 0.90) 97.05%), url(${bg}) lightgray 50% / cover no-repeat`,
       }}
