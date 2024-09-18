@@ -2,6 +2,7 @@ import bg from "../../assets/images/lead-generation/banner/bg.png";
 import img1 from "../../assets/images/lead-generation/banner/img1.png";
 import img2 from "../../assets/images/lead-generation/banner/img2.png";
 import Header from "../shared/header/Header";
+import { ANIMATED_IMAGES } from "../../utils/data/global";
 
 const LGBanner = () => {
   return (
@@ -11,7 +12,15 @@ const LGBanner = () => {
         background: `linear-gradient(180deg, rgba(22, 48, 120, 0.00) 35.91%, rgba(22, 48, 120, 0.90) 100%), url(${bg}) lightgray 50% / cover no-repeat`,
       }}
     >
-      <div className="container">
+      <div
+        className="container"
+        style={{
+          backgroundImage: `url(${ANIMATED_IMAGES.INFINITY})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "bottom right",
+          backgroundSize: "200px",
+        }}
+      >
         <Header />
 
         <div className="lg:flex justify-between items-center gap-[16px] mt-[150px] pb-[71px] hidden lg:inline-block">

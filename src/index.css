@@ -107,4 +107,7 @@ body {
     leading-trim: both !important;
     text-edge: cap !important;
   }
+  .input-cmn {
+    @apply bg-[#F9F9F933] focus:bg-[#F9F9F933] outline-none focus:outline-none backdrop-blur-[10px] placeholder:font-obviously-wide font-obviously-wide leading-normal placeholder:leading-normal text-left text-[16px] md:text-[20px] text-[#000000] placeholder:text-[#000000] px-[12px];
+  }
 }
