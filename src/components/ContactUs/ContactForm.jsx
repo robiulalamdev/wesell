@@ -68,7 +68,7 @@ const ContactForm = () => {
               className="shadow-none hover:shadow-none bg-[#971A53] w-fit p-0 outline-none text-cmn rounded-[11.82px] border-[2.955px] md:border-[3.393px] border-b-[8px] md:border-b-[11px] border-[#971A53] text-[20px] md:text-[27.146px] text-black mt-[36px] md:mt-[44px]"
               style={{ fontStyle: "italic" }}
             >
-              <div className="bg-white outline-none max-w-[317px] h-[73px] md:w-[364px] md:h-[84px] !rounded-[11.82px] flex justify-center items-center duration-200">
+              <div className="bg-white outline-none min-w-[250px] sm:min-w-[270px] max-w-[317px] h-[73px] md:w-[364px] md:h-[84px] !rounded-[11.82px] flex justify-center items-center duration-200">
                 Submit
               </div>
             </Button>
