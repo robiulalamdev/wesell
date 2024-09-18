@@ -24,6 +24,7 @@ module.exports = withMT({
       },
       fontFamily: {
         lato: ["Lato", "sans-serif"],
+        raleway: ["Raleway", "sans-serif"],
         "obviously-wide": ["Obviously Wide", "sans-serif"],
       },
       spacing: {

@@ -9,15 +9,16 @@ import bg from "../../../assets/images/global/header/bg.png";
 const HeaderUi = ({ open, setOpen }) => {
   const { pathname } = useLocation();
 
-  console.log(open);
   return (
     <>
       <div className="h-[120px] w-full flex justify-between items-center">
-        <img
-          src={logo}
-          alt=""
-          className="w-[63px] md:w-[78px] h-[47px] md:h-[58px] object-contain"
-        />
+        <Link to="/">
+          <img
+            src={logo}
+            alt=""
+            className="w-[63px] md:w-[78px] h-[47px] md:h-[58px] object-contain"
+          />
+        </Link>
         <div className="flex-grow lg:flex justify-center items-center gap-x-[22px] hidden lg:inline-block">
           {HEADER_ROUTES.map((item, index) => (
             <Link

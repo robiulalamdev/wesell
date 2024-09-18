@@ -1,4 +1,3 @@
-import logo from "../../../assets/brands/logo.png";
 import { ILOGO } from "../../../utils/icons/global";
 import KeepInTouch from "../../OutsourcingSales/keepInTouch/KeepInTouch";
 

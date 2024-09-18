@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout";
 import OutsourcingSales from "../pages/OutsourcingSales/OutsourcingSales";
 import LeadGeneration from "../pages/LeadGeneration/LeadGeneration";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import Home from "../pages/Home/Home";
 
 export const router = createBrowserRouter([
   {
@@ -11,7 +12,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <OutsourcingSales />,
+        element: <Home />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
       },
       {
         path: "/outsourcing-sales",

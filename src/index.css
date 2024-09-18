@@ -8,7 +8,7 @@
     url("./assets/fonts/obviously.otf") format("opentype");
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Bakbak+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bakbak+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 :root {
   scroll-behavior: smooth !important;
@@ -20,7 +20,7 @@ body {
   margin: 0px !important;
   background-color: #0b0b0b !important;
   box-sizing: border-box;
-  font-family: "Lato", "Obviously Wide", "Bakbak One", "Khorla", "Roboto",
+  font-family: "Lato", "Obviously Wide", "Raleway", "Bakbak One", "Roboto",
     sans-serif !important;
 }
 
@@ -40,6 +40,12 @@ body {
 
 .lato {
   font-family: "Lato", system-ui;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.font-raleway {
+  font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -109,5 +115,8 @@ body {
   }
   .input-cmn {
     @apply bg-[#F9F9F933] focus:bg-[#F9F9F933] outline-none focus:outline-none backdrop-blur-[10px] placeholder:font-obviously-wide font-obviously-wide leading-normal placeholder:leading-normal text-left text-[16px] md:text-[20px] text-[#000000] placeholder:text-[#000000] px-[12px];
+  }
+  .font-italic {
+    font-style: italic !important;
   }
 }
