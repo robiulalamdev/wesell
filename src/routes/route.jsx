@@ -4,6 +4,7 @@ import OutsourcingSales from "../pages/OutsourcingSales/OutsourcingSales";
 import LeadGeneration from "../pages/LeadGeneration/LeadGeneration";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import Home from "../pages/Home/Home";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact-us",
         element: <ContactUs />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
       },
     ],
   },
