@@ -5,7 +5,7 @@ import animated from "../../assets/images/home/our-philosophy/img1.gif";
 const HOurPhilosophy = () => {
   return (
     <div
-      className="w-full min-h-[800px] relative bottom-[180px] pb-[300px]"
+      className="w-full min-h-[800px] relative bottom-[180px] pb-[300px] bg-[length:400px] md:bg-[length:100%]"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundRepeat: "no-repeat",

@@ -4,7 +4,7 @@ import { Button } from "@material-tailwind/react";
 
 const HFuture = () => {
   return (
-    <div className="bg-[#969292] bg-opacity-10 md:bg-[#000000] h-full min-h-[800px] relative bottom-[300px] pb-[100px]">
+    <div className="bg-[#969292] bg-opacity-10 md:bg-[#000000] h-full min-h-[800px] relative bottom-[200px] pb-[100px]">
       <div className="container">
         <div
           className="max-w-[874px] mx-auto pt-[53px] md:pt-[186px] bg-[length:300px] md:bg-[length:1000px]"
