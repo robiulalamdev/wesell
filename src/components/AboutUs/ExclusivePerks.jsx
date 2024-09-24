@@ -1,4 +1,5 @@
 import bg from "../../assets/images/about-us/exclusive-perks/bg.png";
+import onboardingbtn from "../../assets/images/about-us/exclusive-perks/onboardingbtn.png";
 import { ANIMATED_IMAGES } from "../../utils/data/global";
 import icon1 from "../../assets/icons/about-us/exclusive-perks/icon1.png";
 
@@ -12,7 +13,7 @@ const items = [
 const ExclusivePerks = () => {
   return (
     <div
-      className="min-h-[800px] relative bottom-[50px] pb-[130px]"
+      className="min-h-[800px] relative bottom-[50px]"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundRepeat: "no-repeat",
@@ -21,14 +22,14 @@ const ExclusivePerks = () => {
     >
       <div className="container">
         <div
-          className="pt-[288px] bg-[length:175px_175px] md:bg-[length:300px_300px]"
+          className="pt-[188px] md:pt-[288px] pb-[130px] bg-[length:175px_175px] md:bg-[length:400px_400px]"
           style={{
             backgroundImage: `url(${ANIMATED_IMAGES.OPENER_LOADING}), url(${ANIMATED_IMAGES.OPENER_LOADING})`,
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "left top, bottom right",
+            backgroundPosition: "left 100px, bottom right",
           }}
         >
-          <h1 className="text-cmn text-[#F9F9F9] text-[40px] font-bold uppercase leading-normal">
+          <h1 className="text-cmn text-[#F9F9F9] text-[24px] md:text-[40px] font-bold uppercase leading-normal">
             Exclusive Perks
           </h1>
 
@@ -51,6 +52,18 @@ const ExclusivePerks = () => {
               </div>
             ))}
           </div>
+          <p className="md:text-center font-obviously-wide text-[16px] md:text-[24px] font-medium capitalize leading-normal text-[#C1C1C1] mt-[40px] md:mt-[64px]">
+            We believe that straight-line selling is ineffective. Instead, we
+            focus on empathy-driven influence. No one wants to be sold, but
+            everyone loves to buy. We emphasize providing opportunities and
+            never pushing for a sale, creating a seamless and natural process.
+          </p>
+
+          <img
+            src={onboardingbtn}
+            alt=""
+            className="max-w-[340px] md:max-w-[366px] object-contain w-full mt-[40px] md:mt-[60px] mx-auto"
+          />
         </div>
       </div>
     </div>
