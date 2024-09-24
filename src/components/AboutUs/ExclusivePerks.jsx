@@ -2,6 +2,7 @@ import bg from "../../assets/images/about-us/exclusive-perks/bg.png";
 import onboardingbtn from "../../assets/images/about-us/exclusive-perks/onboardingbtn.png";
 import { ANIMATED_IMAGES } from "../../utils/data/global";
 import icon1 from "../../assets/icons/about-us/exclusive-perks/icon1.png";
+import { useNavigate } from "react-router-dom";
 
 const items = [
   "Luxury Airbnb properties",
@@ -11,9 +12,10 @@ const items = [
 ];
 
 const ExclusivePerks = () => {
+  const navigate = useNavigate();
   return (
     <div
-      className="min-h-[800px] relative bottom-[50px]"
+      className="min-h-[800px] relative bottom-[50px] pb-[100px] md:pb-[200px]"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundRepeat: "no-repeat",
@@ -60,9 +62,10 @@ const ExclusivePerks = () => {
           </p>
 
           <img
+            onClick={() => navigate("/about-us/onboarding")}
             src={onboardingbtn}
             alt=""
-            className="max-w-[340px] md:max-w-[366px] object-contain w-full mt-[40px] md:mt-[60px] mx-auto"
+            className="max-w-[340px] md:max-w-[366px] object-contain w-full mt-[40px] md:mt-[60px] mx-auto cursor-pointer"
           />
         </div>
       </div>

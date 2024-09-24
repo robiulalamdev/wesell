@@ -5,6 +5,7 @@ import LeadGeneration from "../pages/LeadGeneration/LeadGeneration";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import Home from "../pages/Home/Home";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import OnboardingProcess from "../pages/OnboardingProcess/OnboardingProcess";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "/about-us",
         element: <AboutUs />,
+      },
+      {
+        path: "/about-us/onboarding",
+        element: <OnboardingProcess />,
       },
     ],
   },
