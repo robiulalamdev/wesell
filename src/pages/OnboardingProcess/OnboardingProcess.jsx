@@ -1,7 +1,11 @@
-import React from "react";
+import AOnboardingContainer from "../../components/AboutUs/AOnboarding/AOnboardingContainer";
 
 const OnboardingProcess = () => {
-  return <div></div>;
+  return (
+    <div>
+      <AOnboardingContainer />
+    </div>
+  );
 };
 
 export default OnboardingProcess;
