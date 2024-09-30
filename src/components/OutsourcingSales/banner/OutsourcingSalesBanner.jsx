@@ -7,6 +7,7 @@ import img4 from "../../../assets/images/outsourcing-sales/img4.png";
 import { useState } from "react";
 import rArrow from "../../../assets/icons/outsourcing-sales/rarrow.png";
 import lArrow from "../../../assets/icons/outsourcing-sales/larrow.png";
+import { ANIMATED_IMAGES } from "../../../utils/data/global";
 
 const items = [
   {
@@ -41,7 +42,14 @@ const OutsourcingSalesBanner = () => {
     >
       <div className="container">
         <Header />
-        <div className="overflow-hidden grid grid-cols-2 w-full relative">
+        <div
+          className="overflow-hidden grid grid-cols-2 w-full relative bg-[length:280px_280px] md:bg-[length:400px_400px]"
+          style={{
+            backgroundImage: `url(${ANIMATED_IMAGES.INFINITY})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "bottom right",
+          }}
+        >
           {items.map((item, index) => (
             <div
               key={index}
