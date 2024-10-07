@@ -1,16 +1,35 @@
 import { Button } from "@material-tailwind/react";
 import bg from "../../assets/images/home/our-philosophy/bg.png";
-import animated from "../../assets/images/home/our-philosophy/img1.gif";
+import bg2 from "../../assets/images/home/our-philosophy/bg2.png";
+import animatedGif from "../../assets/images/home/our-philosophy/img1.gif";
+import { useSpring, animated } from "@react-spring/web";
+import { useEffect, useState } from "react";
 
 const HOurPhilosophy = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Parallax effect for Empowering section based on scroll position
+  const empoweringProps = useSpring({
+    transform: `translateY(${scrollY * -0.3}px)`, // Adjust scroll speed by multiplying scrollY
+  });
+
   return (
-    <div
-      className="w-full min-h-[800px] relative bottom-[180px] pb-[300px] bg-[length:400px] md:bg-[length:100%]"
+    <animated.div
       style={{
-        backgroundImage: `url(${bg})`,
+        ...empoweringProps,
+        backgroundImage: `url(${bg2})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
+      className="w-full min-h-[800px] relative bottom-[180px] pb-[200px] bg-[length:400px] md:bg-[length:100%]"
     >
       <div className="container">
         <div className="pt-[229px]">
@@ -34,13 +53,13 @@ const HOurPhilosophy = () => {
           </Button>
 
           <img
-            src={animated}
+            src={animatedGif}
             alt=""
             className="max-w-[454px] md:max-w-[800px] object-contain w-full mx-auto"
           />
         </div>
       </div>
-    </div>
+    </animated.div>
   );
 };
 

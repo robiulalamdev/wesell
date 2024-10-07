@@ -6,6 +6,8 @@ import {
   I_HStories_Left_cot,
   I_HStories_Right_cot,
 } from "../../utils/icons/homeIcons";
+import { useEffect, useState } from "react";
+import { useSpring, animated } from "@react-spring/web";
 
 const items = [
   { id: 1, name: "Wesell stories", image: person },
@@ -15,15 +17,33 @@ const items = [
 ];
 
 const HWesellStories = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Parallax effect for Empowering section based on scroll position
+  const empoweringProps = useSpring({
+    transform: `translateY(${scrollY * -0.3}px)`, // Adjust scroll speed by multiplying scrollY
+  });
   return (
-    <div
-      className="min-h-[800px] relative bottom-[200px] bg-cover"
+    <animated.div
+      className="min-h-[800px] relative bottom-[200px] bg-cover pb-[100px]"
       style={{
+        ...empoweringProps,
         backgroundImage: `url(${bg})`,
         backgroundRepeat: "no-repeat",
       }}
     >
       <div
+        data-aos="fade-up"
+        data-aos-duration="700"
+        data-aos-delay="500"
         className="w-full h-full bg-[length:164px_164px] md:bg-[length:379px_379px] pt-[150px] md:pt-[250px]"
         style={{
           backgroundImage: `url(${ANIMATED_IMAGES.LAMP}), url(${ANIMATED_IMAGES.LAMP})`,
@@ -56,6 +76,9 @@ const HWesellStories = () => {
           >
             {items.map((item, index) => (
               <div
+                data-aos="fade-up"
+                data-aos-duration="700"
+                data-aos-delay="500"
                 key={index}
                 className="relative h-full w-full container !mb-[100px]"
               >
@@ -112,7 +135,7 @@ const HWesellStories = () => {
           </div>
         </div>
       </div>
-    </div>
+    </animated.div>
   );
 };
 

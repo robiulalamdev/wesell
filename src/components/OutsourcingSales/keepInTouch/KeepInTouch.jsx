@@ -3,17 +3,37 @@ import {
   IKeep_In_Touch_HR_bottm,
 } from "../../../utils/icons/outsourcingSalesIcons";
 import hrBg from "../../../assets/images/outsourcing-sales/keep-in-touch/hr.gif";
+import { useSpring, animated } from "@react-spring/web";
+import { useEffect, useState } from "react";
 
 const KeepInTouch = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const empoweringProps = useSpring({
+    transform: `translateY(${scrollY * -0.3}px)`,
+  });
   return (
-    <div className="bg-bp">
+    <animated.div style={empoweringProps} className="bg-bp">
       <div className="pt-[100px] w-full relative">
         <div className="bg-[#971A53] w-full">
           <div className="relative -top-[280px] md:-top-[150px] w-full max-h-[200px]">
             {IKeep_In_Touch_HR}
           </div>
           <div className="absolute top-[125px] md:top-[200px] z-40 w-full">
-            <div className="container">
+            <div
+              data-aos="fade-up"
+              data-aos-duration="700"
+              data-aos-delay="0.1"
+              className="container"
+            >
               <h1
                 className="text-wp text-[20px] md:text-[35px] lg:text-[45px] xl:text-[55px] 2xl:text-[64px] text-center font-bold font-obviously-wide leading-normal uppercase"
                 style={{
@@ -76,7 +96,7 @@ const KeepInTouch = () => {
           </div>
         </div>
       </div>
-    </div>
+    </animated.div>
   );
 };
 

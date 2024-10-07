@@ -35,7 +35,12 @@ const HSpecialPrograms = () => {
   };
   return (
     <div className="bg-[#1D1D1D] pt-[76px] pb-[150px] md:hidden">
-      <div className="container pt-[63px] pb-[70px]">
+      <div
+        data-aos="fade-up"
+        data-aos-duration="700"
+        data-aos-delay="50"
+        className="container pt-[63px] pb-[70px]"
+      >
         <h1 className="text-cmn text-[#F9F9F9] text-[24px] font-bold uppercase leading-normal">
           Special Programs
         </h1>

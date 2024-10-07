@@ -1,6 +1,8 @@
 import { ANIMATED_IMAGES } from "../../utils/data/global";
 import arrow from "../../assets/images/home/faq/downArrow.png";
 import bottomBg from "../../assets/images/home/faq/bottomBg.png";
+import { useSpring, animated } from "@react-spring/web";
+import { useEffect, useState } from "react";
 
 const faqs = [
   {
@@ -42,10 +44,25 @@ const faqs = [
 ];
 
 const HFaq = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Parallax effect for Empowering section based on scroll position
+  const empoweringProps = useSpring({
+    transform: `translateY(${scrollY * -0.3}px)`, // Adjust scroll speed by multiplying scrollY
+  });
   return (
-    <div
+    <animated.div
       className="bg-[#000000] relative bottom-[200px] w-full h-full bg-[length:164px_164px] md:bg-[length:379px_379px] pt-[150px] md:pt-[250px]"
       style={{
+        ...empoweringProps,
         backgroundImage: `url(${ANIMATED_IMAGES.OPENER_LOADING}), url(${ANIMATED_IMAGES.OPENER_LOADING})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "bottom left, top right",
@@ -56,9 +73,17 @@ const HFaq = () => {
           FAQ
         </h1>
 
-        <div className="grid grid-cols-1 gap-[14.93px] md:gap-[40px] max-w-[860px] mx-auto mt-[26px] md:mt-[70px] pb-[150px]">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-delay="0.1"
+          className="grid grid-cols-1 gap-[14.93px] md:gap-[40px] max-w-[860px] mx-auto mt-[26px] md:mt-[70px] pb-[150px]"
+        >
           {faqs.map((item, index) => (
             <div
+              data-aos="fade-up"
+              data-aos-duration="600"
+              data-aos-delay="100"
               key={index}
               className="bg-[#F9F9F9] border-[1.866px] md:border-[5px] border-primary rounded-[8.958px] md:rounded-[24px]"
             >
@@ -79,15 +104,15 @@ const HFaq = () => {
         </div>
       </div>
 
-      <div
+      {/* <div
         className="min-h-[300px] absolute -bottom-[350px] right-0 left-0 w-full"
         style={{
           backgroundImage: `url(${bottomBg})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
-      ></div>
-    </div>
+      ></div> */}
+    </animated.div>
   );
 };
 

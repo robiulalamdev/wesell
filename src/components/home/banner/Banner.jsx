@@ -5,6 +5,7 @@ import img2 from "../../../assets/images/home/banner/img2.png";
 import { ANIMATED_IMAGES } from "../../../utils/data/global";
 import { Button } from "@material-tailwind/react";
 import { IHB_1, IHB_2, IHB_3 } from "../../../utils/icons/homeIcons";
+import { useTransform, motion } from "framer-motion";
 
 const items = [
   { id: 1, title: "Brand Representation", icon: IHB_1 },
@@ -12,9 +13,12 @@ const items = [
   { id: 3, title: "Cost-Effective and Scalable", icon: IHB_3 },
 ];
 
-const Banner = () => {
+const Banner = ({ scrollYProgress }) => {
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
   return (
-    <div
+    <motion.div
+      style={{ scale, rotate }}
       className="min-h-[800px] pb-[62px] md:pb-[97px]"
       style={{
         background: `linear-gradient(180deg, rgba(22, 48, 120, 0.00) 35.91%, rgba(22, 48, 120, 0.90) 100%), url(${bg}) lightgray 50% / cover no-repeat`,
@@ -79,7 +83,7 @@ const Banner = () => {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

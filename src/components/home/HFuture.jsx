@@ -1,30 +1,70 @@
 import hr from "../../assets/images/home/the-future/hr.png";
-import animated from "../../assets/images/home/the-future/animated.gif";
+import animatedGif from "../../assets/images/home/the-future/animated.gif";
 import { Button } from "@material-tailwind/react";
+import { useEffect, useState } from "react";
+import { useSpring, animated } from "@react-spring/web";
 
 const HFuture = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Parallax effect for Empowering section based on scroll position
+  const empoweringProps = useSpring({
+    transform: `translateY(${scrollY * -0.3}px)`, // Adjust scroll speed by multiplying scrollY
+  });
+
   return (
-    <div className="bg-[#969292] bg-opacity-10 md:bg-[#000000] h-full min-h-[800px] relative bottom-[200px] pb-[100px]">
-      <div className="container">
+    <animated.div
+      style={empoweringProps}
+      className="bg-[#969292] bg-opacity-10 md:bg-[#000000] h-full min-h-[800px] relative bottom-[200px] pb-[100px]"
+    >
+      <div
+        data-aos="fade-up"
+        data-aos-duration="700"
+        data-aos-delay="300"
+        className="container"
+      >
         <div
           className="max-w-[874px] mx-auto pt-[53px] md:pt-[186px] bg-[length:300px] md:bg-[length:1000px]"
           style={{
-            backgroundImage: `url(${animated})`,
+            backgroundImage: `url(${animatedGif})`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center center",
           }}
         >
-          <h1 className="text-[#F9F9F9] text-[24px] md:text-[40px] font-bold text-center font-obviously-wide uppercase leading-normal">
+          <h1
+            data-aos="fade-up"
+            data-aos-duration="700"
+            data-aos-delay="50"
+            className="text-[#F9F9F9] text-[24px] md:text-[40px] font-bold text-center font-obviously-wide uppercase leading-normal"
+          >
             Step into WeSell – Where Every Decision Shapes the Future
           </h1>
-          <p className="text-[#C1C1C1] text-[16px] md:text-[20px] text-center font-medium font-obviously-wide leading-normal capitalize mt-[55px] md:mt-[65px]">
+          <p
+            data-aos="fade-up"
+            data-aos-duration="700"
+            data-aos-delay="50"
+            className="text-[#C1C1C1] text-[16px] md:text-[20px] text-center font-medium font-obviously-wide leading-normal capitalize mt-[55px] md:mt-[65px]"
+          >
             Joining WeSell means becoming part of a dynamic and supportive
             community dedicated to excellence, innovation, and personal growth.
             Here’s why you should consider a career with us:
           </p>
         </div>
 
-        <div className="max-w-[894px] w-full h-fit rounded-[11px] md:rounded-[44px] bg-primary p-[3.979px] md:p-[11px] pb-[10px] md:pb-[24px] mx-auto mt-[32px] md:mt-[65px]">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-delay="300"
+          className="max-w-[894px] w-full h-fit rounded-[11px] md:rounded-[44px] bg-primary p-[3.979px] md:p-[11px] pb-[10px] md:pb-[24px] mx-auto mt-[32px] md:mt-[65px]"
+        >
           <div className="bg-[#F9F9F9] w-full h-full rounded-[11px] md:rounded-[44px] pt-[24px] md:pt-[52px] pb-[33px] md:pb-[74px] px-[33px] sm:px-[49px] md:px-[80px]">
             <div className="w-full flex justify-center">
               <img src={hr} alt="" className="object-contain" />
@@ -49,7 +89,7 @@ const HFuture = () => {
           </div>
         </Button>
       </div>
-    </div>
+    </animated.div>
   );
 };
 
