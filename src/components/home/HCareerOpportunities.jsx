@@ -23,12 +23,12 @@ const HCareerOpportunities = () => {
       }}
     >
       <div
-        className="w-full min-h-[800px] relative bottom-[80px] pb-[250px]"
-        style={{
-          backgroundImage: `url(${bg})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
+        className="w-full min-h-[800px] relative bg-[#971A53] pb-[200px]"
+        // style={{
+        //   backgroundImage: `url(${bg})`,
+        //   backgroundRepeat: "no-repeat",
+        //   backgroundSize: "cover",
+        // }}
       >
         <div className="container">
           <div className="pt-[100px]">

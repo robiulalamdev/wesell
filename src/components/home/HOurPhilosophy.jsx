@@ -29,10 +29,10 @@ const HOurPhilosophy = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
-      className="w-full min-h-[800px] relative bottom-[180px] pb-[200px] bg-[length:400px] md:bg-[length:100%]"
+      className="w-full min-h-[800px] relative pb-[200px] bg-[length:400px] md:bg-[length:100%]"
     >
       <div className="container">
-        <div className="pt-[229px]">
+        <div className="pt-[109px]">
           <h1 className="text-[#F9F9F9] text-center font-obviously-wide font-bold text-[24px] md:text-[40px] uppercase leading-normal">
             Our Philosophy
           </h1>
