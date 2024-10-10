@@ -71,7 +71,6 @@ const HSpecialPrograms = () => {
         transition={{ duration: 0.3 }}
         data-aos="fade-up"
         data-aos-duration="700"
-        data-aos-delay="50"
         className="container pt-[63px] pb-[70px]"
       >
         <h1 className="text-cmn text-[#F9F9F9] text-[24px] font-bold uppercase leading-normal">

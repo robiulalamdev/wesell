@@ -36,7 +36,6 @@ const Footer = () => {
         <div
           data-aos="fade-up"
           data-aos-duration="700"
-          data-aos-delay="0.1"
           className="container !pt-[100px]"
         >
           <div className="flex flex-col items-center">

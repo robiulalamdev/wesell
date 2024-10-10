@@ -45,12 +45,7 @@ const KeepInTouch = () => {
             {IKeep_In_Touch_HR}
           </div> */}
         <div className="w-full">
-          <div
-            data-aos="fade-up"
-            data-aos-duration="700"
-            data-aos-delay="0.1"
-            className="container"
-          >
+          <div data-aos="fade-up" data-aos-duration="700" className="container">
             <h1
               className="text-wp text-[20px] md:text-[35px] lg:text-[45px] xl:text-[55px] 2xl:text-[64px] text-center font-bold font-obviously-wide leading-normal uppercase"
               style={{

@@ -64,7 +64,6 @@ const HEmpowering = () => {
           <div
             data-aos="fade-up"
             data-aos-duration="450"
-            data-aos-delay="100"
             data-aos-anchor-placement="center"
           >
             <img

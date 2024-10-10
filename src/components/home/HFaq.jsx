@@ -90,14 +90,12 @@ const HFaq = () => {
         <div
           data-aos="fade-up"
           data-aos-duration="500"
-          data-aos-delay={0.1}
           className="grid grid-cols-1 gap-[14.93px] md:gap-[40px] max-w-[860px] mx-auto mt-[26px] md:mt-[70px] pb-[150px]"
         >
           {faqs.map((item, index) => (
             <div
               data-aos="fade-up"
               data-aos-duration="600"
-              data-aos-delay="100"
               key={index}
               className="bg-[#F9F9F9] border-[1.866px] md:border-[5px] border-primary rounded-[8.958px] md:rounded-[24px]"
             >

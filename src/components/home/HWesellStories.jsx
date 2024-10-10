@@ -57,7 +57,6 @@ const HWesellStories = () => {
         transition={{ duration: 0.5 }}
         data-aos="fade-up"
         data-aos-duration="700"
-        data-aos-delay="500"
       >
         <div
           className="w-full h-full bg-[length:164px_164px] md:bg-[length:379px_379px] !pt-[150px]"
@@ -94,7 +93,6 @@ const HWesellStories = () => {
                 <div
                   data-aos="fade-up"
                   data-aos-duration="700"
-                  data-aos-delay="500"
                   key={index}
                   className="relative h-full w-full container !mb-[100px]"
                 >

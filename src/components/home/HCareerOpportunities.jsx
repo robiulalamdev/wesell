@@ -57,12 +57,7 @@ const HCareerOpportunities = () => {
           transition={{ duration: 0.5 }}
           className="container"
         >
-          <div
-            data-aos="fade-up"
-            data-aos-duration="600"
-            data-aos-delay="0.5"
-            className=""
-          >
+          <div data-aos="fade-up" data-aos-duration="600" className="">
             <h1 className="text-cmn text-[24px] md:text-[40px] font-bold text-primary leading-normal uppercase font-italic">
               Career Opportunities
             </h1>
@@ -84,7 +79,6 @@ const HCareerOpportunities = () => {
                   // || (index >= 2 && "fade-in")
                 }
                 data-aos-duration="400"
-                data-aos-delay={0.1}
                 key={index}
                 className="w-full h-full bg-[#0D0D0D] p-[5px] pb-[16px] rounded-[28px]"
               >
