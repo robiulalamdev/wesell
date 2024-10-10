@@ -1,34 +1,47 @@
+import { useEffect, useRef } from "react";
+import useScrollAnimation from "../../../lib/hooks/useScrollAnimation";
 import { ILOGO } from "../../../utils/icons/global";
 import KeepInTouch from "../../OutsourcingSales/keepInTouch/KeepInTouch";
-import { useSpring, animated } from "@react-spring/web";
-import { useEffect, useState } from "react";
+import { useScroll, useTransform, motion } from "framer-motion";
 
 const Footer = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const { inView } = useScrollAnimation();
+  const container = useRef();
 
-  // Track scroll position
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1000], [0, -600]);
+
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      inView.applyInView("Footersection", 55);
+    };
 
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Parallax effect for Empowering section based on scroll position
-  const empoweringProps = useSpring({
-    transform: `translateY(${scrollY * -0.3}px)`, // Adjust scroll speed by multiplying scrollY
-  });
   return (
-    <div className="bg-bp">
+    <>
       <KeepInTouch />
-      <animated.div style={empoweringProps} className="aspect-[4/1]">
-        <div className="container">
-          <div className="pt-[150px] md:pt-[300px] lg:pt-[400px] xl:pt-[600px] flex flex-col items-center">
+
+      <motion.div
+        id="Footersection"
+        initial={{ scale: 0.8 }}
+        animate={{
+          scale: 1,
+        }}
+        transition={{ duration: 0.5 }}
+        ref={container}
+        style={{ y }}
+      >
+        <div
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-delay="0.1"
+          className="container !pt-[100px]"
+        >
+          <div className="flex flex-col items-center">
             <div className="max-w-[55px] md:max-w-[127px]">{ILOGO}</div>
             <h1
-              data-aos="fade-up"
-              data-aos-duration="700"
-              data-aos-delay="0.1"
               className="text-wp text-[20.695px] md:text-[35.385px] xl:text-[47.385px] font-medium font-obviously-wide leading-normal uppercase mt-[10px] md:mt-[23.8px]"
               style={{
                 leadingTrim: "both",
@@ -39,11 +52,7 @@ const Footer = () => {
               wesell
             </h1>
 
-            <div
-              data-aos="fade-up"
-              data-aos-duration="700"
-              data-aos-delay="0.1"
-            >
+            <div>
               <p
                 className="max-w-[569px] mx-auto text-wp md:text-[#C1C1C1] text-[7.977px] md:text-[16px] font-medium text-center font-obviously-wide leading-normal uppercase mt-[45.21px] md:mt-[88.54px]"
                 style={{
@@ -69,8 +78,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </animated.div>
-    </div>
+      </motion.div>
+    </>
   );
 };
 

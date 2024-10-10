@@ -1,31 +1,19 @@
 import { ANIMATED_IMAGES } from "../../utils/data/global";
 import img1 from "../../assets/images/home/empowering/img1.png";
 import { useTransform, motion, useScroll } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
 
 const HEmpowering = () => {
+  const { inView } = useScrollAnimation();
   const container = useRef();
 
-  const { scrollY: sY } = useScroll(); // Get scrollY value
+  const { scrollY: sY } = useScroll();
   const y = useTransform(sY, [0, 1000], [0, -500]);
 
-  const [inView, setInView] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-
-  // Detect scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const element = document.getElementById("section");
-      const rect = element.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // Calculate when the section is 50% in view
-      const isInView =
-        rect.top <= windowHeight * 0.5 && rect.bottom >= windowHeight * 0.5;
-      setInView(isInView);
-
-      // Track the current scroll position
-      setScrollY(window.scrollY);
+      inView.applyInView("hempowering", 65);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -34,10 +22,11 @@ const HEmpowering = () => {
 
   return (
     <motion.div
-      id="section"
+      id="hempowering"
       animate={{
-        filter: inView ? "blur(0px)" : "blur(2.5px)",
+        filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
       }}
+      transition={{ duration: 0.5 }}
       ref={container}
       style={{
         y,
@@ -46,9 +35,9 @@ const HEmpowering = () => {
     >
       <div className="container !mt-0">
         <motion.div
-          initial={{ opacity: 0.5, scale: 0.8 }}
+          initial={{ scale: 0.8 }}
           animate={{
-            scale: inView ? 1 : 0.9,
+            scale: inView.isInView ? 1 : 0.8,
           }}
           transition={{ duration: 0.5 }}
           className="max-w-[1018px] mx-auto"
@@ -74,8 +63,8 @@ const HEmpowering = () => {
 
           <div
             data-aos="fade-up"
-            data-aos-duration="700"
-            data-aos-delay="300"
+            data-aos-duration="450"
+            data-aos-delay="100"
             data-aos-anchor-placement="center"
           >
             <img

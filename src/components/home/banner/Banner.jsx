@@ -6,7 +6,8 @@ import { ANIMATED_IMAGES } from "../../../utils/data/global";
 import { Button } from "@material-tailwind/react";
 import { IHB_1, IHB_2, IHB_3 } from "../../../utils/icons/homeIcons";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useSpring } from "framer-motion";
+import useScrollAnimation from "../../../lib/hooks/useScrollAnimation";
 
 const items = [
   { id: 1, title: "Brand Representation", icon: IHB_1 },
@@ -15,35 +16,41 @@ const items = [
 ];
 
 const Banner = () => {
-  const [isBlurred, setIsBlurred] = useState(false);
-  const [scaleValue, setScaleValue] = useState(1);
+  const { blurScale } = useScrollAnimation();
 
   useEffect(() => {
     const handleScroll = () => {
-      const element = document.getElementById("banner-section");
-      const rect = element.getBoundingClientRect();
-      const elementHeight = rect.height;
-
-      const scrolledPercentage = Math.abs(rect.top / elementHeight) * 100;
-      if (scrolledPercentage > 40 && scrolledPercentage <= 100) {
-        setIsBlurred(true);
-        setScaleValue(0.95);
-      } else {
-        setIsBlurred(false);
-        setScaleValue(1);
-      }
+      blurScale.applyBlurScale("banner", 40);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const texts = [
+    "Transform Your Sales Strategy and Unleash Your Entrepreneurial Potential.",
+    "Where we dare to sell and empower the next generation of sales leaders and managers. At WeSell,",
+    "We transform ambition into success through our comprehensive sales and management training programs.",
+  ];
+
+  // State to keep track of the current text index
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    // Set an interval to automatically cycle through the texts every 4 seconds
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, [texts.length]);
+
   return (
     <motion.div
-      id="banner-section"
+      id="banner"
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className={`min-h-[800px] pb-[62px] md:pb-[150px] ${
-        isBlurred ? "blur-sm" : "blur-none"
+        blurScale.isBlurred ? "blur-sm" : "blur-none"
       }`}
       style={{
         background: `linear-gradient(180deg, rgba(22, 48, 120, 0.00) 35.91%, rgba(22, 48, 120, 0.90) 100%), url(${bg}) lightgray 50% / cover no-repeat`,
@@ -60,20 +67,35 @@ const Banner = () => {
         <Header />
         <motion.div
           initial={{ scale: 1 }}
-          animate={{ scale: scaleValue }}
+          animate={{ scale: blurScale.scale }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           <div
             data-aos="zoom-out-up"
             data-aos-duration="900"
             data-aos-delay="300"
-            className="mt-[78px] md:mt-[100px] max-w-[902px] mx-auto"
+            className="mt-[32px] md:mt-[100px] max-w-[902px] mx-auto"
           >
-            <h1 className="text-[17.844px] md:text-[36px] font-bold leading-normal font-obviously-wide text-[#E4DCDE] font-italic text-center">
+            <h1 className="text-[17.844px] md:text-[36px] font-bold leading-normal font-obviously-wide text-[#E4DCDE] font-italic text-center hidden md:block">
               Students, graduates, dreamers—no matter where you start, without
               sales and management, your journey will stall. Learn what every
-              successful person knows.&quot;
+              successful person knows.
             </h1>
+            <motion.h1
+              key={currentIndex} // Ensure each new text has a unique key to trigger animation
+              initial={{ y: -30, opacity: 0 }} // Start position: slightly above with opacity 0
+              animate={{ y: 0, opacity: 1 }} // End position: normal and fully visible
+              exit={{ y: 30, opacity: 0 }} // Exit position: below and faded out
+              transition={{
+                type: "spring", // Use spring for animation type
+                stiffness: 1000, // Spring stiffness
+                damping: 5, // Spring damping for smooth animation
+                duration: 0.8, // Speed of the transition
+              }}
+              className="min-h-[150px] text-[17.844px] md:text-[36px] font-bold leading-normal font-obviously-wide text-[#E4DCDE] font-italic text-center md:hidden"
+            >
+              {texts[currentIndex]}
+            </motion.h1>
 
             <Button
               data-aos="fade-up"
@@ -90,6 +112,7 @@ const Banner = () => {
 
           <div className="flex justify-between md:justify-center w-full items-center gap-x-[12px] mt-[70px] md:mt-[63px] overflow-hidden">
             <img
+              data-aos="fade-right"
               src={img1}
               alt=""
               className="max-w-[85px] sm:max-w-[133px] object-contain w-full md:hidden"
@@ -119,6 +142,7 @@ const Banner = () => {
               ))}
             </div>
             <img
+              data-aos="fade-left"
               src={img2}
               alt=""
               className="max-w-[90px] sm:max-w-[139px] object-contain w-full md:hidden"

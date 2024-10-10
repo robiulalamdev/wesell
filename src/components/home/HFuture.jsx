@@ -1,38 +1,50 @@
 import hr from "../../assets/images/home/the-future/hr.png";
 import animatedGif from "../../assets/images/home/the-future/animated.gif";
 import { Button } from "@material-tailwind/react";
-import { useEffect, useState } from "react";
-import { useSpring, animated } from "@react-spring/web";
+import { useEffect, useRef } from "react";
+import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
+import { useScroll, useTransform, motion } from "framer-motion";
 
 const HFuture = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const { inView } = useScrollAnimation();
+  const container = useRef();
 
-  // Track scroll position
+  const { scrollY: sY } = useScroll();
+  const y = useTransform(sY, [0, 1000], [0, -600]);
+
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      inView.applyInView("hfuturesection", 55);
+    };
 
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Parallax effect for Empowering section based on scroll position
-  const empoweringProps = useSpring({
-    transform: `translateY(${scrollY * -0.3}px)`, // Adjust scroll speed by multiplying scrollY
-  });
-
   return (
-    <animated.div
-      style={empoweringProps}
-      className="bg-[#969292] bg-opacity-10 md:bg-[#000000] h-full min-h-[800px] relative bottom-[200px] pb-[100px]"
+    <motion.div
+      id="hfuturesection"
+      animate={{
+        filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
+      }}
+      transition={{ duration: 0.5 }}
+      ref={container}
+      style={y}
+      className="bg-[#000000] h-full min-h-[800px] relative pb-[500px]"
     >
-      <div
+      <motion.div
+        initial={{ scale: 0.8 }}
+        animate={{
+          scale: inView.isInView ? 1 : 0.8,
+        }}
+        transition={{ duration: 0.5 }}
         data-aos="fade-up"
         data-aos-duration="700"
         data-aos-delay="300"
-        className="container"
+        className="container !mt-0"
       >
         <div
-          className="max-w-[874px] mx-auto pt-[53px] md:pt-[186px] bg-[length:300px] md:bg-[length:1000px]"
+          className="max-w-[874px] mx-auto !mt-0 pt-[53px] md:pt-[100px] bg-[length:300px] md:bg-[length:1000px]"
           style={{
             backgroundImage: `url(${animatedGif})`,
             backgroundRepeat: "no-repeat",
@@ -88,8 +100,8 @@ const HFuture = () => {
             Learn More
           </div>
         </Button>
-      </div>
-    </animated.div>
+      </motion.div>
+    </motion.div>
   );
 };
 

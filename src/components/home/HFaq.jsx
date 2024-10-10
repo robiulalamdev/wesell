@@ -1,8 +1,9 @@
 import { ANIMATED_IMAGES } from "../../utils/data/global";
 import arrow from "../../assets/images/home/faq/downArrow.png";
 import bottomBg from "../../assets/images/home/faq/bottomBg.png";
-import { useSpring, animated } from "@react-spring/web";
-import { useEffect, useState } from "react";
+import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
+import { useEffect, useRef } from "react";
+import { useScroll, useTransform, motion } from "framer-motion";
 
 const faqs = [
   {
@@ -44,39 +45,52 @@ const faqs = [
 ];
 
 const HFaq = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const { inView } = useScrollAnimation();
+  const container = useRef();
 
-  // Track scroll position
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1000], [0, -600]);
+
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      inView.applyInView("HFaqsection", 55);
+    };
 
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Parallax effect for Empowering section based on scroll position
-  const empoweringProps = useSpring({
-    transform: `translateY(${scrollY * -0.3}px)`, // Adjust scroll speed by multiplying scrollY
-  });
   return (
-    <animated.div
-      className="bg-[#000000] relative bottom-[200px] w-full h-full bg-[length:164px_164px] md:bg-[length:379px_379px] pt-[150px] md:pt-[250px]"
+    <motion.div
+      id="HFaqsection"
+      animate={{
+        filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
+      }}
+      transition={{ duration: 0.5 }}
+      ref={container}
+      className="bg-[#000000] relative w-full h-full bg-[length:164px_164px] md:bg-[length:379px_379px] pt-[100px]"
       style={{
-        ...empoweringProps,
+        y,
         backgroundImage: `url(${ANIMATED_IMAGES.OPENER_LOADING}), url(${ANIMATED_IMAGES.OPENER_LOADING})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "bottom left, top right",
       }}
     >
-      <div className="container">
+      <motion.div
+        initial={{ scale: 0.8 }}
+        animate={{
+          scale: inView.isInView ? 1 : 0.8,
+        }}
+        transition={{ duration: 0.5 }}
+        className="container"
+      >
         <h1 className="text-left md:text-center font-bold text-[47.777px] md:text-[128px] font-italic leading-[78.354px] md:leading-[209.92px] uppercase text-primary font-obviously-wide">
           FAQ
         </h1>
 
         <div
           data-aos="fade-up"
-          data-aos-duration="700"
-          data-aos-delay="0.1"
+          data-aos-duration="500"
+          data-aos-delay={0.1}
           className="grid grid-cols-1 gap-[14.93px] md:gap-[40px] max-w-[860px] mx-auto mt-[26px] md:mt-[70px] pb-[150px]"
         >
           {faqs.map((item, index) => (
@@ -102,7 +116,7 @@ const HFaq = () => {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* <div
         className="min-h-[300px] absolute -bottom-[350px] right-0 left-0 w-full"
@@ -112,7 +126,7 @@ const HFaq = () => {
           backgroundSize: "cover",
         }}
       ></div> */}
-    </animated.div>
+    </motion.div>
   );
 };
 

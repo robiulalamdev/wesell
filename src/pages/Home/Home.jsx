@@ -9,7 +9,7 @@ import HWesellStories from "../../components/home/HWesellStories";
 
 const Home = () => {
   return (
-    <div>
+    <div className="bg-[#000000]">
       <Banner />
       <HEmpowering />
       <HSpecialPrograms />
