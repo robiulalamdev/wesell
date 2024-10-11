@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { ANIMATED_IMAGES } from "../../utils/data/global";
 import Slider from "react-slick";
+import { useScroll, useTransform, motion } from "framer-motion";
+import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
 
 const items = [
   {
@@ -24,6 +26,21 @@ const items = [
 ];
 
 const HSpecialPrograms = () => {
+  const { inView } = useScrollAnimation();
+  const container = useRef();
+
+  const { scrollY: sY } = useScroll();
+  const y = useTransform(sY, [0, 1000], [0, -500]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      inView.applyInView("hspecialprograme", 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   var settings = {
     dots: false,
     infinite: false,
@@ -34,11 +51,26 @@ const HSpecialPrograms = () => {
     initialSlide: 0,
   };
   return (
-    <div className="bg-[#1D1D1D] pt-[76px] pb-[150px] md:hidden">
-      <div
+    <motion.div
+      id="hspecialprograme"
+      animate={{
+        filter: inView.isInView ? "blur(0px)" : "blur(2px)",
+      }}
+      transition={{ duration: 0.3 }}
+      ref={container}
+      style={{
+        y,
+      }}
+      className="bg-[#1D1D1D] pt-[46px] pb-[80px] md:hidden"
+    >
+      <motion.div
+        initial={{ scale: 0.8 }}
+        animate={{
+          scale: inView.isInView ? 1 : 0.8,
+        }}
+        transition={{ duration: 0.3 }}
         data-aos="fade-up"
         data-aos-duration="700"
-        data-aos-delay="50"
         className="container pt-[63px] pb-[70px]"
       >
         <h1 className="text-cmn text-[#F9F9F9] text-[24px] font-bold uppercase leading-normal">
@@ -76,8 +108,8 @@ const HSpecialPrograms = () => {
             ))}
           </Slider>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

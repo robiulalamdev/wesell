@@ -1,33 +1,47 @@
 import { ANIMATED_IMAGES } from "../../utils/data/global";
 import img1 from "../../assets/images/home/empowering/img1.png";
 import { useTransform, motion, useScroll } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
 
 const HEmpowering = () => {
+  const { inView } = useScrollAnimation();
   const container = useRef();
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start start", "end end"],
-  });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, 0]);
+  const { scrollY: sY } = useScroll();
+  const y = useTransform(sY, [0, 1000], [0, -500]);
 
-  const { scrollY } = useScroll(); // Get scrollY value
-  const y = useTransform(scrollY, [0, 1000], [0, -500]);
+  useEffect(() => {
+    const handleScroll = () => {
+      inView.applyInView("hempowering", 65);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <motion.div
+      id="hempowering"
+      animate={{
+        filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
+      }}
+      transition={{ duration: 0.5 }}
       ref={container}
       style={{
         y,
-        scale,
-        rotate,
       }}
-      className="bg-[#1D1D1D] pt-[76px] pb-[150px] hidden md:block relative"
+      className="bg-[#1D1D1D] pt-[76px]  hidden md:block relative pb-[100px]"
     >
-      <div className="container">
-        <div className="max-w-[1018px] mx-auto">
+      <div className="container !mt-0">
+        <motion.div
+          initial={{ scale: 0.8 }}
+          animate={{
+            scale: inView.isInView ? 1 : 0.8,
+          }}
+          transition={{ duration: 0.5 }}
+          className="max-w-[1018px] mx-auto"
+        >
           <div data-aos="flip-up" data-aos-duration="500">
             <h1 className="text-cmn text-[#F9F9F9] text-[36px] font-bold leading-normal uppercase">
               Empowering the next generation of business leaders
@@ -49,8 +63,7 @@ const HEmpowering = () => {
 
           <div
             data-aos="fade-up"
-            data-aos-duration="700"
-            data-aos-delay="300"
+            data-aos-duration="450"
             data-aos-anchor-placement="center"
           >
             <img
@@ -66,10 +79,10 @@ const HEmpowering = () => {
             <img
               src={img1}
               alt=""
-              className="object-contain max-w-[852px] w-full mx-auto mt-[56px]"
+              className="object-contain max-w-[552px] w-full mx-auto mt-[46px]"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   );
