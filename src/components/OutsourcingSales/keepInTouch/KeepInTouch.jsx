@@ -1,7 +1,7 @@
-import {
-  IKeep_In_Touch_HR,
-  IKeep_In_Touch_HR_bottm,
-} from "../../../utils/icons/outsourcingSalesIcons";
+// import {
+//   IKeep_In_Touch_HR,
+//   IKeep_In_Touch_HR_bottm,
+// } from "../../../utils/icons/outsourcingSalesIcons";
 import hrBg from "../../../assets/images/outsourcing-sales/keep-in-touch/hr.gif";
 import useScrollAnimation from "../../../lib/hooks/useScrollAnimation";
 import { useEffect, useRef } from "react";
@@ -12,7 +12,7 @@ const KeepInTouch = () => {
   const container = useRef();
 
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1000], [0, -600]);
+  const y = useTransform(scrollY, [0, 1000], [0, -200]);
 
   useEffect(() => {
     const handleScroll = () => {

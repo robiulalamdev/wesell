@@ -9,7 +9,7 @@ const Footer = () => {
   const container = useRef();
 
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1000], [0, -600]);
+  const y = useTransform(scrollY, [0, 1000], [0, -50]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +35,7 @@ const Footer = () => {
       >
         <div
           data-aos="fade-up"
-          data-aos-duration="700"
+          data-aos-duration="400"
           className="container !pt-[100px]"
         >
           <div className="flex flex-col items-center">

@@ -22,7 +22,7 @@ const HWesellStories = () => {
   const container = useRef();
 
   const { scrollY: sY } = useScroll();
-  const y = useTransform(sY, [0, 1000], [0, -600]);
+  const y = useTransform(sY, [0, 1000], [0, -500]);
 
   useEffect(() => {
     const handleScroll = () => {

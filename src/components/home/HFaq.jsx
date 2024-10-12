@@ -49,7 +49,7 @@ const HFaq = () => {
   const container = useRef();
 
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1000], [0, -600]);
+  const y = useTransform(scrollY, [0, 1000], [0, -500]);
 
   useEffect(() => {
     const handleScroll = () => {

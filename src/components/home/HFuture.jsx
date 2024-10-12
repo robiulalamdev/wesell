@@ -10,7 +10,7 @@ const HFuture = () => {
   const container = useRef();
 
   const { scrollY: sY } = useScroll();
-  const y = useTransform(sY, [0, 1000], [0, -600]);
+  const y = useTransform(sY, [0, 1000], [0, -500]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,8 +30,8 @@ const HFuture = () => {
         }}
         transition={{ duration: 0.2 }}
         ref={container}
-        style={y}
-        className="bg-[#000000] h-full min-h-[800px] relative pb-[200px] bottom-[500px]"
+        style={{ y }}
+        className="bg-[#000000] h-full min-h-[800px] relative pb-[100px]"
       >
         <motion.div
           initial={{ scale: 0.8 }}

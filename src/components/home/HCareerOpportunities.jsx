@@ -15,10 +15,9 @@ const items = [
 ];
 
 const HCareerOpportunities = () => {
+  const { inView } = useScrollAnimation();
   const { scrollY } = useScroll(); // Get scrollY value
   const y = useTransform(scrollY, [0, 1000], [0, -500]);
-
-  const { inView } = useScrollAnimation();
 
   useEffect(() => {
     const handleScroll = () => {
