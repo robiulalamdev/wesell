@@ -6,7 +6,7 @@ import { ANIMATED_IMAGES } from "../../../utils/data/global";
 import { Button } from "@material-tailwind/react";
 import { IHB_1, IHB_2, IHB_3 } from "../../../utils/icons/homeIcons";
 import { useEffect, useState } from "react";
-import { motion, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import useScrollAnimation from "../../../lib/hooks/useScrollAnimation";
 
 const items = [
@@ -89,7 +89,7 @@ const Banner = () => {
                 type: "spring", // Use spring for animation type
                 stiffness: 1000, // Spring stiffness
                 damping: 5, // Spring damping for smooth animation
-                duration: 0.8, // Speed of the transition
+                duration: 1.0, // Speed of the transition
               }}
               className="min-h-[150px] text-[17.844px] md:text-[36px] font-bold leading-normal font-obviously-wide text-[#E4DCDE] font-italic text-center md:hidden"
             >

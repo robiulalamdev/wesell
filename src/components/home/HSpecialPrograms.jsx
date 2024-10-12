@@ -56,7 +56,7 @@ const HSpecialPrograms = () => {
       animate={{
         filter: inView.isInView ? "blur(0px)" : "blur(2px)",
       }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.2 }}
       ref={container}
       style={{
         y,
@@ -68,7 +68,7 @@ const HSpecialPrograms = () => {
         animate={{
           scale: inView.isInView ? 1 : 0.8,
         }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.2 }}
         data-aos="fade-up"
         data-aos-duration="700"
         className="container pt-[63px] pb-[70px]"

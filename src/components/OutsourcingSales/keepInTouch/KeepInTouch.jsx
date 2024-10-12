@@ -1,7 +1,7 @@
-import {
-  IKeep_In_Touch_HR,
-  IKeep_In_Touch_HR_bottm,
-} from "../../../utils/icons/outsourcingSalesIcons";
+// import {
+//   IKeep_In_Touch_HR,
+//   IKeep_In_Touch_HR_bottm,
+// } from "../../../utils/icons/outsourcingSalesIcons";
 import hrBg from "../../../assets/images/outsourcing-sales/keep-in-touch/hr.gif";
 import useScrollAnimation from "../../../lib/hooks/useScrollAnimation";
 import { useEffect, useRef } from "react";
@@ -12,7 +12,7 @@ const KeepInTouch = () => {
   const container = useRef();
 
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1000], [0, -600]);
+  const y = useTransform(scrollY, [0, 1000], [0, -200]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,9 +28,9 @@ const KeepInTouch = () => {
       animate={{
         filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
       }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.2 }}
       ref={container}
-      style={{ y }}
+      // style={{ y }}
       className="bg-[#971A53] pt-[100px] pb-[100px] w-full"
     >
       <motion.div
@@ -38,7 +38,7 @@ const KeepInTouch = () => {
         animate={{
           scale: inView.isInView ? 1 : 0.8,
         }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.2 }}
         className="w-full"
       >
         {/* <div className="relative w-full max-h-[200px]">

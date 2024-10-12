@@ -22,7 +22,7 @@ const HWesellStories = () => {
   const container = useRef();
 
   const { scrollY: sY } = useScroll();
-  const y = useTransform(sY, [0, 1000], [0, -600]);
+  const y = useTransform(sY, [0, 1000], [0, -500]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +39,7 @@ const HWesellStories = () => {
       animate={{
         filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
       }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.2 }}
       ref={container}
       className="min-h-[800px] pb-[100px]"
       style={{
@@ -54,9 +54,9 @@ const HWesellStories = () => {
         animate={{
           scale: inView.isInView ? 1 : 0.8,
         }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.2 }}
         data-aos="fade-up"
-        data-aos-duration="700"
+        data-aos-duration="300"
       >
         <div
           className="w-full h-full bg-[length:164px_164px] md:bg-[length:379px_379px] !pt-[150px]"
@@ -90,9 +90,10 @@ const HWesellStories = () => {
               className=""
             >
               {items.map((item, index) => (
-                <div
-                  data-aos="fade-up"
-                  data-aos-duration="700"
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
                   key={index}
                   className="relative h-full w-full container !mb-[100px]"
                 >
@@ -120,7 +121,7 @@ const HWesellStories = () => {
                   <p className="text-[14px] text-[#F9F9F9] font-obviously-wide text-center leading-[16.8px] mt-[22px] md:mt-[36px] max-w-[400px] mx-auto">
                     Nunc mi id cursus facilisis praesent quam adipiscing.
                   </p>
-                </div>
+                </motion.div>
               ))}
             </Carousel>
           </div>

@@ -1,4 +1,4 @@
-import bg from "../../assets/images/home/career-opportunities/bg.png";
+// import bg from "../../assets/images/home/career-opportunities/bg.png";
 import no1 from "../../assets/icons/outsourcing-sales/no1.png";
 import no2 from "../../assets/icons/outsourcing-sales/no2.png";
 import no3 from "../../assets/icons/outsourcing-sales/no3.png";
@@ -15,19 +15,28 @@ const items = [
 ];
 
 const HCareerOpportunities = () => {
+  const { inView } = useScrollAnimation();
   const { scrollY } = useScroll(); // Get scrollY value
   const y = useTransform(scrollY, [0, 1000], [0, -500]);
 
-  const { inView } = useScrollAnimation();
-
   useEffect(() => {
     const handleScroll = () => {
-      inView.applyInView("hCareerOpportunities", 65);
+      inView.applyInView("hCareerOpportunities", 50);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const getInitialAnimation = (index) => {
+    if (index === 0) {
+      return { x: -100 }; // "fade-right" equivalent
+    } else if (index === 1) {
+      return { x: 100 }; // "fade-left" equivalent
+    } else {
+      return { y: 20 }; // "fade-in" equivalent for other indexes
+    }
+  };
 
   return (
     <motion.div
@@ -35,11 +44,11 @@ const HCareerOpportunities = () => {
       animate={{
         filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
       }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.2 }}
       style={{
         y,
       }}
-      className="w-full min-h-[800px] relative bg-[#971A53] !pt-[100px] !pb-[80px]"
+      className="w-full min-h-[800px] relative bg-[#971A53] !pt-[100px] !pb-[150px]"
     >
       <div
         className=""
@@ -54,10 +63,15 @@ const HCareerOpportunities = () => {
           animate={{
             scale: inView.isInView ? 1 : 0.8,
           }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.2 }}
           className="container"
         >
-          <div data-aos="fade-up" data-aos-duration="600" className="">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className=""
+          >
             <h1 className="text-cmn text-[24px] md:text-[40px] font-bold text-primary leading-normal uppercase font-italic">
               Career Opportunities
             </h1>
@@ -69,16 +83,14 @@ const HCareerOpportunities = () => {
               and our Business Incubator Program supports aspiring entrepreneurs
               in developing and launching their ventures.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-y-[22px] md:gap-y-[50px] gap-x-[21px] mt-[122px]">
             {items.map((item, index) => (
-              <div
-                data-aos={
-                  (index === 0 && "fade-right") || (index === 1 && "fade-left")
-                  // || (index >= 2 && "fade-in")
-                }
-                data-aos-duration="400"
+              <motion.div
+                initial={getInitialAnimation()}
+                animate={{ x: 0, y: 0 }}
+                transition={{ duration: 0.4 }}
                 key={index}
                 className="w-full h-full bg-[#0D0D0D] p-[5px] pb-[16px] rounded-[28px]"
               >
@@ -92,7 +104,7 @@ const HCareerOpportunities = () => {
                     {item.title}
                   </h1>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
