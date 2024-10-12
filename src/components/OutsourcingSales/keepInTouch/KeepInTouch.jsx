@@ -88,7 +88,7 @@ const KeepInTouch = () => {
                   type="submit"
                   className="w-full max-w-[139px] h-[59px] md:max-w-[359px] md:h-[139px] bg-[#111111] rounded-[13px] md:rounded-[28.8px] pb-[3px] md:pb-[6px]"
                 >
-                  <div className="bg-primary w-full h-full border-[#111111] border-[2px] md:border-[6px] rounded-[13px] md:rounded-[28.8px] flex justify-center items-center">
+                  <div className="bg-primary hover:bg-primary/80 duration-150 w-full h-full border-[#111111] border-[2px] md:border-[6px] rounded-[13px] md:rounded-[28.8px] flex justify-center items-center">
                     <h1
                       className="text-[#1D1D1D] text-[14px] md:text-[36px] text-center !font-bold font-obviously-wide leading-normal uppercase"
                       style={{
