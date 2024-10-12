@@ -6,7 +6,7 @@ import { ANIMATED_IMAGES } from "../../../utils/data/global";
 import { Button } from "@material-tailwind/react";
 import { IHB_1, IHB_2, IHB_3 } from "../../../utils/icons/homeIcons";
 import { useEffect, useState } from "react";
-import { motion, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import useScrollAnimation from "../../../lib/hooks/useScrollAnimation";
 
 const items = [

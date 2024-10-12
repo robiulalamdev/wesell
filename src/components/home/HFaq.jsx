@@ -65,7 +65,7 @@ const HFaq = () => {
       animate={{
         filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
       }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.2 }}
       ref={container}
       className="bg-[#000000] relative w-full h-full bg-[length:164px_164px] md:bg-[length:379px_379px] pt-[100px]"
       style={{
@@ -80,7 +80,7 @@ const HFaq = () => {
         animate={{
           scale: inView.isInView ? 1 : 0.8,
         }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.2 }}
         className="container"
       >
         <h1 className="text-left md:text-center font-bold text-[47.777px] md:text-[128px] font-italic leading-[78.354px] md:leading-[209.92px] uppercase text-primary font-obviously-wide">

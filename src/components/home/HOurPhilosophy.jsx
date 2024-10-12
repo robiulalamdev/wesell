@@ -1,5 +1,5 @@
 import { Button } from "@material-tailwind/react";
-import bg from "../../assets/images/home/our-philosophy/bg.png";
+// import bg from "../../assets/images/home/our-philosophy/bg.png";
 import bg2 from "../../assets/images/home/our-philosophy/bg2.png";
 import animatedGif from "../../assets/images/home/our-philosophy/img1.gif";
 import { useScroll, useTransform, motion } from "framer-motion";
@@ -28,7 +28,7 @@ const HOurPhilosophy = () => {
         animate={{
           filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
         }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.2 }}
         ref={container}
         style={{
           y,
@@ -43,7 +43,7 @@ const HOurPhilosophy = () => {
           animate={{
             scale: inView.isInView ? 1 : 0.8,
           }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.2 }}
           className="container"
         >
           <div className="pt-[40px]">

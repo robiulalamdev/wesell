@@ -28,7 +28,7 @@ const KeepInTouch = () => {
       animate={{
         filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
       }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.2 }}
       ref={container}
       style={{ y }}
       className="bg-[#971A53] pt-[100px] pb-[100px] w-full"
@@ -38,7 +38,7 @@ const KeepInTouch = () => {
         animate={{
           scale: inView.isInView ? 1 : 0.8,
         }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.2 }}
         className="w-full"
       >
         {/* <div className="relative w-full max-h-[200px]">

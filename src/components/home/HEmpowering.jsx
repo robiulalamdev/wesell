@@ -26,7 +26,7 @@ const HEmpowering = () => {
       animate={{
         filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
       }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.2 }}
       ref={container}
       style={{
         y,
@@ -39,7 +39,7 @@ const HEmpowering = () => {
           animate={{
             scale: inView.isInView ? 1 : 0.8,
           }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.2 }}
           className="max-w-[1018px] mx-auto"
         >
           <div data-aos="flip-up" data-aos-duration="500">

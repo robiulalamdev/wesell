@@ -28,7 +28,7 @@ const HFuture = () => {
         animate={{
           filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
         }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.2 }}
         ref={container}
         style={y}
         className="bg-[#000000] h-full min-h-[800px] relative pb-[200px] bottom-[500px]"
@@ -38,7 +38,7 @@ const HFuture = () => {
           animate={{
             scale: inView.isInView ? 1 : 0.8,
           }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.2 }}
           data-aos="fade-up"
           data-aos-duration="700"
           className="container !mt-0"

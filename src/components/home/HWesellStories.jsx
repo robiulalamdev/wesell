@@ -39,7 +39,7 @@ const HWesellStories = () => {
       animate={{
         filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
       }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.2 }}
       ref={container}
       className="min-h-[800px] pb-[100px]"
       style={{
@@ -54,7 +54,7 @@ const HWesellStories = () => {
         animate={{
           scale: inView.isInView ? 1 : 0.8,
         }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.2 }}
         data-aos="fade-up"
         data-aos-duration="700"
       >
