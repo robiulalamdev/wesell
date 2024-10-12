@@ -30,7 +30,7 @@ const KeepInTouch = () => {
       }}
       transition={{ duration: 0.2 }}
       ref={container}
-      style={{ y }}
+      // style={{ y }}
       className="bg-[#971A53] pt-[100px] pb-[100px] w-full"
     >
       <motion.div

@@ -1,7 +1,8 @@
 import { Button } from "@material-tailwind/react";
 // import bg from "../../assets/images/home/our-philosophy/bg.png";
 import bg2 from "../../assets/images/home/our-philosophy/bg2.png";
-import animatedGif from "../../assets/images/home/our-philosophy/img1.gif";
+// import animatedGif from "../../assets/images/home/our-philosophy/img1.gif";
+import animatedGif from "../../assets/images/home/our-philosophy/img2.gif";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
@@ -69,7 +70,7 @@ const HOurPhilosophy = () => {
             <img
               src={animatedGif}
               alt=""
-              className="max-w-[454px] md:max-w-[800px] object-contain w-full mx-auto"
+              className="max-w-[454px] md:max-w-[500px] object-contain w-full mx-auto"
             />
           </div>
         </motion.div>

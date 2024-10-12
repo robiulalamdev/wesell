@@ -1,5 +1,6 @@
 import hr from "../../assets/images/home/the-future/hr.png";
 import animatedGif from "../../assets/images/home/the-future/animated.gif";
+import watch from "../../assets/images/home/the-future/watch.png";
 import { Button } from "@material-tailwind/react";
 import { useEffect, useRef } from "react";
 import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
@@ -39,8 +40,6 @@ const HFuture = () => {
             scale: inView.isInView ? 1 : 0.8,
           }}
           transition={{ duration: 0.2 }}
-          data-aos="fade-up"
-          data-aos-duration="700"
           className="container !mt-0"
         >
           <div
@@ -58,18 +57,36 @@ const HFuture = () => {
             >
               Step into WeSell – Where Every Decision Shapes the Future
             </h1>
-            <p
-              data-aos="fade-up"
-              data-aos-duration="700"
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
               className="text-[#C1C1C1] text-[16px] md:text-[20px] text-center font-medium font-obviously-wide leading-normal capitalize mt-[55px] md:mt-[65px]"
             >
               Joining WeSell means becoming part of a dynamic and supportive
               community dedicated to excellence, innovation, and personal
               growth. Here’s why you should consider a career with us:
-            </p>
+            </motion.p>
           </div>
 
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[894px] w-full h-fit rounded-[11px] md:rounded-[44px] bg-primary p-[3.979px] md:p-[11px] pb-[10px] md:pb-[24px] mx-auto mt-[32px] md:mt-[65px]"
+          >
+            <div className="bg-[#F9F9F9] w-full h-full rounded-[11px] md:rounded-[44px] pt-[24px] md:pt-[52px] pb-[33px] md:pb-[74px] px-[33px] sm:px-[49px] md:px-[80px] flex flex-col md:flex-row justify-center items-center gap-[17px]">
+              <h1 className="text-cmn text-[#474747] capitalize text-[32px] md:text-[64px] font-[670]">
+                Wesell Watch
+              </h1>
+              <img
+                src={watch}
+                alt=""
+                className="max-w-[280px] md:max-w-[367px] max-h-[553px] w-full object-contain"
+              />
+            </div>
+          </motion.div>
+          {/* <div
             data-aos="fade-up"
             data-aos-duration="700"
             className="max-w-[894px] w-full h-fit rounded-[11px] md:rounded-[44px] bg-primary p-[3.979px] md:p-[11px] pb-[10px] md:pb-[24px] mx-auto mt-[32px] md:mt-[65px]"
@@ -88,7 +105,7 @@ const HFuture = () => {
                 ability to lead yourself before leading others.
               </p>
             </div>
-          </div>
+          </div> */}
           <Button
             className="shadow-none hover:shadow-none block mx-auto bg-[#971A53] w-fit p-0 outline-none text-cmn rounded-[11.82px] border-[2.955px] md:border-[3.393px] border-b-[8px] md:border-b-[11px] border-[#971A53] text-[20px] md:text-[27.146px] text-black text-[27px] mt-[55px] md:mt-[65px]"
             style={{ fontStyle: "italic" }}
