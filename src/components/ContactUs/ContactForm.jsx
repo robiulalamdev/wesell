@@ -9,6 +9,7 @@ const ContactForm = () => {
       className="min-h-[800px] pb-[62px] md:pb-[50px]"
       style={{
         background: `linear-gradient(180deg, rgba(22, 48, 120, 0.00) 29.04%, rgba(22, 48, 120, 0.90) 100%), url(${bg}) lightgray 0px 0px / 105% 118.033% no-repeat`,
+        backgroundSize: "cover",
       }}
     >
       <div

@@ -4,15 +4,18 @@ import img1 from "../../../assets/images/home/banner/img1.png";
 import img2 from "../../../assets/images/home/banner/img2.png";
 import { ANIMATED_IMAGES } from "../../../utils/data/global";
 import { Button } from "@material-tailwind/react";
-import { IHB_1, IHB_2, IHB_3 } from "../../../utils/icons/homeIcons";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import useScrollAnimation from "../../../lib/hooks/useScrollAnimation";
 
+import icon1 from "../../../assets/icons/home/banner/icon1.png";
+import icon2 from "../../../assets/icons/home/banner/icon2.png";
+import icon3 from "../../../assets/icons/home/banner/icon3.png";
+
 const items = [
-  { id: 1, title: "Brand Representation", icon: IHB_1 },
-  { id: 2, title: "Expertise and Specialization", icon: IHB_2 },
-  { id: 3, title: "Cost-Effective and Scalable", icon: IHB_3 },
+  { id: 1, title: "Brand Representation", icon: icon1 },
+  { id: 2, title: "Expertise and Specialization", icon: icon2 },
+  { id: 3, title: "Cost-Effective and Scalable", icon: icon3 },
 ];
 
 const Banner = () => {
@@ -20,7 +23,7 @@ const Banner = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      blurScale.applyBlurScale("banner", 40);
+      blurScale.applyBlurScale("banner", 45);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -127,9 +130,11 @@ const Banner = () => {
                 >
                   <div className="bg-[#F9F9F9] rounded-[11px] md:rounded-[24.25px] w-full h-full flex flex-col justify-center items-center gap-y-[7.11px] md:gap-y-[18.75px] py-[12px] px-[8px]">
                     <div className="w-[49px] h-[49px] md:w-[103px] md:h-[103px] flex justify-center items-center bg-primary p-[4px] rounded-full">
-                      <div className="max-w-[20px] md:max-w-[50px]">
-                        {item.icon}
-                      </div>
+                      <img
+                        src={item.icon}
+                        alt=""
+                        className="w-full h-full object-contain"
+                      />
                     </div>
                     <h1 className="text-cmn text-[#1D1D1D] text-[9.627px] md:text-[20px] font-raleway font-medium leading-normal capitalize">
                       {item.title}
