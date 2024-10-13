@@ -1,0 +1,98 @@
+/* Regular */
+@font-face {
+  font-family: "Obviously Wide";
+  src: url("../assets/fonts/obviously/Obviously_Wide.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Bold */
+@font-face {
+  font-family: "Obviously Wide";
+  src: url("../assets/fonts/obviously/Obviously_Wide_Bold_Bold.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Semi Bold */
+@font-face {
+  font-family: "Obviously Wide";
+  src: url("../assets/fonts/obviously/Obviously_Wide_Semi.otf")
+    format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Medium */
+@font-face {
+  font-family: "Obviously Wide";
+  src: url("../assets/fonts/obviously/Obviously_Wide_Medi.otf")
+    format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Light */
+@font-face {
+  font-family: "Obviously Wide";
+  src: url("../assets/fonts/obviously/Obviously_Wide_Lght.otf")
+    format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Thin */
+@font-face {
+  font-family: "Obviously Wide";
+  src: url("../assets/fonts/obviously/Obviously_Wide_Thin.otf")
+    format("opentype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+/* Italic versions */
+/* Regular Italic */
+@font-face {
+  font-family: "Obviously Wide";
+  src: url("../assets/fonts/obviously/Obviously_Wide_Italic.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Bold Italic */
+@font-face {
+  font-family: "Obviously Wide";
+  src: url("../assets/fonts/obviously/Obviously_Wide_Bold_Bold_Italic.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Semi Bold Italic */
+@font-face {
+  font-family: "Obviously Wide";
+  src: url("../assets/fonts/obviously/Obviously_Wide_Semi_Italic.otf")
+    format("opentype");
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Light Italic */
+@font-face {
+  font-family: "Obviously Wide";
+  src: url("../assets/fonts/obviously/Obviously_Wide_Lght_Italic.otf")
+    format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Thin Italic */
+@font-face {
+  font-family: "Obviously Wide";
+  src: url("../assets/fonts/obviously/Obviously_Wide_Thin_Italic.otf")
+    format("opentype");
+  font-weight: 100;
+  font-style: italic;
+}

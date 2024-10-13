@@ -113,13 +113,9 @@ const HFaq = () => {
                       ? setSelectedFaq(null)
                       : setSelectedFaq(item)
                   }
-                  className="min-w-[20px] max-w-[20px] md:w-[56px] min-h-[20px] max-h-[20px] md:h-[56px] rounded-full mr-[5px] mb-[5px] md:mr-[15px]"
+                  className="min-w-[20px] max-w-[20px] md:max-w-[56px] min-h-[20px] max-h-[20px] md:max-h-[56px] rounded-full mr-[5px] !mb-[10px] md:mr-[15px]"
                 >
-                  <img
-                    src={arrow}
-                    alt=""
-                    className="w-full h-full object-contain"
-                  />
+                  <img src={arrow} alt="" className="w-full h-full" />
                 </button>
               </div>
               {item?.id === selectedFaq?.id && (

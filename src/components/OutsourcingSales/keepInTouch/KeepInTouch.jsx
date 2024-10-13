@@ -68,10 +68,14 @@ const KeepInTouch = () => {
               volutpat.
             </p>
 
-            <div className="max-w-[1182px] mx-auto h-[92px] md:h-[212px] bg-[#111111] rounded-[13px] md:rounded-[28.8px] mt-[24px] md:mt-[77px] pb-[6px] md:pb-[11px]">
-              <div className="flex justify-between items-center bg-[#F9F9F9] w-full h-full rounded-[13px] md:rounded-[28.8px] px-[19px] border-[3.452px] md:border-[7.2px] border-[#111111]">
+            <div className="max-w-[1182px] mx-auto h-[92px] md:h-[212px] bg-[#111111] rounded-[13px] md:rounded-[28.8px] mt-[24px] md:mt-[77px] pb-[6px] md:pb-[11px] relative z-50">
+              <form
+                onSubmit={() => {}}
+                className="flex justify-between items-center bg-[#F9F9F9] w-full h-full rounded-[13px] md:rounded-[28.8px] px-[19px] border-[3.452px] md:border-[7.2px] border-[#111111]"
+              >
                 <input
                   type="email"
+                  required
                   placeholder="Enter E.mail"
                   className="flex-grow w-full h-full outline-none focus:outline-none focus:bg-transparent bg-transparent text-[#1D1D1D] placeholder:text-[#1D1D1D] placeholder:text-[14px] text-[14px] md:placeholder:text-[36px] md:text-[36px] !font-bold placeholder:font-bold font-obviously-wide leading-normal capitalize"
                   style={{
@@ -80,8 +84,11 @@ const KeepInTouch = () => {
                     fontStyle: "italic",
                   }}
                 />
-                <button className="w-full max-w-[139px] h-[59px] md:max-w-[359px] md:h-[139px] bg-[#111111] rounded-[13px] md:rounded-[28.8px] pb-[3px] md:pb-[6px]">
-                  <div className="bg-primary w-full h-full border-[#111111] border-[2px] md:border-[6px] rounded-[13px] md:rounded-[28.8px] flex justify-center items-center">
+                <button
+                  type="submit"
+                  className="w-full max-w-[139px] h-[59px] md:max-w-[359px] md:h-[139px] bg-[#111111] rounded-[13px] md:rounded-[28.8px] pb-[3px] md:pb-[6px]"
+                >
+                  <div className="bg-primary hover:bg-primary/80 duration-150 w-full h-full border-[#111111] border-[2px] md:border-[6px] rounded-[13px] md:rounded-[28.8px] flex justify-center items-center">
                     <h1
                       className="text-[#1D1D1D] text-[14px] md:text-[36px] text-center !font-bold font-obviously-wide leading-normal uppercase"
                       style={{
@@ -94,14 +101,14 @@ const KeepInTouch = () => {
                     </h1>
                   </div>
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
         <img
           src={hrBg}
           alt=""
-          className="w-full relative top-0 md:-top-[130px] max-h-[720px]"
+          className="w-full relative top-0 md:-top-[130px] max-h-[720px] z-0 mt-[100px]"
         />
         {/* <div className="absolute -bottom-[50px] md:-bottom-[10px] max-h-[100px] w-full">
             {IKeep_In_Touch_HR_bottm}

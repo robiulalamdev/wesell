@@ -34,7 +34,7 @@ const HSpecialPrograms = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      inView.applyInView("hspecialprograme", 100);
+      inView.applyInView("hspecialprograme", 65);
     };
 
     window.addEventListener("scroll", handleScroll);

@@ -13,7 +13,7 @@ const HEmpowering = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      inView.applyInView("hempowering", 65);
+      inView.applyInView("hempowering", 75);
     };
 
     window.addEventListener("scroll", handleScroll);
