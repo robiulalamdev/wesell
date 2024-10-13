@@ -1,4 +1,4 @@
-import hr from "../../assets/images/home/the-future/hr.png";
+// import hr from "../../assets/images/home/the-future/hr.png";
 import animatedGif from "../../assets/images/home/the-future/animated.gif";
 import watch from "../../assets/images/home/the-future/watch.png";
 import { Button } from "@material-tailwind/react";

@@ -36,7 +36,7 @@ const Footer = () => {
         <div
           data-aos="fade-up"
           data-aos-duration="400"
-          className="container !pt-[100px]"
+          className="container !pt-[200px] sm:!pt-[150px] md:!pt-[250px] xl:!pt-[350px]"
         >
           <div className="flex flex-col items-center">
             <div className="max-w-[55px] md:max-w-[127px]">{ILOGO}</div>
