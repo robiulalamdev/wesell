@@ -31,7 +31,7 @@ const Footer = () => {
         }}
         transition={{ duration: 0.2 }}
         ref={container}
-        style={{ y }}
+        // style={{ y }}
       >
         <div
           data-aos="fade-up"
