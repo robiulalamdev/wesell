@@ -1,4 +1,3 @@
-import React from "react";
 import bg from "../../assets/images/funnel/thirdSection/bg.png";
 import img1 from "../../assets/images/funnel/thirdSection/img1.png";
 
