@@ -38,7 +38,7 @@ const HFuture = () => {
         transition={{ duration: 0.2 }}
         ref={container}
         style={{ y }}
-        className="bg-[#000000] h-full min-h-[800px] relative pb-[100px]"
+        className="bg-[#000000] h-full min-h-[800px] relative pb-[100px] overflow-hidden"
       >
         <motion.div
           initial={{ scale: 0.8 }}

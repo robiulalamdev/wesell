@@ -54,7 +54,7 @@ const Banner = () => {
     <motion.div
       id="banner"
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className={`min-h-[800px] pb-[62px] md:pb-[150px] ${
+      className={`overflow-hidden min-h-[800px] pb-[62px] md:pb-[150px] ${
         blurScale.isBlurred ? "blur-sm" : "blur-none"
       }`}
       style={{

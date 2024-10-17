@@ -41,7 +41,7 @@ const HWesellStories = () => {
       }}
       transition={{ duration: 0.2 }}
       ref={container}
-      className="min-h-[800px] pb-[100px]"
+      className="min-h-[800px] pb-[100px] overflow-hidden"
       style={{
         y,
         backgroundImage: `url(${bg})`,
