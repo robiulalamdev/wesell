@@ -41,10 +41,10 @@ export const router = createBrowserRouter([
         path: "/about-us/onboarding",
         element: <OnboardingProcess />,
       },
-      {
-        path: "/funnel",
-        element: <Funnel />,
-      },
     ],
+  },
+  {
+    path: "/funnel",
+    element: <Funnel />,
   },
 ]);

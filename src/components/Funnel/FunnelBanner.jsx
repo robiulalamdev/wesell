@@ -16,7 +16,6 @@ import {
 const FunnelBanner = () => {
   const [openModal, setOpenModal] = useState(false);
 
-  console.log(openModal);
   return (
     <div
       className="min-h-[800px] pb-[39px] md:pb-[84px]"

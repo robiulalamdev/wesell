@@ -4,7 +4,7 @@ import img1 from "../../assets/images/funnel/thirdSection/img1.png";
 const FunnelThirdSection = () => {
   return (
     <div
-      className="min-h-[800px] pt-[41px] md:pt-[61px] pb-[100px] md:pb-[139px]"
+      className="pt-[41px] md:pt-[61px] pb-[100px] md:pb-[139px]"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
