@@ -4,7 +4,7 @@ import LGService from "../../components/LeadGeneration/LGService";
 
 const LeadGeneration = () => {
   return (
-    <div>
+    <div className="bg-black">
       <LGBanner />
       <LGService />
       <LGCompaniesWork />
