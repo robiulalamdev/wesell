@@ -3,6 +3,10 @@ import no2 from "../../assets/icons/outsourcing-sales/no2.png";
 import no3 from "../../assets/icons/outsourcing-sales/no3.png";
 import no4 from "../../assets/icons/outsourcing-sales/no4.png";
 
+import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
+import { useScroll, useTransform, motion } from "framer-motion";
+import { useEffect } from "react";
+
 const items = [
   { id: 1, title: "Leadership and Team Management", icon: no1 },
   { id: 2, title: "Project Management Excellence", icon: no2 },
@@ -11,14 +15,49 @@ const items = [
 ];
 
 const AManagementPrograms = () => {
+  const { inView } = useScrollAnimation();
+
+  const { scrollY: sY } = useScroll();
+  const y = useTransform(sY, [0, 1000], [0, -500]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      inView.applyInView("AManagementPrograms", 75);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <div className="bg-[#971A53] relative bottom-[5px] pb-[65px] md:pb-[100px]">
+    <motion.div
+      id="AManagementPrograms"
+      animate={{
+        filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
+      }}
+      transition={{ duration: 0.2 }}
+      style={{
+        y,
+      }}
+      className="bg-[#971A53] relative bottom-[5px] pb-[65px] md:pb-[100px]"
+    >
       <div className="container">
-        <div>
-          <h1 className="text-cmn text-[#FCCF3D] text-[24px] md:text-[40px] font-bold uppercase text-left md:text-center">
+        <motion.div
+          initial={{ scale: 0.8 }}
+          animate={{
+            scale: inView.isInView ? 1 : 0.8,
+          }}
+          transition={{ duration: 0.2 }}
+        >
+          <h1
+            data-aos="fade-down"
+            className="text-cmn text-[#FCCF3D] text-[24px] md:text-[40px] font-bold uppercase text-left md:text-center"
+          >
             Management Programs
           </h1>
-          <p className="text-cmn text-[#C1C1C1] text-[16px] md:text-[24px] capitalize text-left md:text-center mt-[30px] md:mt-[60px]">
+          <p
+            data-aos="fade-up"
+            className="text-cmn text-[#C1C1C1] text-[16px] md:text-[24px] capitalize text-left md:text-center mt-[30px] md:mt-[60px]"
+          >
             We provide hands-on training, real-world simulations, and
             role-playing exercises to build your confidence and skills under
             pressure. Our unique approach integrates advanced AI tools to ensure
@@ -28,6 +67,7 @@ const AManagementPrograms = () => {
           <div className="grid grid-cols-1 gap-[19px] md:gap-[33px] mt-[30px] md:mt-[60px] max-w-[980px] mx-auto">
             {items.map((item, index) => (
               <div
+                data-aos="fade-up"
                 key={index}
                 className="rounded-[17.094px] md:rounded-[24px] bg-[#202020] pb-[7px] md:pb-[11px]"
               >
@@ -51,9 +91,9 @@ const AManagementPrograms = () => {
               </h1>
             </div>
           </button>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

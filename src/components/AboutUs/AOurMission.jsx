@@ -2,10 +2,36 @@ import { ANIMATED_IMAGES } from "../../utils/data/global";
 import bottomBg from "../../assets/images/about-us/our-mission/bottombg.png";
 import img1 from "../../assets/images/about-us/our-mission/img1.png";
 import img2 from "../../assets/images/about-us/our-mission/img2.png";
+import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
+import { useScroll, useTransform, motion } from "framer-motion";
+import { useEffect } from "react";
 
 const AOurMission = () => {
+  const { inView } = useScrollAnimation();
+
+  const { scrollY: sY } = useScroll();
+  const y = useTransform(sY, [0, 1000], [0, -500]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      inView.applyInView("AOurMission", 75);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <div className="bg-[#1D1D1D]">
+    <motion.div
+      id="AOurMission"
+      animate={{
+        filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
+      }}
+      transition={{ duration: 0.2 }}
+      style={{
+        y,
+      }}
+      className="bg-[#1D1D1D]"
+    >
       <div
         className="bg-[length:214px] md:bg-[length:399px] pt-[49px] md:pt-[104px] pb-[147px]"
         style={{
@@ -14,7 +40,14 @@ const AOurMission = () => {
           backgroundPosition: "bottom right",
         }}
       >
-        <div className="container ">
+        <motion.div
+          initial={{ scale: 0.8 }}
+          animate={{
+            scale: inView.isInView ? 1 : 0.8,
+          }}
+          transition={{ duration: 0.2 }}
+          className="container "
+        >
           <div className="">
             <div
               className="h-[127px] flex justify-center items-center bg-[length:116px_116px] md:bg-[length:127px_127px]"
@@ -24,11 +57,17 @@ const AOurMission = () => {
                 backgroundPosition: "top left, top right",
               }}
             >
-              <h1 className="text-cmn text-[#F9F9F9] text-[24px] md:text-[48px] font-bold uppercase leading-normal">
+              <h1
+                data-aos="fade-up"
+                className="text-cmn text-[#F9F9F9] text-[24px] md:text-[48px] font-bold uppercase leading-normal"
+              >
                 Our Mission
               </h1>
             </div>
-            <p className="text-cmn text-[#C1C1C1] text-left md:text-center text-[20px] md:text-[24px] font-medium capitalize max-w-[1065px] mx-auto mt-[20px] md:mt-[80px]">
+            <p
+              data-aos="fade-up"
+              className="text-cmn text-[#C1C1C1] text-left md:text-center text-[20px] md:text-[24px] font-medium capitalize max-w-[1065px] mx-auto mt-[20px] md:mt-[80px]"
+            >
               To empower and train the next generation of elite sales
               professionals and business managers who are not just ready for the
               market but are ready to reshape it. We believe that every
@@ -79,7 +118,10 @@ const AOurMission = () => {
             </button>
           </div>
 
-          <div className="bg-primary p-[7.2px] pb-[21px] rounded-[28px] max-w-[1057px] mx-auto mt-[70px] relative md:hidden">
+          <div
+            data-aos="fade-up"
+            className="bg-primary p-[7.2px] pb-[21px] rounded-[28px] max-w-[1057px] mx-auto mt-[70px] relative md:hidden"
+          >
             <div className="w-full h-full bg-[#F9F9F9] rounded-[28px] min-h-[369px] relative pt-[31px]">
               <h1 className="text-cmn text-[#1D1D1D] text-[20px] uppercase !font-bold">
                 Our <br /> Philosophy
@@ -112,6 +154,7 @@ const AOurMission = () => {
 
           <div className="flex justify-center md:hidden">
             <button
+              data-aos="fade-up"
               className="w-[170px] h-[55px] !border-b-[5px] border-x-[2px] border-t-[2px] border-[#540E21] rounded-[8px] bg-wp text-[#0D0D0D] capitalize text-[14px] font-semibold font-obviously-wide leading-normal mt-[36px]"
               style={{
                 leadingTrim: "both",
@@ -122,7 +165,7 @@ const AOurMission = () => {
               Take Action
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
       <div
         className="h-[150px]"
@@ -132,7 +175,7 @@ const AOurMission = () => {
           backgroundSize: "cover",
         }}
       ></div>
-    </div>
+    </motion.div>
   );
 };
 
