@@ -13,7 +13,10 @@ const WIOSales1 = () => {
       }}
     >
       <div className="max-w-[874px] mx-auto">
-        <h1 className="text-cmn font-bold text-[24px] md:text-[48px] leading-normal uppercase text-[#F9F9F9] text-center">
+        <h1
+          data-aos="fade-up"
+          className="text-cmn font-bold text-[24px] md:text-[48px] leading-normal uppercase text-[#F9F9F9] text-center"
+        >
           What Is{" "}
           <span className="text-primary">
             Outside <br /> Sales?

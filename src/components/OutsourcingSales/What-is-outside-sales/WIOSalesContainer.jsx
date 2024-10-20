@@ -7,6 +7,10 @@ import WIOSales2 from "./WIOSales2";
 import WIOSales3 from "./WIOSales3";
 import bg from "../../../assets/images/outsourcing-sales/what-is-outside-sale/bg.png";
 
+import useScrollAnimation from "../../../lib/hooks/useScrollAnimation";
+import { useScroll, useTransform, motion } from "framer-motion";
+import { useEffect } from "react";
+
 const WIOSalesContainer = () => {
   const [step, setStep] = useState(1);
 
@@ -21,9 +25,40 @@ const WIOSalesContainer = () => {
     }
   };
 
+  const { inView } = useScrollAnimation();
+
+  const { scrollY: sY } = useScroll();
+  const y = useTransform(sY, [0, 1000], [0, -500]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      inView.applyInView("WIOSalesContainer", 75);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="w-full h-full pb-[60px]">
-      <div className="!pt-[35px] md:!pt-[70px]">
+    <motion.div
+      id="WIOSalesContainer"
+      animate={{
+        filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
+      }}
+      transition={{ duration: 0.2 }}
+      style={{
+        y,
+      }}
+      className="w-full h-full"
+    >
+      <motion.div
+        initial={{ scale: 0.8 }}
+        animate={{
+          scale: inView.isInView ? 1 : 0.8,
+        }}
+        transition={{ duration: 0.2 }}
+        className="!pt-[35px] md:!pt-[70px]"
+      >
         <WCBackElement className="md:hidden ml-[12px]" />
         <div className="mt-[35px]">
           {step === 1 && <WIOSales1 />}
@@ -56,8 +91,8 @@ const WIOSalesContainer = () => {
             </button>
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
