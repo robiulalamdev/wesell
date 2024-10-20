@@ -13,12 +13,32 @@ import {
   I_FRight_arrow,
 } from "../../utils/icons/funnelIcons";
 
+import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 const FunnelBanner = () => {
   const [openModal, setOpenModal] = useState(false);
 
+  const navigate = useNavigate();
+  const { blurScale } = useScrollAnimation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      blurScale.applyBlurScale("hbanner", 45);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <div
-      className="min-h-[800px] pb-[39px] md:pb-[84px]"
+    <motion.div
+      id="hbanner"
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className={`min-h-[800px] pb-[350px] md:pb-[250px] ${
+        blurScale.isBlurred ? "blur-sm" : "blur-none"
+      }`}
       style={{
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
@@ -27,17 +47,32 @@ const FunnelBanner = () => {
     >
       <div className="container">
         <Header />
-        <div className="max-w-[979px] mx-auto">
-          <h1 className="text-cmn text-white font-bold text-[24px] md:text-[48px] uppercase mt-[42px] md:mt-[32px]">
+        <motion.div
+          initial={{ scale: 1 }}
+          animate={{ scale: blurScale.scale }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="max-w-[979px] mx-auto"
+        >
+          <h1
+            data-aos="zoom-out-up"
+            data-aos-duration="900"
+            className="text-cmn text-white font-bold text-[24px] md:text-[48px] uppercase mt-[42px] md:mt-[32px]"
+          >
             Join a Team That’s Focused on Helping You Succeed!
           </h1>
-          <p className="text-cmn text-[#C1C1C1] text-[16px] md:text-[24px] font-medium capitalize mt-[31px] md:mt-[62px]">
+          <p
+            data-aos="zoom-out-up"
+            data-aos-duration="900"
+            className="text-cmn text-[#C1C1C1] text-[16px] md:text-[24px] font-medium capitalize mt-[31px] md:mt-[62px]"
+          >
             We’re not just selling—we’re sharing life-changing opportunities. At
             WeSell, we’re passionate about helping you unlock your potential
             through a unique blend of sales expertise and management skills.
           </p>
 
           <button
+            data-aos="fade-up"
+            data-aos-duration="900"
             onClick={() => setOpenModal(!openModal)}
             className="w-[288px] h-[84px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-[#971A53] rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[14px] md:text-[22px] font-semibold leading-normal mt-[31px] md:mt-[62px] mx-auto block"
           >
@@ -78,7 +113,7 @@ const FunnelBanner = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <div
@@ -146,7 +181,7 @@ const FunnelBanner = () => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

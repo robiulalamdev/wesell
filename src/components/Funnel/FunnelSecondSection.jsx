@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
 import icon1 from "../../assets/images/funnel/secondSection/fsi1.png";
 import icon2 from "../../assets/images/funnel/secondSection/fsi2.png";
 import icon3 from "../../assets/images/funnel/secondSection/fsi3.png";
@@ -9,17 +8,55 @@ import img2 from "../../assets/images/funnel/secondSection/img2.png";
 import img3 from "../../assets/images/funnel/secondSection/img3.png";
 import img4 from "../../assets/images/funnel/secondSection/img4.png";
 
+import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
+import { useScroll, useTransform, motion } from "framer-motion";
+import { useEffect } from "react";
+
 const FunnelSecondSection = () => {
+  const { inView } = useScrollAnimation();
+
+  const { scrollY: sY } = useScroll();
+  const y = useTransform(sY, [0, 1000], [0, -500]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      inView.applyInView("FunnelSecondSection", 65);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="py-[63px] md:py-[102px]">
+    <motion.div
+      id="FunnelSecondSection"
+      animate={{
+        filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
+      }}
+      transition={{ duration: 0.2 }}
+      style={{
+        y,
+      }}
+      className="bg-[#1D1D1D] py-[63px] md:py-[102px]"
+    >
       <div className="container">
-        <h1 className="text-cmn text-white text-[24px] md:text-[40px] font-bold uppercase">
+        <h1
+          data-aos="fade-up"
+          className="text-cmn text-white text-[24px] md:text-[40px] font-bold uppercase"
+        >
           Lorem ipsum dolor sit amet{" "}
         </h1>
 
-        <div className="mt-[67px] md:mt-[150px]">
+        <motion.div
+          initial={{ scale: 0.8 }}
+          animate={{
+            scale: inView.isInView ? 1 : 0.8,
+          }}
+          transition={{ duration: 0.2 }}
+          className="mt-[67px] md:mt-[150px]"
+        >
           <div className="flex flex-col-reverse lg:flex-row gap-[52px] md:gap-[78px]">
-            <div className="w-full lg:max-w-[42%]">
+            <div data-aos="fade-right" className="w-full lg:max-w-[42%]">
               <h1 className="text-cmn text-white text-[20px] md:text-[24px] text-left font-bold capitalize">
                 Help Others, Grow Yourself
               </h1>
@@ -43,6 +80,7 @@ const FunnelSecondSection = () => {
                 <div className="w-[2px] h-[298px] bg-primary rounded-md hidden lg:block"></div>
               </div>
               <img
+                data-aos="fade-left"
                 src={img1}
                 alt=""
                 className="max-w-[171px] md:max-w-[227px] w-full object-contain"
@@ -52,6 +90,7 @@ const FunnelSecondSection = () => {
           <div className="flex flex-col lg:flex-row gap-[52px] md:gap-[78px] mt-[43px] md:mt-[74px] w-full">
             <div className="md:min-w-[58%] flex items-start md:items-center !justify-start md:!justify-between gap-[32px] lg:gap-[78px]">
               <img
+                data-aos="fade-right"
                 src={img2}
                 alt=""
                 className="max-w-[171px] md:max-w-[227px] w-full object-contain"
@@ -66,10 +105,16 @@ const FunnelSecondSection = () => {
               </div>
             </div>
             <div className="w-full">
-              <h1 className="text-cmn text-white text-[20px] md:text-[24px] text-left font-bold capitalize">
+              <h1
+                data-aos="fade-left"
+                className="text-cmn text-white text-[20px] md:text-[24px] text-left font-bold capitalize"
+              >
                 Develop as a Leader & Manager
               </h1>
-              <p className="text-cmn text-[14px] md:text-[20px] font-medium capitalize text-[#C1C1C1] text-left mt-[35px] md:mt-[45px]">
+              <p
+                data-aos="fade-left"
+                className="text-cmn text-[14px] md:text-[20px] font-medium capitalize text-[#C1C1C1] text-left mt-[35px] md:mt-[45px]"
+              >
                 Leadership isn’t about managing tasks—it’s about inspiring and
                 helping others succeed. We’ll teach you how to build, motivate,
                 and manage a successful team that shares in your vision
@@ -81,7 +126,7 @@ const FunnelSecondSection = () => {
           </div>
 
           <div className="flex flex-col-reverse lg:flex-row gap-[52px] md:gap-[78px] mt-[43px] md:mt-[74px] w-full">
-            <div className="w-full lg:max-w-[42%]">
+            <div data-aos="fade-right" className="w-full lg:max-w-[42%]">
               <h1 className="text-cmn text-white text-[20px] md:text-[24px] text-left font-bold capitalize">
                 Analyze & Improve Together
               </h1>
@@ -105,6 +150,7 @@ const FunnelSecondSection = () => {
                 <div className="w-[2px] h-[298px] bg-primary rounded-md hidden lg:block"></div>
               </div>
               <img
+                data-aos="fade-left"
                 src={img3}
                 alt=""
                 className="max-w-[171px] md:max-w-[227px] w-full object-contain"
@@ -115,6 +161,7 @@ const FunnelSecondSection = () => {
           <div className="flex flex-col lg:flex-row gap-[52px] md:gap-[78px] mt-[43px] md:mt-[74px] w-full">
             <div className="md:min-w-[58%] flex items-start md:items-center !justify-start md:!justify-between gap-[32px] lg:gap-[78px]">
               <img
+                data-aos="fade-right"
                 src={img4}
                 alt=""
                 className="max-w-[171px] md:max-w-[227px] w-full object-contain"
@@ -128,7 +175,7 @@ const FunnelSecondSection = () => {
                 <div className="w-[2px] h-[298px] bg-primary rounded-md hidden lg:block"></div>
               </div>
             </div>
-            <div className="w-full">
+            <div data-aos="fade-left" className="w-full">
               <h1 className="text-cmn text-white text-[20px] md:text-[24px] text-left font-bold capitalize">
                 Achieve Success Together
               </h1>
@@ -143,9 +190,9 @@ const FunnelSecondSection = () => {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

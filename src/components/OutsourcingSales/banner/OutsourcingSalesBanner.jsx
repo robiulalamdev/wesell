@@ -65,7 +65,7 @@ const OutsourcingSalesBanner = () => {
           initial={{ scale: 1 }}
           animate={{ scale: blurScale.scale }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="overflow-hidden w-full relative bg-[length:280px_280px] md:bg-[length:400px_400px]"
+          className="overflow-hidden w-full relative bg-[length:280px_280px] md:bg-[length:400px_400px] pb-[200px]"
           style={{
             backgroundImage: `url(${ANIMATED_IMAGES.INFINITY})`,
             backgroundRepeat: "no-repeat",
@@ -116,6 +116,7 @@ const OutsourcingSalesBanner = () => {
                     </div>
 
                     <button
+                      onClick={() => navigate("/funnel")}
                       className="w-[170px] h-[55px] hover:w-[210px] hover:h-[63px] hover:md:w-[320px] hover:md:h-[103px] md:w-[288px] md:h-[93px] duration-200 ease-linear !border-b-[6px] hover:border-b-[9px] border-x-[2px] border-t-[2px] border-[#540E21] rounded-[8px] md:rounded-[13.573px] bg-wp text-[#0D0D0D] capitalize text-[14px] md:text-[22px] xl:text-[27.146px] font-semibold font-obviously-wide leading-normal mt-[27px] md:mt-[82px]"
                       style={{
                         leadingTrim: "both",

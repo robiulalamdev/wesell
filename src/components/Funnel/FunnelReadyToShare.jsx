@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import img1 from "../../assets/images/funnel/ready-to-share/img1.png";
 import img2 from "../../assets/images/funnel/ready-to-share/img2.png";
-import { div } from "framer-motion/client";
+
+import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
+import { useScroll, useTransform, motion } from "framer-motion";
+import { useEffect } from "react";
 
 const items = [
   { id: 1, img: img1 },
@@ -11,14 +14,51 @@ const items = [
 
 const FunnelReadyToShare = () => {
   const [selectedItem, setSelectedItem] = useState(items[0]);
+
+  const { inView } = useScrollAnimation();
+
+  const { scrollY: sY } = useScroll();
+  const y = useTransform(sY, [0, 1000], [0, -500]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      inView.applyInView("FunnelReadyToShare", 55);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <div className="py-[57px] md:py-[102px]">
-      <div className="container">
+    <motion.div
+      id="FunnelReadyToShare"
+      animate={{
+        filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
+      }}
+      transition={{ duration: 0.2 }}
+      style={{
+        y,
+      }}
+      className="py-[57px] md:py-[102px]"
+    >
+      <motion.div
+        initial={{ scale: 0.8 }}
+        animate={{
+          scale: inView.isInView ? 1 : 0.8,
+        }}
+        transition={{ duration: 0.2 }}
+        className="container"
+      >
         <div className="max-w-[762px] w-full mx-auto">
-          <h1 className="text-cmn text-white text-[16px] md:text-[36px] font-bold uppercase">
+          <h1
+            data-aos="fade-up"
+            className="text-cmn text-white text-[16px] md:text-[36px] font-bold uppercase"
+          >
             Ready to Share Opportunities and Lead?
           </h1>
-          <p className="text-cmn text-[#C1C1C1] text-[13px] md:text-[20px] font-medium capitalize mt-[33px] md:mt-[49px]">
+          <p
+            data-aos="fade-up"
+            className="text-cmn text-[#C1C1C1] text-[13px] md:text-[20px] font-medium capitalize mt-[33px] md:mt-[49px]"
+          >
             Join our team and be part of something bigger. We’re not just
             offering jobs—we’re offering the chance to help others while growing
             your own career.
@@ -56,8 +96,8 @@ const FunnelReadyToShare = () => {
             </div>
           </button>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

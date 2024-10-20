@@ -5,6 +5,9 @@ import qoute from "../../assets/images/funnel/real-people/qoute.png";
 import nextArrow from "../../assets/images/funnel/real-people/nextArrow.gif";
 import Slider from "react-slick";
 
+import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
+import { useScroll, useTransform, motion } from "framer-motion";
+
 const items = [
   {
     id: 1,
@@ -23,7 +26,17 @@ const items = [
 ];
 
 const FunnelRealPeople = () => {
-  const [settings, setSettings] = useState();
+  const [settings, setSettings] = useState({
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1.5,
+    slidesToScroll: 1,
+    arrows: false,
+    initialSlide: 0,
+    nextArrow: null,
+    prevArrow: null,
+  });
 
   const sliderRef = useRef(null);
 
@@ -69,22 +82,54 @@ const FunnelRealPeople = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const { inView } = useScrollAnimation();
+
+  const { scrollY: sY } = useScroll();
+  const y = useTransform(sY, [0, 1000], [0, -500]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      inView.applyInView("FunnelRealPeople", 55);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <div
+    <motion.div
+      id="FunnelRealPeople"
+      animate={{
+        filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
+      }}
+      transition={{ duration: 0.2 }}
       className="pt-[58px] md:pt-[89px] pb-[48px] md:pb-[108px]"
       style={{
+        y,
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
     >
-      <h1>{window.screen.width}</h1>
-      <div className="container">
+      <motion.div
+        initial={{ scale: 0.8 }}
+        animate={{
+          scale: inView.isInView ? 1 : 0.8,
+        }}
+        transition={{ duration: 0.2 }}
+        className="container"
+      >
         <div className="max-w-[762px] w-full mx-auto">
-          <h1 className="text-cmn text-white text-[24px] md:text-[36px] font-bold uppercase">
+          <h1
+            data-aos="fade-up"
+            className="text-cmn text-white text-[24px] md:text-[36px] font-bold uppercase"
+          >
             Real People, Real Impact
           </h1>
-          <p className="text-cmn text-[#C1C1C1] text-[16px] md:text-[20px] font-medium capitalize mt-[42px]">
+          <p
+            data-aos="fade-up"
+            className="text-cmn text-[#C1C1C1] text-[16px] md:text-[20px] font-medium capitalize mt-[42px]"
+          >
             Hear from our team members who’ve experienced the transformative
             power of our approach. We’re not just selling products—we’re helping
             people build better lives.
@@ -129,8 +174,8 @@ const FunnelRealPeople = () => {
             />
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

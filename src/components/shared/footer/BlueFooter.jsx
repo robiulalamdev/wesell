@@ -15,6 +15,7 @@ const BlueFooter = () => {
           <div className="flex flex-col items-center">
             <div className="max-w-[55px] md:max-w-[127px]">{ILOGO}</div>
             <h1
+              data-aos="fade-up"
               className="text-wp text-[20.695px] md:text-[35.385px] xl:text-[47.385px] font-medium font-obviously-wide leading-normal uppercase mt-[10px] md:mt-[23.8px]"
               style={{
                 leadingTrim: "both",
@@ -25,7 +26,7 @@ const BlueFooter = () => {
               wesell
             </h1>
 
-            <div>
+            <div data-aos="fade-up">
               <p
                 className="max-w-[569px] mx-auto text-wp md:text-[#C1C1C1] text-[7.977px] md:text-[16px] font-medium text-center font-obviously-wide leading-normal uppercase mt-[45.21px] md:mt-[88.54px]"
                 style={{
