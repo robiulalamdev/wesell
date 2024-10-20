@@ -14,7 +14,7 @@ const ABanner = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      blurScale.applyBlurScale("banner", 45);
+      blurScale.applyBlurScale("ABanner", 45);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -23,7 +23,7 @@ const ABanner = () => {
 
   return (
     <motion.div
-      id="banner"
+      id="ABanner"
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className={`min-h-[1008px] ${
         blurScale.isBlurred ? "blur-sm" : "blur-none"
