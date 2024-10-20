@@ -3,10 +3,16 @@ import WISItem2 from "./WISItem2";
 const WISItem1 = () => {
   return (
     <div className="container">
-      <h1 className="pt-[1px] md:pt-[70px] text-cmn text-primary font-bold text-[20px] md:text-[40px] max-w-[820px] mx-auto">
+      <h1
+        data-aos="fade-up"
+        className="pt-[1px] md:pt-[70px] text-cmn text-primary font-bold text-[20px] md:text-[40px] max-w-[820px] mx-auto"
+      >
         What Is Sales Co-Sourcing?
       </h1>
-      <p className="text-cmn mt-[50px] md:mt-[65px] font-medium text-[#C1C1C1] text-[16px] md:text-[20px] capitalize max-w-[712px] mx-auto">
+      <p
+        data-aos="fade-up"
+        className="text-cmn mt-[50px] md:mt-[65px] font-medium text-[#C1C1C1] text-[16px] md:text-[20px] capitalize max-w-[712px] mx-auto"
+      >
         Sales co-sourcing is a business strategy that involves partnering with
         an external company to supplement and enhance a company’s existing sales
         team. Co-sourcing sales is a form of outsourcing that provides companies
@@ -14,7 +20,7 @@ const WISItem1 = () => {
         the effectiveness of their sales efforts.
       </p>
 
-      <div className="hidden md:block">
+      <div data-aos="fade-up" className="hidden md:block">
         <WISItem2 buttonShow={false} className="mt-[65px]" />
       </div>
       <div className="flex justify-center mt-[50px] md:mt-[65px]">

@@ -1,11 +1,34 @@
 import bg from "../../assets/images/lead-generation/companies-work/bg.png";
 import animated from "../../assets/images/lead-generation/companies-work/animated.gif";
 
+import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
+import { useScroll, useTransform, motion } from "framer-motion";
+import { useEffect } from "react";
+
 const LGCompaniesWork = () => {
+  const { inView } = useScrollAnimation();
+
+  const { scrollY: sY } = useScroll();
+  const y = useTransform(sY, [0, 1000], [0, -500]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      inView.applyInView("LGCompaniesWork", 45);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <div
-      className="min-h-[800px] py-[100px] relative top-[50px]"
+    <motion.div
+      id="LGCompaniesWork"
+      animate={{
+        filter: inView.isInView ? "blur(0px)" : "blur(2.5px)",
+      }}
+      transition={{ duration: 0.2 }}
+      className="min-h-[800px] py-[100px] relative"
       style={{
+        y,
         backgroundImage: `url(${bg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -20,7 +43,14 @@ const LGCompaniesWork = () => {
           backgroundSize: "170px",
         }}
       >
-        <div className="pt-[70px] md:pt-[129px] max-w-[786px] mx-auto pb-[100px] md:pb-[117px]">
+        <motion.div
+          initial={{ scale: 0.8 }}
+          animate={{
+            scale: inView.isInView ? 1 : 0.8,
+          }}
+          transition={{ duration: 0.2 }}
+          className="pt-[70px] md:pt-[129px] max-w-[786px] mx-auto pb-[100px] md:pb-[117px]"
+        >
           <h1 className="text-cmn font-bold text-[#F9F9F9] text-[20px] md:text-[40px] uppercase">
             How Do Lead Generation Outsourcing Companies Work?
           </h1>
@@ -41,9 +71,9 @@ const LGCompaniesWork = () => {
             best-in-class lead generation processes, can save time and resources
             while delivering significant returns on investment.
           </p>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

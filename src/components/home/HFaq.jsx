@@ -69,7 +69,7 @@ const HFaq = () => {
       }}
       transition={{ duration: 0.2 }}
       ref={container}
-      className="bg-[#000000] relative w-full h-full bg-[length:164px_164px] md:bg-[length:379px_379px] pt-[100px]"
+      className="bg-[#000000] relative w-full h-full bg-[length:164px_164px] md:bg-[length:379px_379px] pt-[100px] overflow-hidden"
       style={{
         y,
         backgroundImage: `url(${ANIMATED_IMAGES.OPENER_LOADING}), url(${ANIMATED_IMAGES.OPENER_LOADING})`,

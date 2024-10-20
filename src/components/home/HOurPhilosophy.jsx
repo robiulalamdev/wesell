@@ -37,7 +37,7 @@ const HOurPhilosophy = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
-        className="w-full min-h-[800px] relative pb-[50px] bg-[length:400px] md:bg-[length:100%]"
+        className="w-full min-h-[800px] relative pb-[50px] bg-[length:400px] md:bg-[length:100%] overflow-hidden"
       >
         <motion.div
           initial={{ scale: 0.8 }}

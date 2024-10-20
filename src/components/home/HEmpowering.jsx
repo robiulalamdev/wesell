@@ -31,7 +31,7 @@ const HEmpowering = () => {
       style={{
         y,
       }}
-      className="bg-[#1D1D1D] pt-[76px]  hidden md:block relative pb-[100px]"
+      className="bg-[#1D1D1D] pt-[76px]  hidden md:block relative pb-[100px] overflow-hidden"
     >
       <div className="container !mt-0">
         <motion.div

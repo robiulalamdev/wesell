@@ -61,7 +61,7 @@ const HSpecialPrograms = () => {
       style={{
         y,
       }}
-      className="bg-[#1D1D1D] pt-[46px] pb-[80px] md:hidden"
+      className="bg-[#1D1D1D] pt-[46px] pb-[80px] md:hidden overflow-hidden"
     >
       <motion.div
         initial={{ scale: 0.8 }}

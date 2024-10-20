@@ -6,7 +6,7 @@ import ExclusivePerks from "../../components/AboutUs/ExclusivePerks";
 
 const AboutUs = () => {
   return (
-    <div>
+    <div className="bg-black">
       <ABanner />
       <AOurMission />
       <AManagementPrograms />

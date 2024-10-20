@@ -6,6 +6,7 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import Home from "../pages/Home/Home";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import OnboardingProcess from "../pages/OnboardingProcess/OnboardingProcess";
+import Funnel from "../pages/Funnel/Funnel";
 
 export const router = createBrowserRouter([
   {
@@ -41,5 +42,9 @@ export const router = createBrowserRouter([
         element: <OnboardingProcess />,
       },
     ],
+  },
+  {
+    path: "/funnel",
+    element: <Funnel />,
   },
 ]);

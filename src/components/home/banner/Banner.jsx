@@ -11,6 +11,7 @@ import useScrollAnimation from "../../../lib/hooks/useScrollAnimation";
 import icon1 from "../../../assets/icons/home/banner/icon1.png";
 import icon2 from "../../../assets/icons/home/banner/icon2.png";
 import icon3 from "../../../assets/icons/home/banner/icon3.png";
+import { useNavigate } from "react-router-dom";
 
 const items = [
   { id: 1, title: "Brand Representation", icon: icon1 },
@@ -19,11 +20,12 @@ const items = [
 ];
 
 const Banner = () => {
+  const navigate = useNavigate();
   const { blurScale } = useScrollAnimation();
 
   useEffect(() => {
     const handleScroll = () => {
-      blurScale.applyBlurScale("banner", 45);
+      blurScale.applyBlurScale("hbanner", 45);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -50,9 +52,9 @@ const Banner = () => {
 
   return (
     <motion.div
-      id="banner"
+      id="hbanner"
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className={`min-h-[800px] pb-[62px] md:pb-[150px] ${
+      className={`overflow-hidden min-h-[800px] pb-[62px] md:pb-[150px] ${
         blurScale.isBlurred ? "blur-sm" : "blur-none"
       }`}
       style={{
@@ -100,6 +102,7 @@ const Banner = () => {
             </motion.h1>
 
             <Button
+              onClick={() => navigate("/funnel")}
               data-aos="fade-up"
               data-aos-duration="900"
               className="shadow-none hover:shadow-none block mx-auto bg-[#0D0D0D] md:bg-[#971A53] w-fit p-0 outline-none text-cmn rounded-[11.82px] border-[2.955px] md:border-[3.393px] border-b-[8px] md:border-b-[11px] border-[#0D0D0D] md:border-[#971A53] text-[20px] md:text-[27.146px] text-black mt-[14px] md:mt-[64px]"

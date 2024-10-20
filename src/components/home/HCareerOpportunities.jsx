@@ -48,7 +48,7 @@ const HCareerOpportunities = () => {
       style={{
         y,
       }}
-      className="w-full min-h-[800px] relative bg-[#971A53] !pt-[100px] !pb-[150px]"
+      className="w-full min-h-[800px] relative bg-[#971A53] !pt-[100px] !pb-[150px] overflow-hidden"
     >
       <div
         className=""

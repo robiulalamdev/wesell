@@ -4,11 +4,15 @@ const WISItem2 = ({ buttonShow = true, className = "", show = true }) => {
     show && (
       <div className="container">
         <h1
+          data-aos="fade-up"
           className={`pt-[1px] md:pt-[70px] text-cmn text-primary font-bold text-[20px] md:text-[40px] max-w-[820px] mx-auto ${className}`}
         >
           Co-Sourcing vs. Outsourcing: Which is More Beneficial?
         </h1>
-        <p className="text-cmn mt-[50px] md:mt-[65px] font-medium text-[#C1C1C1] text-[16px] md:text-[20px] capitalize max-w-[712px] mx-auto">
+        <p
+          data-aos="fade-up"
+          className="text-cmn mt-[50px] md:mt-[65px] font-medium text-[#C1C1C1] text-[16px] md:text-[20px] capitalize max-w-[712px] mx-auto"
+        >
           The choice between co-sourcing sales and outsourcing sales depends on
           a business’s current condition, goals, and specific circumstances.
           Here’s when each approach might be more suitable:

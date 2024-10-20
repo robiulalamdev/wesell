@@ -11,7 +11,8 @@ const MainLayout = () => {
     }
   }, [pathname]);
   return (
-    <div className="overflow-hidden">
+    // <div className="overflow-hidden">
+    <div className="">
       <Outlet />
       <Footer />
     </div>

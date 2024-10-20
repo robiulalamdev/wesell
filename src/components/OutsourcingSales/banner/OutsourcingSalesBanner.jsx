@@ -8,6 +8,10 @@ import { useState } from "react";
 import rArrow from "../../../assets/icons/outsourcing-sales/rarrow.png";
 import lArrow from "../../../assets/icons/outsourcing-sales/larrow.png";
 import { ANIMATED_IMAGES } from "../../../utils/data/global";
+import { useNavigate } from "react-router-dom";
+import useScrollAnimation from "../../../lib/hooks/useScrollAnimation";
+import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const items = [
   {
@@ -30,9 +34,24 @@ const items = [
 
 const OutsourcingSalesBanner = () => {
   const [step, setStep] = useState(1);
+  const navigate = useNavigate();
+  const { blurScale } = useScrollAnimation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      blurScale.applyBlurScale("OutsourcingSalesBanner", 45);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <div
-      className="min-h-[1008px] w-full"
+    <motion.div
+      id="OutsourcingSalesBanner"
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className={`min-h-[1008px] w-full ${
+        blurScale.isBlurred ? "blur-sm" : "blur-none"
+      }`}
       style={{
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
@@ -42,71 +61,77 @@ const OutsourcingSalesBanner = () => {
     >
       <div className="container">
         <Header />
-        <div
-          className="overflow-hidden grid grid-cols-2 w-full relative bg-[length:280px_280px] md:bg-[length:400px_400px]"
+        <motion.div
+          initial={{ scale: 1 }}
+          animate={{ scale: blurScale.scale }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="overflow-hidden w-full relative bg-[length:280px_280px] md:bg-[length:400px_400px] pb-[200px]"
           style={{
             backgroundImage: `url(${ANIMATED_IMAGES.INFINITY})`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "bottom right",
           }}
         >
-          {items.map((item, index) => (
-            <div
-              key={index}
-              className={`mt-[33px] md:mt-[100px] xl:mt-[130px] w-full ease-linear duration-300 ${
-                item.id === step
-                  ? "col-span-2"
-                  : "absolute !-left-[1200px] container"
-              }`}
-            >
-              <h1
-                className="text-wp text-[24px] md:text-[32px] xl:text-[40px] font-bold font-obviously-wide leading-normal uppercase"
-                style={{
-                  leadingTrim: "both",
-                  textEdge: "cap",
-                }}
+          <div className="w-full grid grid-cols-2 relative">
+            {items.map((item, index) => (
+              <div
+                key={index}
+                className={`mt-[33px] md:mt-[100px] xl:mt-[130px] w-full ease-linear duration-300 ${
+                  item.id === step
+                    ? "col-span-2"
+                    : "absolute !-left-[1200px] container"
+                }`}
               >
-                {item.title}
-              </h1>
-              <div className="mt-[57.36px]">
-                <div>
+                <h1
+                  className="text-wp text-[24px] md:text-[32px] xl:text-[40px] font-bold font-obviously-wide leading-normal uppercase"
+                  style={{
+                    leadingTrim: "both",
+                    textEdge: "cap",
+                  }}
+                >
+                  {item.title}
+                </h1>
+                <div className="mt-[57.36px]">
                   <div>
-                    <img
-                      src={item.img1}
-                      alt=""
-                      className="max-w-[468px] max-h-[450px] object-contain float-right hidden md:block"
-                    />
-                    <img
-                      src={item.img2}
-                      alt=""
-                      className="max-w-[200px] max-h-[450px] object-contain float-right md:hidden"
-                    />
-                    <p
-                      className="text-[#C1C1C1] capitalize text-[16px] md:text-[20px] font-normal font-obviously-wide leading-normal"
+                    <div>
+                      <img
+                        src={item.img1}
+                        alt=""
+                        className="max-w-[468px] max-h-[450px] object-contain float-right hidden md:block"
+                      />
+                      <img
+                        src={item.img2}
+                        alt=""
+                        className="max-w-[200px] max-h-[450px] object-contain float-right md:hidden"
+                      />
+                      <p
+                        className="text-[#C1C1C1] capitalize text-[16px] md:text-[20px] font-normal font-obviously-wide leading-normal"
+                        style={{
+                          leadingTrim: "both",
+                          textEdge: "cap",
+                        }}
+                      >
+                        {item.description}
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={() => navigate("/funnel")}
+                      className="w-[170px] h-[55px] hover:w-[210px] hover:h-[63px] hover:md:w-[320px] hover:md:h-[103px] md:w-[288px] md:h-[93px] duration-200 ease-linear !border-b-[6px] hover:border-b-[9px] border-x-[2px] border-t-[2px] border-[#540E21] rounded-[8px] md:rounded-[13.573px] bg-wp text-[#0D0D0D] capitalize text-[14px] md:text-[22px] xl:text-[27.146px] font-semibold font-obviously-wide leading-normal mt-[27px] md:mt-[82px]"
                       style={{
                         leadingTrim: "both",
                         textEdge: "cap",
+                        fontStyle: "italic",
                       }}
                     >
-                      {item.description}
-                    </p>
+                      Start Now
+                    </button>
                   </div>
-
-                  <button
-                    className="w-[170px] h-[55px] hover:w-[210px] hover:h-[63px] hover:md:w-[320px] hover:md:h-[103px] md:w-[288px] md:h-[93px] duration-200 ease-linear !border-b-[6px] hover:border-b-[9px] border-x-[2px] border-t-[2px] border-[#540E21] rounded-[8px] md:rounded-[13.573px] bg-wp text-[#0D0D0D] capitalize text-[14px] md:text-[22px] xl:text-[27.146px] font-semibold font-obviously-wide leading-normal mt-[27px] md:mt-[82px]"
-                    style={{
-                      leadingTrim: "both",
-                      textEdge: "cap",
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Start Now
-                  </button>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </motion.div>
 
         <div className="flex justify-end mt-[32px]">
           {step === 1 && (
@@ -129,7 +154,7 @@ const OutsourcingSalesBanner = () => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
