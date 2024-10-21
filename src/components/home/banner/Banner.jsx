@@ -108,7 +108,10 @@ const Banner = () => {
               className="shadow-none hover:shadow-none block mx-auto bg-[#0D0D0D] md:bg-[#971A53] w-fit p-0 outline-none text-cmn rounded-[11.82px] border-[2.955px] md:border-[3.393px] border-b-[8px] md:border-b-[11px] border-[#0D0D0D] md:border-[#971A53] text-[20px] md:text-[27.146px] text-black mt-[14px] md:mt-[64px]"
               style={{ fontStyle: "italic" }}
             >
-              <div className="bg-white outline-none w-[170px] h-[55px] md:w-[288px] md:h-[93px] !rounded-[11.82px] flex justify-center items-center duration-200">
+              <div
+                onClick={() => navigate("/funnel")}
+                className="bg-white outline-none w-[170px] h-[55px] md:w-[288px] md:h-[93px] !rounded-[11.82px] flex justify-center items-center duration-200"
+              >
                 Start Now
               </div>
             </Button>

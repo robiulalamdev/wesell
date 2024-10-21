@@ -1,5 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
 const WISItem2 = ({ buttonShow = true, className = "", show = true }) => {
+  const navigate = useNavigate();
   return (
     show && (
       <div className="container">
@@ -20,6 +23,9 @@ const WISItem2 = ({ buttonShow = true, className = "", show = true }) => {
         {buttonShow && (
           <div className="flex justify-center mt-[50px] md:mt-[65px]">
             <button
+              onClick={() => {
+                navigate("/funnel");
+              }}
               className="w-[170px] h-[55px] hover:w-[200px] hover:h-[60px] md:w-[200px] md:h-[76px] md:hover:w-[288px] md:hover:h-[88px] duration-200 ease-linear !border-b-[6px] hover:border-b-[9px] border-x-[2px] border-t-[2px] border-[#163078] md:border-primary rounded-[13.573px] bg-wp text-[#0D0D0D] capitalize text-[14px] md:text-[27.146px] font-semibold font-obviously-wide leading-normal mt-[27px] md:mt-[82px]"
               style={{
                 leadingTrim: "both",

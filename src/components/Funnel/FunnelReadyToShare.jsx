@@ -5,6 +5,7 @@ import img2 from "../../assets/images/funnel/ready-to-share/img2.png";
 import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const items = [
   { id: 1, img: img1 },
@@ -13,6 +14,7 @@ const items = [
 ];
 
 const FunnelReadyToShare = () => {
+  const navigate = useNavigate();
   const [selectedItem, setSelectedItem] = useState(items[0]);
 
   const { inView } = useScrollAnimation();
@@ -89,7 +91,13 @@ const FunnelReadyToShare = () => {
             ))}
           </div>
           <button className="w-[288px] h-[84px] bg-[#971A53] rounded-[13px] p-[3.393px] pb-[8px] mt-[93px] hidden md:block mx-auto">
-            <div className="bg-[#F9F9F9] w-full h-full flex justify-center items-center rounded-[13px]">
+            <div
+              onClick={() => {
+                navigate("/funnel");
+                window.scrollTo(0, 0);
+              }}
+              className="bg-[#F9F9F9] w-full h-full flex justify-center items-center rounded-[13px]"
+            >
               <h1 className="text-[#1D1D1D] font-semibold text-[22px] font-italic uppercase leading-normal text-center font-obviously-wide">
                 Join the Team
               </h1>
