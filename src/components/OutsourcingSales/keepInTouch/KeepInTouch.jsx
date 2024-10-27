@@ -1,7 +1,4 @@
-import {
-  IKeep_In_Touch_HR,
-  IKeep_In_Touch_HR_bottm,
-} from "../../../utils/icons/outsourcingSalesIcons";
+import { IKeep_In_Touch_HR_bottm } from "../../../utils/icons/outsourcingSalesIcons";
 import hrBg from "../../../assets/images/outsourcing-sales/keep-in-touch/hr.gif";
 import useScrollAnimation from "../../../lib/hooks/useScrollAnimation";
 import { useEffect, useRef } from "react";
@@ -59,7 +56,7 @@ const KeepInTouch = () => {
                   fontStyle: "italic",
                 }}
               >
-                Keep In Touch
+                GET IN TOUCH
               </h1>
               <p
                 className="text-white md:text-[#C1C1C1] text-[14px] md:text-[24px] text-center font-normal font-obviously-wide leading-normal uppercase mt-[38px] md:mt-[55px] max-w-[612px] mx-auto"
@@ -69,8 +66,8 @@ const KeepInTouch = () => {
                   fontStyle: "italic",
                 }}
               >
-                Lorem ipsum dolor sit amet consectetur. Morbi velit odio mollis
-                volutpat.
+                Want to receive information about upcoming job postings? Sign up
+                here:
               </p>
 
               <div className="max-w-[1182px] mx-auto h-[92px] md:h-[212px] bg-[#111111] rounded-[13px] md:rounded-[28.8px] mt-[24px] md:mt-[77px] pb-[6px] md:pb-[11px] relative z-50">
@@ -81,7 +78,7 @@ const KeepInTouch = () => {
                   <input
                     type="email"
                     required
-                    placeholder="Enter E.mail"
+                    placeholder="Enter email"
                     className="flex-grow w-full h-full outline-none focus:outline-none focus:bg-transparent bg-transparent text-[#1D1D1D] placeholder:text-[#1D1D1D] placeholder:text-[14px] text-[14px] md:placeholder:text-[36px] md:text-[36px] !font-bold placeholder:font-bold font-obviously-wide leading-normal capitalize"
                     style={{
                       leadingTrim: "both",

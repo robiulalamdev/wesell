@@ -212,6 +212,10 @@ const FunnelBanner = () => {
               ref={dateBRef}
               selected={dateB}
               onChange={(date) => setDateB(date)}
+              showTimeSelect
+              showTimeSelectOnly
+              timeFormat="p"
+              timeIntervals={15}
               customInput={
                 <div
                   onClick={() => dateBRef.current.click()}
@@ -219,9 +223,7 @@ const FunnelBanner = () => {
                 >
                   <div className="max-w-[12px] md:max-w-[32px]">{I_F2}</div>
                   <h1 className="text-cmn text-left text-[#F2F2F2] text-[10px] md:text-[14px] font-medium capitalize">
-                    {dateB
-                      ? moment(dateB).format("DD MMM YYYY")
-                      : "Select Date"}
+                    {dateB ? moment(dateB).format("hh:mm A") : "Select time"}
                   </h1>
                 </div>
               }

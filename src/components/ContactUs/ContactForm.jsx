@@ -74,7 +74,7 @@ const ContactForm = () => {
                 data-aos="fade-down"
                 className="text-cmn text-left text-[#F9F9F9] text-[16px] md:text-[24px] capitalize mb-[10px]"
               >
-                Full Name
+                Full name
               </h1>
               <input
                 type="text"
@@ -87,7 +87,7 @@ const ContactForm = () => {
                 data-aos="fade-down"
                 className="text-cmn text-left text-[#F9F9F9] text-[16px] md:text-[24px] capitalize mb-[10px]"
               >
-                Email Address
+                Email
               </h1>
               <input
                 type="email"
@@ -100,7 +100,7 @@ const ContactForm = () => {
                 data-aos="fade-down"
                 className="text-cmn text-left text-[#F9F9F9] text-[16px] md:text-[24px] capitalize mb-[10px]"
               >
-                Phone Number
+                Phone
               </h1>
               <input
                 type="number"
@@ -113,7 +113,7 @@ const ContactForm = () => {
                 data-aos="fade-down"
                 className="text-cmn text-left text-[#F9F9F9] text-[16px] md:text-[24px] capitalize mb-[10px]"
               >
-                Message Write Here
+                Enter your message here
               </h1>
               <textarea
                 type="text"
@@ -125,7 +125,7 @@ const ContactForm = () => {
 
             <Button
               type="submit"
-              className="shadow-none hover:shadow-none bg-[#971A53] w-fit p-0 outline-none text-cmn rounded-[11.82px] border-[2.955px] md:border-[3.393px] border-b-[8px] md:border-b-[11px] border-[#971A53] text-[20px] md:text-[27.146px] text-black mt-[36px] md:mt-[44px]"
+              className="shadow-none hover:shadow-none bg-[#971A53] w-fit p-0 outline-none text-cmn rounded-[11.82px] border-[2.955px] md:border-[3.393px] border-b-[8px] md:border-b-[11px] border-[#971A53] text-[20px] md:text-[27.146px] text-black"
               style={{ fontStyle: "italic" }}
             >
               <div className="bg-white outline-none min-w-[250px] sm:min-w-[270px] max-w-[317px] h-[73px] md:w-[364px] md:h-[84px] !rounded-[11.82px] flex justify-center items-center duration-200">

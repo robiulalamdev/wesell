@@ -78,12 +78,12 @@ const Banner = () => {
           <div
             data-aos="zoom-out-up"
             data-aos-duration="900"
-            className="mt-[32px] md:mt-[100px] max-w-[902px] mx-auto"
+            className="mt-[32px] md:mt-[100px] max-w-[1000px] w-full mx-auto"
           >
-            <h1 className="text-[17.844px] md:text-[36px] font-bold leading-normal font-obviously-wide text-[#E4DCDE] font-italic text-center hidden md:block">
+            <h1 className="text-[17.844px] md:!text-[36px] font-bold leading-normal font-obviously-wide text-[#E4DCDE] font-italic text-center hidden md:block">
               Students, graduates, dreamers—no matter where you start, without
               sales and management, your journey will stall. Learn what every
-              successful person knows.
+              successful person knows.&quot;
             </h1>
             <motion.h1
               key={currentIndex} // Ensure each new text has a unique key to trigger animation

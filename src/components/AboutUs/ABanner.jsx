@@ -65,8 +65,8 @@ const ABanner = () => {
               in sales and management are designed to equip individuals with the
               skills, confidence, and support needed to excel in the competitive
               world of business. Inspired by industry leaders, WeSell is
-              committed to fostering a supportive community that empowers both
-              men and women to achieve their highest potential.
+              committed to fostering a supportive community that empowers people
+              to achieve their highest potential.
             </p>
 
             <div

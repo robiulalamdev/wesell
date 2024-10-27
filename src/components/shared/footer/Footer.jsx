@@ -72,7 +72,8 @@ const Footer = () => {
                   textEdge: "cap",
                 }}
               >
-                Copyright @ All rights reserved to WeSell Private Limited
+                {/* Copyright @ All rights reserved to WeSell Private Limited */}
+                © 2024 WeSell Inc.
               </p>
             </div>
           </div>

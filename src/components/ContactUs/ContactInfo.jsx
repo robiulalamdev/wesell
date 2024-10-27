@@ -52,39 +52,39 @@ const ContactInfo = () => {
                 VISITING ADDRESS
               </h1>
               <p className="text-[#000000] text-[16px] md:text-[20px] leading-[23.36px] md:leading-[29.2px] font-obviously-wide">
-                wesell GmbH
+                WeSell Inc.
               </p>
               <p className="text-[#000000] text-[16px] md:text-[20px] leading-[23.36px] md:leading-[29.2px] font-obviously-wide">
-                wesell City South
+                111 Colonade Rd K2E ZM3
               </p>
               <p className="text-[#000000] text-[16px] md:text-[20px] leading-[23.36px] md:leading-[29.2px] font-obviously-wide">
-                Bldg. 534, Office 4056
+                Ottawa, ON
               </p>
-              <p className="text-[#000000] text-[16px] md:text-[20px] leading-[23.36px] md:leading-[29.2px] font-obviously-wide">
+              {/* <p className="text-[#000000] text-[16px] md:text-[20px] leading-[23.36px] md:leading-[29.2px] font-obviously-wide">
                 60549 Frankfurt Airport
-              </p>
+              </p> */}
             </div>
             <div>
               <h1 className="text-cmn text-left text-[#000000] text-[20px] md:text-[24px] font-semibold mb-[28px] md:mb-[33px]">
                 CONTACT INFO
               </h1>
-              <div className="flex flex-col md:flex-row gap-x-[4px] md:gap-x-[20px]">
+              {/* <div className="flex flex-col md:flex-row gap-x-[4px] md:gap-x-[20px]">
                 <h1 className="w-[100px] text-black text-[16px] md:text-[20px] font-bold leading-[36.64px] font-obviously-wide all_break">
                   Phone
                 </h1>
                 <p className="text-black text-[16px] md:text-[20px] leading-[36.64px] font-obviously-wide">
                   +49 (0) 69 8088 3729
                 </p>
-              </div>
+              </div> */}
               <div className="flex flex-col md:flex-row gap-x-[4px] md:gap-x-[20px]">
-                <h1 className="w-[100px] text-black text-[16px] md:text-[20px] font-bold leading-[36.64px] font-obviously-wide all_break">
+                <h1 className="w-[100px] text-black text-[16px] md:text-[20px] font-bold leading-[36.64px] font-obviously-wide text-nowrap">
                   Email
                 </h1>
-                <p className="text-black text-[16px] md:text-[20px] leading-[36.64px] font-obviously-wide">
-                  info@care4cargo.com
+                <p className="text-black text-[16px] md:text-[20px] leading-[36.64px] font-obviously-wide all_break">
+                  admin@wesellconsulting.ca
                 </p>
               </div>
-              <div className="flex flex-col md:flex-row gap-x-[4px] md:gap-x-[20px]">
+              {/* <div className="flex flex-col md:flex-row gap-x-[4px] md:gap-x-[20px]">
                 <h1 className="w-[100px] text-black text-[16px] md:text-[20px] font-bold leading-[36.64px] font-obviously-wide all_break">
                   Website
                 </h1>
@@ -99,7 +99,7 @@ const ContactInfo = () => {
                 <p className="text-black text-[16px] md:text-[20px] leading-[36.64px] font-obviously-wide">
                   Monday - Friday, 8-17h
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </motion.div>
