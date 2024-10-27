@@ -3,7 +3,7 @@ import bg from "../../assets/images/funnel/banner/bg.png";
 import popupbg from "../../assets/images/funnel/banner/popupbg.png";
 import popupImg1 from "../../assets/images/funnel/banner/popupImg1.png";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   I_F1,
   I_F2,
@@ -17,9 +17,17 @@ import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import moment from "moment";
+import { useToasts } from "react-toast-notifications";
 
 const FunnelBanner = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [dateA, setDateA] = useState("");
+  const [dateB, setDateB] = useState("");
+
+  const dateARef = useRef();
+  const dateBRef = useRef();
 
   const navigate = useNavigate();
   const { blurScale } = useScrollAnimation();
@@ -32,6 +40,26 @@ const FunnelBanner = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const { addToast } = useToasts();
+
+  const handleSubmit = () => {
+    if (!dateA || !dateB) {
+      addToast("Date is required", {
+        appearance: "warning",
+        autoDismiss: true,
+      });
+      return;
+    }
+
+    addToast("Schedule submitted successfully", {
+      appearance: "success",
+      autoDismiss: true,
+    });
+    setDateA("");
+    setDateB("");
+    setOpenModal(false);
+  };
   return (
     <motion.div
       id="hbanner"
@@ -162,21 +190,48 @@ const FunnelBanner = () => {
             />
           </div>
           <div className="flex flex-wrap justify-center items-center gap-[15px] md:gap-[25px] mt-[62px]">
-            <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] max-w-[182px] h-[39px] md:max-w-[309px] w-full md:h-[67px] px-[18px]">
-              <div className="max-w-[12px] md:max-w-[32px]">{I_F1}</div>
-              <h1 className="text-cmn text-left text-[#F2F2F2] text-[10px] md:text-[14px] font-medium capitalize">
-                Select Date
-              </h1>
-            </div>
-            <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] max-w-[182px] h-[39px] md:max-w-[309px] w-full md:h-[67px] px-[18px]">
-              <div className="max-w-[12px] md:max-w-[32px]">{I_F2}</div>
-              <h1 className="text-cmn text-left text-[#F2F2F2] text-[10px] md:text-[14px] font-medium capitalize">
-                Select Date
-              </h1>
-            </div>
+            <DatePicker
+              ref={dateBRef}
+              selected={dateA}
+              onChange={(date) => setDateA(date)}
+              customInput={
+                <div
+                  onClick={() => dateARef.current.click()}
+                  className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-[182px] h-[39px] md:w-[309px] md:h-[67px] px-[18px]"
+                >
+                  <div className="max-w-[12px] md:max-w-[32px]">{I_F1}</div>
+                  <h1 className="text-cmn text-left text-[#F2F2F2] text-[10px] md:text-[14px] font-medium capitalize">
+                    {dateA
+                      ? moment(dateA).format("DD MMM YYYY")
+                      : "Select Date"}
+                  </h1>
+                </div>
+              }
+            />
+            <DatePicker
+              ref={dateBRef}
+              selected={dateB}
+              onChange={(date) => setDateB(date)}
+              customInput={
+                <div
+                  onClick={() => dateBRef.current.click()}
+                  className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-[182px] h-[39px] md:w-[309px] md:h-[67px] px-[18px]"
+                >
+                  <div className="max-w-[12px] md:max-w-[32px]">{I_F2}</div>
+                  <h1 className="text-cmn text-left text-[#F2F2F2] text-[10px] md:text-[14px] font-medium capitalize">
+                    {dateB
+                      ? moment(dateB).format("DD MMM YYYY")
+                      : "Select Date"}
+                  </h1>
+                </div>
+              }
+            />
           </div>
 
-          <button className="w-[214px] h-[51px] md:w-[363px] md:h-[84px] border-b-[6px] md:!border-b-[8px] border-x-[4px] border-t-[2px] border-primary rounded-[7px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[11px] md:text-[20px] font-semibold leading-normal mt-[45px] md:mt-[55px] mx-auto block">
+          <button
+            onClick={() => handleSubmit()}
+            className="w-[214px] h-[51px] md:w-[363px] md:h-[84px] border-b-[6px] md:!border-b-[8px] border-x-[4px] border-t-[2px] border-primary rounded-[7px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[11px] md:text-[20px] font-semibold leading-normal mt-[45px] md:mt-[55px] mx-auto block"
+          >
             Schedule Meeting
           </button>
         </div>

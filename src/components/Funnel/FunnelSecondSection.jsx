@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import { useNavigate } from "react-router-dom";
 import icon1 from "../../assets/images/funnel/secondSection/fsi1.png";
 import icon2 from "../../assets/images/funnel/secondSection/fsi2.png";
 import icon3 from "../../assets/images/funnel/secondSection/fsi3.png";
@@ -13,6 +14,7 @@ import { useScroll, useTransform, motion } from "framer-motion";
 import { useEffect } from "react";
 
 const FunnelSecondSection = () => {
+  const navigate = useNavigate();
   const { inView } = useScrollAnimation();
 
   const { scrollY: sY } = useScroll();
@@ -66,7 +68,13 @@ const FunnelSecondSection = () => {
                 connect with others, provide real value, and build meaningful
                 relationships while achieving your goals.
               </p>
-              <button className="w-[216px] h-[69px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-primary rounded-[8px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[20px] font-semibold leading-normal mt-[35px] md:mt-[45px]">
+              <button
+                onClick={() => {
+                  navigate("/funnel");
+                  window.scrollTo(0, 0);
+                }}
+                className="w-[216px] h-[69px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-primary rounded-[8px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[20px] font-semibold leading-normal mt-[35px] md:mt-[45px]"
+              >
                 Start Now
               </button>
             </div>
@@ -119,7 +127,13 @@ const FunnelSecondSection = () => {
                 helping others succeed. We’ll teach you how to build, motivate,
                 and manage a successful team that shares in your vision
               </p>
-              <button className="w-[216px] h-[69px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-primary rounded-[8px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[20px] font-semibold leading-normal mt-[35px] md:mt-[45px]">
+              <button
+                onClick={() => {
+                  navigate("/funnel");
+                  window.scrollTo(0, 0);
+                }}
+                className="w-[216px] h-[69px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-primary rounded-[8px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[20px] font-semibold leading-normal mt-[35px] md:mt-[45px]"
+              >
                 Join Now
               </button>
             </div>
@@ -136,7 +150,13 @@ const FunnelSecondSection = () => {
                 data-driven approach to both sales and management, ensuring
                 everyone thrives.
               </p>
-              <button className="w-[216px] h-[69px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-primary rounded-[8px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[20px] font-semibold leading-normal mt-[35px] md:mt-[45px]">
+              <button
+                onClick={() => {
+                  navigate("/funnel");
+                  window.scrollTo(0, 0);
+                }}
+                className="w-[216px] h-[69px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-primary rounded-[8px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[20px] font-semibold leading-normal mt-[35px] md:mt-[45px]"
+              >
                 Start Now
               </button>
             </div>
@@ -185,7 +205,13 @@ const FunnelSecondSection = () => {
                 financial success and personal fulfillment go hand in hand.
                 Let's grow together!
               </p>
-              <button className="w-[216px] h-[69px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-primary rounded-[8px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[20px] font-semibold leading-normal mt-[35px] md:mt-[45px]">
+              <button
+                onClick={() => {
+                  navigate("/funnel");
+                  window.scrollTo(0, 0);
+                }}
+                className="w-[216px] h-[69px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-primary rounded-[8px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[20px] font-semibold leading-normal mt-[35px] md:mt-[45px]"
+              >
                 Join Now
               </button>
             </div>

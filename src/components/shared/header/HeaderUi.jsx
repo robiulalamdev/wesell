@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../../assets/icons/global/header/headerLogo.png";
 import { HEADER_ROUTES } from "../../../utils/data/global";
 import { IArrow_Right, IClose, IMenu } from "../../../utils/icons/global";
@@ -7,6 +7,7 @@ import { Drawer } from "@material-tailwind/react";
 import bg from "../../../assets/images/global/header/bg.png";
 
 const HeaderUi = ({ open, setOpen }) => {
+  const navigate = useNavigate();
   const { pathname } = useLocation();
 
   return (
@@ -36,7 +37,12 @@ const HeaderUi = ({ open, setOpen }) => {
           ))}
         </div>
         <div className="w-[150px] h-[44px] relative">
-          <button className="absolute w-[150px] h-[48px] hover:w-[170px] hover:h-[55px] duration-300 bg-wp rounded-[6px] hidden lg:inline-block">
+          <button
+            onClick={() => {
+              navigate("/funnel");
+            }}
+            className="absolute w-[150px] h-[48px] hover:w-[170px] hover:h-[55px] duration-300 bg-wp rounded-[6px] hidden lg:inline-block"
+          >
             <span
               className="text-[#0D0D0D] capitalize text-[16px] font-semibold font-obviously-wide leading-normal"
               style={{
@@ -97,6 +103,7 @@ const HeaderUi = ({ open, setOpen }) => {
             ))}
 
             <button
+              onClick={() => navigate("/funnel")}
               className="bg-wp bg-opacity-[0.9] w-full h-[55px] rounded-br-[28px] rounded-bl-[28px] text-[#080808] capitalize text-[18px] font-semibold font-obviously-wide leading-[25px]"
               style={{ leadingTrim: "both", textEdge: "cap" }}
             >

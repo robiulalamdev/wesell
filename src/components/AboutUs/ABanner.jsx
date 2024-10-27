@@ -127,6 +127,9 @@ const ABanner = () => {
               </p>
               <div className="flex justify-center">
                 <button
+                  onClick={() => {
+                    navigate("/funnel");
+                  }}
                   data-aos="fade-up"
                   data-aos-duration="900"
                   className="w-[170px] h-[55px] !border-b-[5px] border-x-[2px] border-t-[2px] border-[#540E21] rounded-[8px] bg-wp text-[#0D0D0D] capitalize text-[14px] font-semibold font-obviously-wide leading-normal mt-[36px]"
