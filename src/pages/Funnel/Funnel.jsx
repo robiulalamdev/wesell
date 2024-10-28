@@ -5,12 +5,14 @@ import FunnelRealPeople from "../../components/Funnel/FunnelRealPeople";
 import FunnelSecondSection from "../../components/Funnel/FunnelSecondSection";
 import FunnelThirdSection from "../../components/Funnel/FunnelThirdSection";
 import BlueFooter from "../../components/shared/footer/BlueFooter";
+import ScheduleMeetingForm from "../../components/Funnel/ScheduleMeetingForm";
 
 const Funnel = () => {
   const navigate = useNavigate();
   return (
     <div className="bg-[#1D1D1D]">
       <FunnelBanner />
+      <ScheduleMeetingForm />
       <FunnelSecondSection />
       <FunnelThirdSection />
       <FunnelReadyToShare />

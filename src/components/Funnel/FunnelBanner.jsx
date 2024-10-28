@@ -11,6 +11,10 @@ import {
   I_F4,
   I_F5,
   I_FRight_arrow,
+  IF_email,
+  IF_phone,
+  IF_sms,
+  IF_whatsapp,
 } from "../../utils/icons/funnelIcons";
 
 import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
@@ -44,8 +48,15 @@ const FunnelBanner = () => {
   const { addToast } = useToasts();
 
   const handleSubmit = () => {
-    if (!dateA || !dateB) {
+    if (!dateA) {
       addToast("Date is required", {
+        appearance: "warning",
+        autoDismiss: true,
+      });
+      return;
+    }
+    if (!dateB) {
+      addToast("Time is required", {
         appearance: "warning",
         autoDismiss: true,
       });
@@ -230,6 +241,47 @@ const FunnelBanner = () => {
             />
           </div>
 
+          <div className="mt-[44px]">
+            <h1 className="text-cmn text-[#F9F9F9] text-[20px] font-medium capitalize">
+              How should we contact You
+            </h1>
+            <div className="grid grid-cols-2 gap-[14px] max-w-[544px] mx-auto mt-[44px]">
+              <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
+                <div className="max-w-[12px] md:max-w-[32px]">{IF_email}</div>
+                <input
+                  type="email"
+                  placeholder="E.mail"
+                  className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[14px] placeholder:text-[14px] font-medium placeholder:font-medium"
+                />
+              </div>
+              <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
+                <div className="max-w-[12px] md:max-w-[32px]">{IF_phone}</div>
+                <input
+                  type="tel"
+                  placeholder="Phone Call"
+                  className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[14px] placeholder:text-[14px] font-medium placeholder:font-medium"
+                />
+              </div>
+              <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
+                <div className="max-w-[12px] md:max-w-[32px]">
+                  {IF_whatsapp}
+                </div>
+                <input
+                  type="text"
+                  placeholder="WhatsApp"
+                  className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[14px] placeholder:text-[14px] font-medium placeholder:font-medium"
+                />
+              </div>
+              <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
+                <div className="max-w-[12px] md:max-w-[32px]">{IF_sms}</div>
+                <input
+                  type="text"
+                  placeholder="SMS"
+                  className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[14px] placeholder:text-[14px] font-medium placeholder:font-medium"
+                />
+              </div>
+            </div>
+          </div>
           <button
             onClick={() => handleSubmit()}
             className="w-[214px] h-[51px] md:w-[363px] md:h-[84px] border-b-[6px] md:!border-b-[8px] border-x-[4px] border-t-[2px] border-primary rounded-[7px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[11px] md:text-[20px] font-semibold leading-normal mt-[45px] md:mt-[55px] mx-auto block"
