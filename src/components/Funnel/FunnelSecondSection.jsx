@@ -39,7 +39,7 @@ const FunnelSecondSection = () => {
       style={{
         y,
       }}
-      className="bg-[#1D1D1D] py-[63px] md:py-[102px]"
+      className="bg-[#1D1D1D] py-[63px] md:py-[102px] overflow-hidden"
     >
       <div className="container">
         <h1

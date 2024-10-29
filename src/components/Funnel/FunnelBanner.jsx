@@ -71,6 +71,19 @@ const FunnelBanner = () => {
     setDateB("");
     setOpenModal(false);
   };
+
+  useEffect(() => {
+    if (openModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // Clean up to reset overflow when component unmounts
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [openModal]);
   return (
     <motion.div
       id="hbanner"
@@ -155,141 +168,141 @@ const FunnelBanner = () => {
         </motion.div>
       </div>
 
-      <div
-        className={`${
-          openModal ? "block" : "hidden"
-        } fixed top-0 bottom-0 left-0 right-0 z-50 transition-all duration-300 ease-in flex justify-center items-center bg-transparent outline-none border-none shadow-none px-[12px] md:px-0`}
-      >
+      {openModal && (
         <div
-          className="max-w-[982px] w-full min-h-[600px] h-fit rounded-b-[16px] border-b-[16px] border-[#0D0D0D] relative pb-[67px] md:pb-[87px]"
-          style={{
-            backgroundImage: `url(${popupbg})`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}
+          className={`fixed top-0 bottom-0 left-0 right-0 z-50 transition-all duration-300 ease-in flex justify-center items-center bg-transparent outline-none border-none shadow-none px-[12px] md:px-0 overflow-y-auto`}
         >
           <div
-            onClick={() => setOpenModal(false)}
-            className="w-[37px] h-[37px] flex justify-center items-center absolute top-[23px] right-[18px] z-50 cursor-pointer"
+            className="max-w-[982px] w-full min-h-[600px] h-fit rounded-b-[16px] border-b-[16px] border-[#0D0D0D] relative pb-[67px] md:pb-[87px] md:mt-[150px]"
+            style={{
+              backgroundImage: `url(${popupbg})`,
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="53"
-              height="53"
-              viewBox="0 0 53 53"
-              fill="none"
+            <div
+              onClick={() => setOpenModal(false)}
+              className="w-[37px] h-[37px] flex justify-center items-center absolute top-[23px] right-[18px] z-50 cursor-pointer"
             >
-              <path
-                d="M12.8347 13.3281L38.9977 39.4911"
-                stroke="white"
-                strokeWidth="4.18868"
-                strokeLinecap="round"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="53"
+                height="53"
+                viewBox="0 0 53 53"
+                fill="none"
+              >
+                <path
+                  d="M12.8347 13.3281L38.9977 39.4911"
+                  stroke="white"
+                  strokeWidth="4.18868"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M13.3284 39.4912L39.4913 13.3283"
+                  stroke="white"
+                  strokeWidth="4.18868"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+            <div className="px-[12px]">
+              <img
+                src={popupImg1}
+                alt=""
+                className="max-w-[242px] md:max-w-[373px] w-full h-full object-contain mx-auto mt-[68px] md:mt-[87px]"
               />
-              <path
-                d="M13.3284 39.4912L39.4913 13.3283"
-                stroke="white"
-                strokeWidth="4.18868"
-                strokeLinecap="round"
+            </div>
+            <div className="flex flex-wrap justify-center items-center gap-[15px] md:gap-[25px] mt-[62px]">
+              <DatePicker
+                ref={dateBRef}
+                selected={dateA}
+                onChange={(date) => setDateA(date)}
+                customInput={
+                  <div
+                    onClick={() => dateARef.current.click()}
+                    className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-[182px] h-[39px] md:w-[309px] md:h-[67px] px-[18px]"
+                  >
+                    <div className="max-w-[12px] md:max-w-[32px]">{I_F1}</div>
+                    <h1 className="text-cmn text-left text-[#F2F2F2] text-[10px] md:text-[14px] font-medium capitalize">
+                      {dateA
+                        ? moment(dateA).format("DD MMM YYYY")
+                        : "Select Date"}
+                    </h1>
+                  </div>
+                }
               />
-            </svg>
-          </div>
-          <div className="px-[12px]">
-            <img
-              src={popupImg1}
-              alt=""
-              className="max-w-[242px] md:max-w-[373px] w-full h-full object-contain mx-auto mt-[68px] md:mt-[87px]"
-            />
-          </div>
-          <div className="flex flex-wrap justify-center items-center gap-[15px] md:gap-[25px] mt-[62px]">
-            <DatePicker
-              ref={dateBRef}
-              selected={dateA}
-              onChange={(date) => setDateA(date)}
-              customInput={
-                <div
-                  onClick={() => dateARef.current.click()}
-                  className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-[182px] h-[39px] md:w-[309px] md:h-[67px] px-[18px]"
-                >
-                  <div className="max-w-[12px] md:max-w-[32px]">{I_F1}</div>
-                  <h1 className="text-cmn text-left text-[#F2F2F2] text-[10px] md:text-[14px] font-medium capitalize">
-                    {dateA
-                      ? moment(dateA).format("DD MMM YYYY")
-                      : "Select Date"}
-                  </h1>
-                </div>
-              }
-            />
-            <DatePicker
-              ref={dateBRef}
-              selected={dateB}
-              onChange={(date) => setDateB(date)}
-              showTimeSelect
-              showTimeSelectOnly
-              timeFormat="p"
-              timeIntervals={15}
-              customInput={
-                <div
-                  onClick={() => dateBRef.current.click()}
-                  className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-[182px] h-[39px] md:w-[309px] md:h-[67px] px-[18px]"
-                >
-                  <div className="max-w-[12px] md:max-w-[32px]">{I_F2}</div>
-                  <h1 className="text-cmn text-left text-[#F2F2F2] text-[10px] md:text-[14px] font-medium capitalize">
-                    {dateB ? moment(dateB).format("hh:mm A") : "Select time"}
-                  </h1>
-                </div>
-              }
-            />
-          </div>
+              <DatePicker
+                ref={dateBRef}
+                selected={dateB}
+                onChange={(date) => setDateB(date)}
+                showTimeSelect
+                showTimeSelectOnly
+                timeFormat="p"
+                timeIntervals={15}
+                customInput={
+                  <div
+                    onClick={() => dateBRef.current.click()}
+                    className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-[182px] h-[39px] md:w-[309px] md:h-[67px] px-[18px]"
+                  >
+                    <div className="max-w-[12px] md:max-w-[32px]">{I_F2}</div>
+                    <h1 className="text-cmn text-left text-[#F2F2F2] text-[10px] md:text-[14px] font-medium capitalize">
+                      {dateB ? moment(dateB).format("hh:mm A") : "Select time"}
+                    </h1>
+                  </div>
+                }
+              />
+            </div>
 
-          <div className="mt-[44px]">
-            <h1 className="text-cmn text-[#F9F9F9] text-[20px] font-medium capitalize">
-              How should we contact You
-            </h1>
-            <div className="grid grid-cols-2 gap-[14px] max-w-[544px] mx-auto mt-[44px]">
-              <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
-                <div className="max-w-[12px] md:max-w-[32px]">{IF_email}</div>
-                <input
-                  type="email"
-                  placeholder="E.mail"
-                  className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[14px] placeholder:text-[14px] font-medium placeholder:font-medium"
-                />
-              </div>
-              <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
-                <div className="max-w-[12px] md:max-w-[32px]">{IF_phone}</div>
-                <input
-                  type="tel"
-                  placeholder="Phone Call"
-                  className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[14px] placeholder:text-[14px] font-medium placeholder:font-medium"
-                />
-              </div>
-              <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
-                <div className="max-w-[12px] md:max-w-[32px]">
-                  {IF_whatsapp}
+            <div className="mt-[44px] hidden md:block">
+              <h1 className="text-cmn text-[#F9F9F9] text-[20px] font-medium capitalize">
+                How should we contact You
+              </h1>
+              <div className="grid grid-cols-2 gap-[14px] max-w-[544px] mx-auto mt-[44px]">
+                <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
+                  <div className="max-w-[12px] md:max-w-[32px]">{IF_email}</div>
+                  <input
+                    type="email"
+                    placeholder="E.mail"
+                    className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[14px] placeholder:text-[14px] font-medium placeholder:font-medium"
+                  />
                 </div>
-                <input
-                  type="text"
-                  placeholder="WhatsApp"
-                  className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[14px] placeholder:text-[14px] font-medium placeholder:font-medium"
-                />
-              </div>
-              <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
-                <div className="max-w-[12px] md:max-w-[32px]">{IF_sms}</div>
-                <input
-                  type="text"
-                  placeholder="SMS"
-                  className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[14px] placeholder:text-[14px] font-medium placeholder:font-medium"
-                />
+                <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
+                  <div className="max-w-[12px] md:max-w-[32px]">{IF_phone}</div>
+                  <input
+                    type="tel"
+                    placeholder="Phone Call"
+                    className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[14px] placeholder:text-[14px] font-medium placeholder:font-medium"
+                  />
+                </div>
+                <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
+                  <div className="max-w-[12px] md:max-w-[32px]">
+                    {IF_whatsapp}
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="WhatsApp"
+                    className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[14px] placeholder:text-[14px] font-medium placeholder:font-medium"
+                  />
+                </div>
+                <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
+                  <div className="max-w-[12px] md:max-w-[32px]">{IF_sms}</div>
+                  <input
+                    type="text"
+                    placeholder="SMS"
+                    className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[14px] placeholder:text-[14px] font-medium placeholder:font-medium"
+                  />
+                </div>
               </div>
             </div>
+            <button
+              onClick={() => handleSubmit()}
+              className="w-[214px] h-[51px] md:w-[363px] md:h-[84px] border-b-[6px] md:!border-b-[8px] border-x-[4px] border-t-[2px] border-primary rounded-[7px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[11px] md:text-[20px] font-semibold leading-normal mt-[45px] md:mt-[55px] mx-auto block"
+            >
+              Schedule Meeting
+            </button>
           </div>
-          <button
-            onClick={() => handleSubmit()}
-            className="w-[214px] h-[51px] md:w-[363px] md:h-[84px] border-b-[6px] md:!border-b-[8px] border-x-[4px] border-t-[2px] border-primary rounded-[7px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[11px] md:text-[20px] font-semibold leading-normal mt-[45px] md:mt-[55px] mx-auto block"
-          >
-            Schedule Meeting
-          </button>
         </div>
-      </div>
+      )}
     </motion.div>
   );
 };
