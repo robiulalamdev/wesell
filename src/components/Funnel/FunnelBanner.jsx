@@ -72,6 +72,17 @@ const FunnelBanner = () => {
     setOpenModal(false);
   };
 
+  const handleJoinTeam = async () => {
+    const section = document.getElementById("ScheduleMeetingForm");
+    if (section) {
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY; // Get the section's position
+      window.scrollTo({
+        top: sectionTop - 500,
+        behavior: "smooth",
+      });
+    }
+  };
+
   useEffect(() => {
     if (openModal) {
       const scrollY = window.scrollY;
@@ -140,7 +151,7 @@ const FunnelBanner = () => {
           <button
             data-aos="fade-up"
             data-aos-duration="900"
-            onClick={() => setOpenModal(!openModal)}
+            onClick={() => handleJoinTeam()}
             className="w-[288px] h-[84px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-[#971A53] rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[14px] md:text-[22px] font-semibold leading-normal mt-[31px] md:mt-[62px] mx-auto block"
           >
             Join the Team
@@ -183,7 +194,7 @@ const FunnelBanner = () => {
         </motion.div>
       </div>
 
-      {openModal && (
+      {/* {openModal && (
         <div
           className={`fixed top-0 bottom-0 left-0 right-0 z-50 transition-all duration-300 ease-in flex justify-center items-center bg-transparent outline-none border-none shadow-none px-[12px] md:px-0 overflow-y-auto`}
         >
@@ -317,7 +328,7 @@ const FunnelBanner = () => {
             </button>
           </div>
         </div>
-      )}
+      )} */}
     </motion.div>
   );
 };
