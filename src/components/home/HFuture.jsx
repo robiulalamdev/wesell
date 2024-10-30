@@ -9,8 +9,10 @@ import { useEffect, useRef, useState } from "react";
 import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
 import { useScroll, useTransform, motion } from "framer-motion";
 import downArrow from "../../assets/icons/global/down-arrow.gif";
+import { useNavigate } from "react-router-dom";
 
 const HFuture = () => {
+  const navigate = useNavigate();
   const { inView } = useScrollAnimation();
   const container = useRef();
 
@@ -305,6 +307,7 @@ const HFuture = () => {
             </div>
           </div>
           <Button
+            onClick={() => navigate("/funnel?pos=appointment")}
             className="shadow-none hover:shadow-none block mx-auto bg-[#971A53] w-fit p-0 outline-none text-cmn rounded-[11.82px] border-[2.955px] md:border-[3.393px] border-b-[8px] md:border-b-[11px] border-[#971A53] text-[20px] md:text-[27.146px] text-black text-[27px] mt-[55px] md:mt-[65px]"
             style={{ fontStyle: "italic" }}
           >

@@ -94,7 +94,10 @@ const ACOItem2 = () => {
           </div>
         ))}
       </div>
-      <Button className="w-[228px] h-[58px] md:w-[364px] md:h-[84px] rounded-[8px] md:rounded-[13px] p-[2px] md:p-[3.393px] pb-[9px] md:pb-[11px] bg-primary outline-none focus:outline-none hover:shadow-none shadow-none mx-auto block mt-[39px] md:mt-[67px]">
+      <Button
+        onClick={() => navigate("/funnel?pos=appointment")}
+        className="w-[228px] h-[58px] md:w-[364px] md:h-[84px] rounded-[8px] md:rounded-[13px] p-[2px] md:p-[3.393px] pb-[9px] md:pb-[11px] bg-primary outline-none focus:outline-none hover:shadow-none shadow-none mx-auto block mt-[39px] md:mt-[67px]"
+      >
         <div className="w-full bg-[#F9F9F9] h-full rounded-[8px] md:rounded-[13px] flex justify-center items-center">
           <h1 className="text-cmn text-[#000000] text-[18px] md:text-[27px] font-italic font-semibold uppercase">
             Apply Now

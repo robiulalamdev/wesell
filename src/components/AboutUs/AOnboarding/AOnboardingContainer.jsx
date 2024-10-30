@@ -17,9 +17,9 @@ const AOnboardingContainer = () => {
   const preRef = useRef();
   return (
     <>
-      <div className="min-h-[1500px]"></div>
+      <div className="min-h-[1600px]"></div>
       <div
-        className="min-h-[1600px] absolute w-full top-0 right-0 left-0 pb-[300px]"
+        className="min-h-[1700px] absolute w-full top-0 right-0 left-0 pb-[300px]"
         style={{
           backgroundImage: `url(${bg})`,
           backgroundRepeat: "no-repeat",

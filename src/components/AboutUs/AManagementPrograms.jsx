@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import no1 from "../../assets/icons/outsourcing-sales/no1.png";
 import no2 from "../../assets/icons/outsourcing-sales/no2.png";
 import no3 from "../../assets/icons/outsourcing-sales/no3.png";
@@ -15,6 +16,7 @@ const items = [
 ];
 
 const AManagementPrograms = () => {
+  const navigate = useNavigate();
   const { inView } = useScrollAnimation();
 
   const { scrollY: sY } = useScroll();
@@ -84,7 +86,10 @@ const AManagementPrograms = () => {
               </div>
             ))}
           </div>
-          <button className="max-w-[318px] w-full h-[74px] md:w-[364px] md:h-[84px] bg-[#112661] rounded-[11.895px] md:rounded-[13px] p-[2.974px] md:p-[3.353px] pb-[8px] md:pb-[11px] mt-[30px] md:mt-[60px] mx-auto block">
+          <button
+            onClick={() => navigate("/funnel?pos=appointment")}
+            className="max-w-[318px] w-full h-[74px] md:w-[364px] md:h-[84px] bg-[#112661] rounded-[11.895px] md:rounded-[13px] p-[2.974px] md:p-[3.353px] pb-[8px] md:pb-[11px] mt-[30px] md:mt-[60px] mx-auto block"
+          >
             <div className="w-full h-full bg-[#F9F9F9] rounded-[11.895px] md:rounded-[13px] flex justify-center items-center">
               <h1 className="text-cmn text-[#000000] text-[20px] md:text-[27px] font-bold uppercase font-italic">
                 enroll now
