@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   IF_email,
   IF_instagram,
@@ -12,6 +12,8 @@ import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
+import { ISpinner } from "../../utils/icons/global";
+import { BASE_URL } from "../../config";
 
 const ScheduleMeetingForm = () => {
   const navigate = useNavigate();
@@ -31,13 +33,56 @@ const ScheduleMeetingForm = () => {
 
   const { addToast } = useToasts();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    addToast("Schedule submitted successfully", {
-      appearance: "success",
-      autoDismiss: true,
-    });
-    e.target.reset();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+    const whatsapp = form.whatsapp.value;
+    const sms = form.sms.value;
+    const linkedin = form.linkedin.value;
+    const instagram = form.instagram.value;
+
+    setIsLoading(true);
+
+    const data = {
+      name,
+      email,
+      phone,
+      whatsapp,
+      sms,
+      linkedin,
+      instagram,
+    };
+
+    fetch(`${BASE_URL}/helpers/appointment`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.success) {
+          addToast("Schedule submitted successfully", {
+            appearance: "success",
+            autoDismiss: true,
+          });
+        } else {
+          addToast("Schedule submitted unsuccessfully", {
+            appearance: "error",
+            autoDismiss: true,
+          });
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+        form.reset();
+      });
   };
   return (
     <motion.div
@@ -65,6 +110,7 @@ const ScheduleMeetingForm = () => {
               <div className="max-w-[20px] md:max-w-[32px]">{IF_user}</div>
               <input
                 type="text"
+                name="name"
                 placeholder="full Name"
                 required={true}
                 className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
@@ -122,7 +168,7 @@ const ScheduleMeetingForm = () => {
                     {IF_linkedin}
                   </div>
                   <input
-                    type="text"
+                    type="url"
                     name="linkedin"
                     placeholder="Linkedin"
                     required={true}
@@ -134,7 +180,7 @@ const ScheduleMeetingForm = () => {
                     {IF_instagram}
                   </div>
                   <input
-                    type="text"
+                    type="url"
                     name="instagram"
                     placeholder="Instagram"
                     required={true}
@@ -144,8 +190,12 @@ const ScheduleMeetingForm = () => {
               </div>
               <button
                 type="submit"
-                className="w-[214px] h-[51px] md:w-[363px] md:h-[84px] border-b-[6px] md:!border-b-[8px] border-x-[4px] border-t-[2px] border-primary rounded-[7px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[11px] md:text-[20px] font-semibold leading-normal mt-[45px] md:mt-[55px] mx-auto block"
+                disabled={isLoading}
+                className="w-[214px] h-[51px] md:w-[363px] md:h-[84px] border-b-[6px] md:!border-b-[8px] border-x-[4px] border-t-[2px] border-primary rounded-[7px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[11px] md:text-[20px] font-semibold leading-normal flex items-center justify-center gap-2 mt-[45px] md:mt-[55px] mx-auto inline-block"
               >
+                {isLoading && (
+                  <div className="text-black max-w-[25px]">{ISpinner}</div>
+                )}{" "}
                 Schedule Meeting
               </button>
             </div>
