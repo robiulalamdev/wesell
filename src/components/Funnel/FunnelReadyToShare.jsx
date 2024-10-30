@@ -6,6 +6,7 @@ import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { GO_TO_APPOINTMENT } from "../../lib/services";
 
 const items = [
   { id: 1, img: img1 },
@@ -93,8 +94,7 @@ const FunnelReadyToShare = () => {
           <button className="w-[288px] h-[84px] bg-[#971A53] rounded-[13px] p-[3.393px] pb-[8px] mt-[93px] hidden md:block mx-auto">
             <div
               onClick={() => {
-                navigate("/funnel");
-                window.scrollTo(0, 0);
+                window.location.href = "/funnel?pos=appointment";
               }}
               className="bg-[#F9F9F9] w-full h-full flex justify-center items-center rounded-[13px]"
             >

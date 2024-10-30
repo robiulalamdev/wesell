@@ -65,7 +65,7 @@ const HOurPhilosophy = () => {
               style={{ fontStyle: "italic" }}
             >
               <div
-                onClick={() => navigate("/funnel")}
+                onClick={() => navigate("/funnel?pos=appointment")}
                 className="bg-white outline-none w-[170px] h-[55px] md:w-[288px] md:h-[93px] !rounded-[11.82px] flex justify-center items-center duration-200"
               >
                 Start Now

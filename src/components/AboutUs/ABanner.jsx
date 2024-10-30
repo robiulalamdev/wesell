@@ -75,7 +75,7 @@ const ABanner = () => {
               className="flex justify-center"
             >
               <button
-                onClick={() => navigate("/funnel")}
+                onClick={() => navigate("/funnel?pos=appointment")}
                 className="w-[288px] h-[84px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-[#540E21] rounded-[13.573px] bg-wp text-[#0D0D0D] capitalize text-[27.146px] font-semibold font-obviously-wide leading-normal mt-[36px] md:mt-[75px]"
                 style={{
                   leadingTrim: "both",
@@ -128,7 +128,7 @@ const ABanner = () => {
               <div className="flex justify-center">
                 <button
                   onClick={() => {
-                    navigate("/funnel");
+                    navigate("/funnel?pos=appointment");
                   }}
                   data-aos="fade-up"
                   data-aos-duration="900"

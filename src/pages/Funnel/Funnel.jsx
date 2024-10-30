@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import FunnelBanner from "../../components/Funnel/FunnelBanner";
 import FunnelReadyToShare from "../../components/Funnel/FunnelReadyToShare";
 import FunnelRealPeople from "../../components/Funnel/FunnelRealPeople";
@@ -6,9 +6,22 @@ import FunnelSecondSection from "../../components/Funnel/FunnelSecondSection";
 import FunnelThirdSection from "../../components/Funnel/FunnelThirdSection";
 import BlueFooter from "../../components/shared/footer/BlueFooter";
 import ScheduleMeetingForm from "../../components/Funnel/ScheduleMeetingForm";
+import { useEffect } from "react";
+import { GO_TO_APPOINTMENT } from "../../lib/services";
 
 const Funnel = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location?.search);
+    const pos = params.get("pos");
+
+    if (pos && pos?.toLowerCase() === "appointment") {
+      GO_TO_APPOINTMENT();
+    }
+  }, [location?.pathname]);
+
   return (
     <div className="bg-[#1D1D1D]">
       <FunnelBanner />
@@ -29,7 +42,7 @@ const Funnel = () => {
 
           <button
             onClick={() => {
-              navigate("/funnel");
+              navigate("/funnel?pos=appointment");
               window.scrollTo(0, 0);
             }}
             data-aos="fade-up"

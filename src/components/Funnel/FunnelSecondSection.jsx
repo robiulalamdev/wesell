@@ -70,8 +70,7 @@ const FunnelSecondSection = () => {
               </p>
               <button
                 onClick={() => {
-                  navigate("/funnel");
-                  window.scrollTo(0, 0);
+                  window.location.href = "/funnel?pos=appointment";
                 }}
                 className="w-[216px] h-[69px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-primary rounded-[8px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[20px] font-semibold leading-normal mt-[35px] md:mt-[45px]"
               >
@@ -129,8 +128,7 @@ const FunnelSecondSection = () => {
               </p>
               <button
                 onClick={() => {
-                  navigate("/funnel");
-                  window.scrollTo(0, 0);
+                  window.location.href = "/funnel?pos=appointment";
                 }}
                 className="w-[216px] h-[69px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-primary rounded-[8px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[20px] font-semibold leading-normal mt-[35px] md:mt-[45px]"
               >
@@ -152,8 +150,7 @@ const FunnelSecondSection = () => {
               </p>
               <button
                 onClick={() => {
-                  navigate("/funnel");
-                  window.scrollTo(0, 0);
+                  window.location.href = "/funnel?pos=appointment";
                 }}
                 className="w-[216px] h-[69px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-primary rounded-[8px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[20px] font-semibold leading-normal mt-[35px] md:mt-[45px]"
               >
@@ -207,8 +204,7 @@ const FunnelSecondSection = () => {
               </p>
               <button
                 onClick={() => {
-                  navigate("/funnel");
-                  window.scrollTo(0, 0);
+                  window.location.href = "/funnel?pos=appointment";
                 }}
                 className="w-[216px] h-[69px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-primary rounded-[8px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[20px] font-semibold leading-normal mt-[35px] md:mt-[45px]"
               >

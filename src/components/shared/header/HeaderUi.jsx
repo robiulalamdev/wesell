@@ -5,6 +5,7 @@ import { HEADER_ROUTES } from "../../../utils/data/global";
 import { IArrow_Right, IClose, IMenu } from "../../../utils/icons/global";
 import { Drawer } from "@material-tailwind/react";
 import bg from "../../../assets/images/global/header/bg.png";
+import { GO_TO_APPOINTMENT } from "../../../lib/services";
 
 const HeaderUi = ({ open, setOpen }) => {
   const navigate = useNavigate();
@@ -39,7 +40,8 @@ const HeaderUi = ({ open, setOpen }) => {
         <div className="w-[150px] h-[44px] relative">
           <button
             onClick={() => {
-              navigate("/funnel");
+              navigate("/funnel?pos=appointment");
+              GO_TO_APPOINTMENT();
             }}
             className="absolute w-[150px] h-[48px] hover:w-[170px] hover:h-[55px] duration-300 bg-wp rounded-[6px] hidden lg:inline-block"
           >
@@ -103,7 +105,7 @@ const HeaderUi = ({ open, setOpen }) => {
             ))}
 
             <button
-              onClick={() => navigate("/funnel")}
+              onClick={() => navigate("/funnel?pos=appointment")}
               className="bg-wp bg-opacity-[0.9] w-full h-[55px] rounded-br-[28px] rounded-bl-[28px] text-[#080808] capitalize text-[18px] font-semibold font-obviously-wide leading-[25px]"
               style={{ leadingTrim: "both", textEdge: "cap" }}
             >

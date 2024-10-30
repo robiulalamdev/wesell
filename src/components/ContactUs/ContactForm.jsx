@@ -4,9 +4,11 @@ import Header from "../shared/header/Header";
 import { Button } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import useScrollAnimation from "../../lib/hooks/useScrollAnimation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useToasts } from "react-toast-notifications";
+import { BASE_URL } from "../../config";
+import { ISpinner } from "../../utils/icons/global";
 
 const ContactForm = () => {
   const navigate = useNavigate();
@@ -22,13 +24,50 @@ const ContactForm = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleSubmit = (e) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addToast("Form submitted successfully", {
-      appearance: "success",
-      autoDismiss: true,
-    });
-    e.target.reset();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+    const message = form.message.value;
+
+    setIsLoading(true);
+
+    const data = {
+      name,
+      email,
+      phone,
+      message,
+    };
+
+    fetch(`${BASE_URL}/helpers/contact`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.success) {
+          addToast("Form submitted successfully", {
+            appearance: "success",
+            autoDismiss: true,
+          });
+        } else {
+          addToast("Form submitted unsuccessfully", {
+            appearance: "error",
+            autoDismiss: true,
+          });
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+        form.reset();
+      });
   };
   return (
     <motion.div
@@ -78,6 +117,7 @@ const ContactForm = () => {
               </h1>
               <input
                 type="text"
+                name="name"
                 required
                 className="input-cmn w-full h-[80px] rounded-[10px]"
               />
@@ -91,6 +131,7 @@ const ContactForm = () => {
               </h1>
               <input
                 type="email"
+                name="email"
                 required
                 className="input-cmn w-full h-[80px] rounded-[10px]"
               />
@@ -104,6 +145,7 @@ const ContactForm = () => {
               </h1>
               <input
                 type="number"
+                name="phone"
                 required
                 className="input-cmn w-full h-[80px] rounded-[10px]"
               />
@@ -117,6 +159,7 @@ const ContactForm = () => {
               </h1>
               <textarea
                 type="text"
+                name="message"
                 required
                 minLength={50}
                 className="input-cmn w-full h-[148px] md:h-[172px] rounded-[10px]"
@@ -125,10 +168,14 @@ const ContactForm = () => {
 
             <Button
               type="submit"
+              disabled={isLoading}
               className="shadow-none hover:shadow-none bg-[#971A53] w-fit p-0 outline-none text-cmn rounded-[11.82px] border-[2.955px] md:border-[3.393px] border-b-[8px] md:border-b-[11px] border-[#971A53] text-[20px] md:text-[27.146px] text-black"
               style={{ fontStyle: "italic" }}
             >
-              <div className="bg-white outline-none min-w-[250px] sm:min-w-[270px] max-w-[317px] h-[73px] md:w-[364px] md:h-[84px] !rounded-[11.82px] flex justify-center items-center duration-200">
+              <div className="bg-white outline-none min-w-[250px] sm:min-w-[270px] max-w-[317px] h-[73px] md:w-[364px] md:h-[84px] !rounded-[11.82px] flex justify-center items-center gap-2 duration-200">
+                {isLoading && (
+                  <div className="text-black max-w-[25px]">{ISpinner}</div>
+                )}{" "}
                 Submit
               </div>
             </Button>

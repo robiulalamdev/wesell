@@ -24,6 +24,7 @@ import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import { useToasts } from "react-toast-notifications";
+import { GO_TO_APPOINTMENT } from "../../lib/services";
 
 const FunnelBanner = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -73,14 +74,15 @@ const FunnelBanner = () => {
   };
 
   const handleJoinTeam = async () => {
-    const section = document.getElementById("ScheduleMeetingForm");
-    if (section) {
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY; // Get the section's position
-      window.scrollTo({
-        top: sectionTop - 500,
-        behavior: "smooth",
-      });
-    }
+    GO_TO_APPOINTMENT();
+    // const section = document.getElementById("ScheduleMeetingForm");
+    // if (section) {
+    //   const sectionTop = section.getBoundingClientRect().top + window.scrollY; // Get the section's position
+    //   window.scrollTo({
+    //     top: sectionTop - 500,
+    //     behavior: "smooth",
+    //   });
+    // }
   };
 
   useEffect(() => {

@@ -75,7 +75,7 @@ const LGBanner = () => {
 
               <div className="flex justify-center">
                 <button
-                  onClick={() => navigate("/funnel")}
+                  onClick={() => navigate("/funnel?pos=appointment")}
                   data-aos="fade-up"
                   data-aos-duration="700"
                   className="w-[170px] h-[55px] hover:w-[210px] hover:h-[63px] hover:md:w-[320px] hover:md:h-[103px] md:w-[288px] md:h-[93px] duration-200 ease-linear !border-b-[6px] hover:border-b-[9px] border-x-[2px] border-t-[2px] border-[#540E21] rounded-[8px] md:rounded-[13.573px] bg-wp text-[#0D0D0D] capitalize text-[14px] md:text-[22px] xl:text-[27.146px] font-semibold font-obviously-wide leading-normal mt-[36px] md:mt-[75px]"
@@ -128,7 +128,7 @@ const LGBanner = () => {
               </p>
               <div className="flex justify-center">
                 <button
-                  onClick={() => navigate("/funnel")}
+                  onClick={() => navigate("/funnel?pos=appointment")}
                   className="w-[170px] h-[55px] hover:w-[210px] hover:h-[63px] hover:md:w-[320px] hover:md:h-[103px] md:w-[288px] md:h-[93px] duration-200 ease-linear !border-b-[6px] hover:border-b-[9px] border-x-[2px] border-t-[2px] border-[#540E21] rounded-[8px] md:rounded-[13.573px] bg-wp text-[#0D0D0D] capitalize text-[14px] md:text-[22px] xl:text-[27.146px] font-semibold font-obviously-wide leading-normal mt-[36px] md:mt-[75px]"
                   style={{
                     leadingTrim: "both",

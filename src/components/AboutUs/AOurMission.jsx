@@ -109,7 +109,7 @@ const AOurMission = () => {
 
           <div className="md:flex justify-center hidden md:inline-block">
             <button
-              onClick={() => navigate("/funnel")}
+              onClick={() => navigate("/funnel?pos=appointment")}
               className="w-[288px] h-[84px] !border-b-[8px] hover:border-b-[9px] border-x-[4px] border-t-[2px] border-[#540E21] rounded-[13.573px] bg-wp text-[#0D0D0D] capitalize text-[27.146px] font-semibold font-obviously-wide leading-normal mt-[36px] md:mt-[75px]"
               style={{
                 leadingTrim: "both",
@@ -158,7 +158,7 @@ const AOurMission = () => {
           <div className="flex justify-center md:hidden">
             <button
               onClick={() => {
-                navigate("/funnel");
+                navigate("/funnel?pos=appointment");
               }}
               data-aos="fade-up"
               className="w-[170px] h-[55px] !border-b-[5px] border-x-[2px] border-t-[2px] border-[#540E21] rounded-[8px] bg-wp text-[#0D0D0D] capitalize text-[14px] font-semibold font-obviously-wide leading-normal mt-[36px]"
