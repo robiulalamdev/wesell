@@ -45,7 +45,7 @@ const WCItem1 = () => {
           </div>
           <div className="flex justify-center pb-[50px]">
             <button
-              onClick={() => navigate("/funnel")}
+              onClick={() => navigate("/contact-us")}
               className="w-[170px] h-[55px] hover:w-[210px] hover:h-[63px] hover:md:w-[320px] hover:md:h-[103px] md:w-[288px] md:h-[93px] duration-200 ease-linear !border-b-[6px] hover:border-b-[9px] border-x-[2px] border-t-[2px] border-[#163078] rounded-[8px] md:rounded-[13.573px] bg-wp text-[#0D0D0D] capitalize text-[14px] md:text-[22px] xl:text-[27.146px] font-semibold font-obviously-wide leading-normal mt-[55px] md:mt-[112px]"
               style={{
                 leadingTrim: "both",
