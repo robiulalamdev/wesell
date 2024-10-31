@@ -13,7 +13,13 @@ import { useScroll, useTransform, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { ISpinner } from "../../utils/icons/global";
-import { BASE_URL } from "../../config";
+
+const platforms = [
+  { id: 1, name: "WhatsApp", icon: IF_whatsapp },
+  { id: 2, name: "SMS", icon: IF_sms },
+  { id: 3, name: "Linkedin", icon: IF_linkedin },
+  { id: 4, name: "Instagram", icon: IF_instagram },
+];
 
 const ScheduleMeetingForm = () => {
   const navigate = useNavigate();
@@ -33,6 +39,7 @@ const ScheduleMeetingForm = () => {
 
   const { addToast } = useToasts();
 
+  const [selectedTab, setSelectedTab] = useState(platforms[1]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -40,24 +47,27 @@ const ScheduleMeetingForm = () => {
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
-    const contact = form.phone.value;
-    const whatsapp = form.whatsapp.value;
-    const sms = form.sms.value;
-    const linkedin = form.linkedin.value;
-    const instagram = form.instagram.value;
+    const phone = form.phone.value;
 
     setIsLoading(true);
 
     const data = {
       name,
-      email,
-      contact,
-      whatsapp,
-      sms,
-      linkedin,
-      instagram,
-      platform: "email",
     };
+
+    if (selectedTab?.name === "WhatsApp") {
+      data["platform"] = "whatsapp";
+      data["contact"] = phone;
+    } else if (selectedTab?.name === "SMS") {
+      data["platform"] = "sms";
+      data["contact"] = phone;
+    } else if (selectedTab?.name === "Linkedin") {
+      data["platform"] = "linkedin";
+      data["contact"] = phone;
+    } else if (selectedTab?.name === "Instagram") {
+      data["platform"] = "instagram";
+      data["contact"] = phone;
+    }
 
     const formData = new FormData();
     Object.keys(data).forEach((key) => {
@@ -66,9 +76,6 @@ const ScheduleMeetingForm = () => {
 
     fetch(`https://api.ilovegoodfood.ca/join`, {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
       body: formData,
     })
       .then((res) => res.json())
@@ -151,48 +158,34 @@ const ScheduleMeetingForm = () => {
                     className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
                   />
                 </div>
-                <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
-                  <div className="max-w-[20px] md:max-w-[32px]">
-                    {IF_whatsapp}
+
+                {platforms.map((item, index) => (
+                  <div
+                    onClick={() => setSelectedTab(item)}
+                    key={index}
+                    className={`flex items-center gap-[12px] md:gap-[23px] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px] cursor-pointer
+                      ${
+                        selectedTab?.name === item.name
+                          ? "bg-[#FCCF3D] text-[#0D0D0D]"
+                          : "bg-[#F9F9F933] text-[#FCCF3D]"
+                      }
+                      `}
+                  >
+                    <div className="max-w-[20px] md:max-w-[32px] text-current">
+                      {item.icon}
+                    </div>
+
+                    <h1
+                      className={`flex-grow w-full text-cmn text-left capitalize text-[10px] md:text-[14px] font-medium ${
+                        selectedTab?.name === item.name
+                          ? "!text-[#0D0D0D]"
+                          : "text-[#F2F2F2]"
+                      }`}
+                    >
+                      {item.name}
+                    </h1>
                   </div>
-                  <input
-                    type="text"
-                    name="whatsapp"
-                    placeholder="WhatsApp"
-                    className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
-                  />
-                </div>
-                <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
-                  <div className="max-w-[20px] md:max-w-[32px]">{IF_sms}</div>
-                  <input
-                    type="text"
-                    name="sms"
-                    placeholder="SMS"
-                    className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
-                  />
-                </div>
-                <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
-                  <div className="max-w-[20px] md:max-w-[32px]">
-                    {IF_linkedin}
-                  </div>
-                  <input
-                    type="url"
-                    name="linkedin"
-                    placeholder="Linkedin"
-                    className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
-                  />
-                </div>
-                <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
-                  <div className="max-w-[20px] md:max-w-[32px]">
-                    {IF_instagram}
-                  </div>
-                  <input
-                    type="url"
-                    name="instagram"
-                    placeholder="Instagram"
-                    className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
-                  />
-                </div>
+                ))}
               </div>
               <button
                 type="submit"
