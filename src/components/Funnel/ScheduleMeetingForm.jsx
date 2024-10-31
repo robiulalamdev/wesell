@@ -40,7 +40,7 @@ const ScheduleMeetingForm = () => {
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
-    const phone = form.phone.value;
+    const contact = form.phone.value;
     const whatsapp = form.whatsapp.value;
     const sms = form.sms.value;
     const linkedin = form.linkedin.value;
@@ -51,23 +51,30 @@ const ScheduleMeetingForm = () => {
     const data = {
       name,
       email,
-      phone,
+      contact,
       whatsapp,
       sms,
       linkedin,
       instagram,
+      platform: "email",
     };
 
-    fetch(`${BASE_URL}/helpers/appointment`, {
+    const formData = new FormData();
+    Object.keys(data).forEach((key) => {
+      formData.append(key, data[key]);
+    });
+
+    fetch(`https://api.ilovegoodfood.ca/join`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: formData,
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data?.success) {
+        console.log(data);
+        if (data?.status === "ok") {
           addToast("Schedule submitted successfully", {
             appearance: "success",
             autoDismiss: true,
@@ -152,7 +159,6 @@ const ScheduleMeetingForm = () => {
                     type="text"
                     name="whatsapp"
                     placeholder="WhatsApp"
-                    required={true}
                     className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
                   />
                 </div>
@@ -162,7 +168,6 @@ const ScheduleMeetingForm = () => {
                     type="text"
                     name="sms"
                     placeholder="SMS"
-                    required={true}
                     className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
                   />
                 </div>
@@ -174,7 +179,6 @@ const ScheduleMeetingForm = () => {
                     type="url"
                     name="linkedin"
                     placeholder="Linkedin"
-                    required={true}
                     className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
                   />
                 </div>
@@ -186,7 +190,6 @@ const ScheduleMeetingForm = () => {
                     type="url"
                     name="instagram"
                     placeholder="Instagram"
-                    required={true}
                     className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
                   />
                 </div>
