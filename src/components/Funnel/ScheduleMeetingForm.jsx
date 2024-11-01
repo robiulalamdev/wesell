@@ -15,10 +15,11 @@ import { useToasts } from "react-toast-notifications";
 import { ISpinner } from "../../utils/icons/global";
 
 const platforms = [
-  { id: 1, name: "WhatsApp", icon: IF_whatsapp },
-  { id: 2, name: "SMS", icon: IF_sms },
-  { id: 3, name: "Linkedin", icon: IF_linkedin },
-  { id: 4, name: "Instagram", icon: IF_instagram },
+  { id: 1, name: "SMS", platform: "sms", icon: IF_sms },
+  { id: 2, name: "Email", platform: "email", icon: IF_sms },
+  { id: 3, name: "WhatsApp", platform: "sms", icon: IF_whatsapp },
+  { id: 4, name: "Linkedin", platform: "sms", icon: IF_linkedin },
+  { id: 5, name: "Instagram", platform: "sms", icon: IF_instagram },
 ];
 
 const ScheduleMeetingForm = () => {
@@ -39,15 +40,30 @@ const ScheduleMeetingForm = () => {
 
   const { addToast } = useToasts();
 
-  const [selectedTab, setSelectedTab] = useState(platforms[1]);
+  const [selectedTab, setSelectedTab] = useState(platforms[0]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
-    const email = form.email.value;
-    const phone = form.phone.value;
+    const email = form?.email?.value;
+    const phone = form?.phone?.value;
+
+    if (selectedTab && selectedTab?.platform === "email" && !email) {
+      addToast("Email is required", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+      return;
+    }
+    if (selectedTab && selectedTab?.platform === "sms" && !phone) {
+      addToast("Phone is required", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+      return;
+    }
 
     setIsLoading(true);
 
@@ -55,7 +71,10 @@ const ScheduleMeetingForm = () => {
       name,
     };
 
-    if (selectedTab?.name === "WhatsApp") {
+    if (selectedTab?.name === "Email") {
+      data["platform"] = "email";
+      data["contact"] = email;
+    } else if (selectedTab?.name === "WhatsApp") {
       data["platform"] = "whatsapp";
       data["contact"] = phone;
     } else if (selectedTab?.name === "SMS") {
@@ -98,6 +117,7 @@ const ScheduleMeetingForm = () => {
         form.reset();
       });
   };
+
   return (
     <motion.div
       id="ScheduleMeetingForm"
@@ -134,58 +154,85 @@ const ScheduleMeetingForm = () => {
               <h1 className="text-cmn text-[#F9F9F9] text-[16px] md:text-[20px] font-medium capitalize">
                 How should we contact You
               </h1>
-              <div
-                id="appointmentContainer"
-                className="grid grid-cols-1 sm:grid-cols-2 gap-[12px] md:gap-[14px] max-w-[544px] mx-auto mt-[44px]"
-              >
-                <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
-                  <div className="max-w-[20px] md:max-w-[32px]">{IF_email}</div>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="E.mail"
-                    required={true}
-                    className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
-                  />
-                </div>
-                <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
-                  <div className="max-w-[20px] md:max-w-[32px]">{IF_phone}</div>
-                  <input
-                    type="number"
-                    name="phone"
-                    placeholder="Phone Call"
-                    required={true}
-                    className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
-                  />
-                </div>
+              <div className="max-w-[544px] mx-auto mt-[44px]">
+                <h1 className="text-cmn text-left text-[#F9F9F9] text-[16px] md:text-[17px] capitalize mb-[10px]">
+                  Select platform
+                </h1>
 
-                {platforms.map((item, index) => (
-                  <div
-                    onClick={() => setSelectedTab(item)}
-                    key={index}
-                    className={`flex items-center gap-[12px] md:gap-[23px] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px] cursor-pointer
+                <div
+                  id="appointmentContainer"
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-[12px] md:gap-[14px]"
+                >
+                  {platforms.map((item, index) => (
+                    <div
+                      onClick={() => setSelectedTab(item)}
+                      key={index}
+                      className={`flex items-center gap-[12px] md:gap-[23px] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px] cursor-pointer
                       ${
                         selectedTab?.name === item.name
                           ? "bg-[#FCCF3D] text-[#0D0D0D]"
                           : "bg-[#F9F9F933] text-[#FCCF3D]"
                       }
                       `}
-                  >
-                    <div className="max-w-[20px] md:max-w-[32px] text-current">
-                      {item.icon}
-                    </div>
-
-                    <h1
-                      className={`flex-grow w-full text-cmn text-left capitalize text-[10px] md:text-[14px] font-medium ${
-                        selectedTab?.name === item.name
-                          ? "!text-[#0D0D0D]"
-                          : "text-[#F2F2F2]"
-                      }`}
                     >
-                      {item.name}
-                    </h1>
-                  </div>
-                ))}
+                      <div className="max-w-[20px] md:max-w-[32px] text-current">
+                        {item.icon}
+                      </div>
+
+                      <h1
+                        className={`flex-grow w-full text-cmn text-left capitalize text-[10px] md:text-[14px] font-medium ${
+                          selectedTab?.name === item.name
+                            ? "!text-[#0D0D0D]"
+                            : "text-[#F2F2F2]"
+                        }`}
+                      >
+                        {item.name}
+                      </h1>
+                    </div>
+                  ))}
+
+                  {selectedTab?.platform === "sms" && (
+                    <div className="col-span-2">
+                      <h1 className="text-cmn text-left text-[#F9F9F9] text-[16px] md:text-[17px] capitalize mb-[10px]">
+                        Enter Phone*
+                      </h1>
+                      <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
+                        <div className="max-w-[20px] md:max-w-[32px]">
+                          {IF_phone}
+                        </div>
+                        <input
+                          type="tel"
+                          name="phone"
+                          placeholder="Phone Call"
+                          required={true}
+                          pattern="^\+[0-9]{10,15}$"
+                          title="Please enter a valid phone number starting with + and containing 10-15 digits."
+                          className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {selectedTab?.platform === "email" && (
+                    <div className="col-span-2">
+                      <h1 className="text-cmn text-left text-[#F9F9F9] text-[16px] md:text-[17px] capitalize mb-[10px]">
+                        Enter Email*
+                      </h1>
+                      <div className="col-span-2 flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
+                        <div className="max-w-[20px] md:max-w-[32px]">
+                          {IF_email}
+                        </div>
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="E.mail"
+                          required={true}
+                          className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
               <button
                 type="submit"
