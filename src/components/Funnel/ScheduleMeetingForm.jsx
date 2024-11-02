@@ -140,7 +140,7 @@ const ScheduleMeetingForm = () => {
           className="max-w-[643px] w-full mx-auto"
         >
           <form onSubmit={handleSubmit}>
-            <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
+            {/* <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
               <div className="max-w-[20px] md:max-w-[32px]">{IF_user}</div>
               <input
                 type="text"
@@ -149,13 +149,13 @@ const ScheduleMeetingForm = () => {
                 required={true}
                 className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
               />
-            </div>
+            </div> */}
             <div className="mt-[30px] md:mt-[44px]">
               <h1 className="text-cmn text-[#F9F9F9] text-[16px] md:text-[20px] font-medium capitalize">
                 How should we contact You
               </h1>
               <div className="max-w-[544px] mx-auto mt-[44px]">
-                <h1 className="text-cmn text-left text-[#F9F9F9] text-[16px] md:text-[17px] capitalize mb-[10px]">
+                <h1 className="text-cmn text-left text-[#F9F9F9] text-[14px] sm:text-[16px] md:text-[17px] capitalize mb-[10px]">
                   Select platform
                 </h1>
 
@@ -191,9 +191,27 @@ const ScheduleMeetingForm = () => {
                     </div>
                   ))}
 
+                  <div className="sm:col-span-2">
+                    <h1 className="text-cmn text-left text-[#F9F9F9] text-[14px] sm:text-[16px] md:text-[17px] capitalize mb-[10px]">
+                      Enter Full Name*
+                    </h1>
+                    <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
+                      <div className="max-w-[20px] md:max-w-[32px]">
+                        {IF_user}
+                      </div>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="full Name"
+                        required={true}
+                        className="flex-grow w-full h-full outline-none focus:outline-none bg-transparent focus:bg-transparent text-cmn placeholder:text-cmn text-left placeholder:text-left text-[#F2F2F2] placeholder:text-[#F2F2F2] capitalize placeholder:capitalize text-[10px] md:text-[14px] placeholder:text-[10px] md:placeholder:text-[14px] font-medium placeholder:font-medium"
+                      />
+                    </div>
+                  </div>
+
                   {selectedTab?.platform === "sms" && (
-                    <div className="col-span-2">
-                      <h1 className="text-cmn text-left text-[#F9F9F9] text-[16px] md:text-[17px] capitalize mb-[10px]">
+                    <div className="sm:col-span-2">
+                      <h1 className="text-cmn text-left text-[#F9F9F9] text-[14px] sm:text-[16px] md:text-[17px] capitalize mb-[10px]">
                         Enter Phone*
                       </h1>
                       <div className="flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
@@ -214,8 +232,8 @@ const ScheduleMeetingForm = () => {
                   )}
 
                   {selectedTab?.platform === "email" && (
-                    <div className="col-span-2">
-                      <h1 className="text-cmn text-left text-[#F9F9F9] text-[16px] md:text-[17px] capitalize mb-[10px]">
+                    <div className="sm:col-span-2">
+                      <h1 className="text-cmn text-left text-[#F9F9F9] text-[14px] sm:text-[16px] md:text-[17px] capitalize mb-[10px]">
                         Enter Email*
                       </h1>
                       <div className="col-span-2 flex items-center gap-[12px] md:gap-[23px] bg-[#F9F9F933] rounded-[5px] md:rounded-[9px] w-full h-[39px] md:h-[67px] px-[18px]">
@@ -233,17 +251,17 @@ const ScheduleMeetingForm = () => {
                     </div>
                   )}
                 </div>
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="h-[51px] w-full md:h-[84px] border-b-[6px] md:!border-b-[8px] border-x-[4px] border-t-[2px] border-primary rounded-[7px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[11px] md:text-[20px] font-semibold leading-normal flex items-center justify-center gap-2 mt-[45px] md:mt-[55px] mx-auto inline-block"
+                >
+                  {isLoading && (
+                    <div className="text-black max-w-[25px]">{ISpinner}</div>
+                  )}{" "}
+                  Schedule Meeting
+                </button>
               </div>
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-[214px] h-[51px] md:w-[363px] md:h-[84px] border-b-[6px] md:!border-b-[8px] border-x-[4px] border-t-[2px] border-primary rounded-[7px] md:rounded-[13.573px] bg-wp hover:bg-wp/85 text-cmn font-italic text-[#0D0D0D] capitalize text-[11px] md:text-[20px] font-semibold leading-normal flex items-center justify-center gap-2 mt-[45px] md:mt-[55px] mx-auto inline-block"
-              >
-                {isLoading && (
-                  <div className="text-black max-w-[25px]">{ISpinner}</div>
-                )}{" "}
-                Schedule Meeting
-              </button>
             </div>
           </form>
         </motion.div>
